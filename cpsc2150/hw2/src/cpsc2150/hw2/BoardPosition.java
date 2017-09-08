@@ -12,7 +12,7 @@ public class BoardPosition {
      * @param y int for the y position on the board
      * @param mark char for the player's marker
      * @requires
-     * x >= 0 and y >= 0
+     * x >= 0 and x < 8 and y >= 0 and y < 8
      * @requires mark == 'X' or mark == 'O'
      * @ensures <pre>
      *     BoardPosition object's values are initialized to
