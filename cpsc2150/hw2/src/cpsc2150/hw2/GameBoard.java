@@ -1,5 +1,7 @@
 package cpsc2150.hw2;
 
+import java.lang.StringBuilder;
+
 public class GameBoard {
 
     private static final int boardSize = 8;
@@ -68,6 +70,26 @@ public class GameBoard {
     @Override
     public String toString()
     {
+        StringBuilder preboard = new StringBuilder();
+        int i, j;
+
+        preboard.append("  0 1 2 3 4 5 6 7 \n");
+
+        for (i = 0; i < boardSize; i++)
+        {
+            preboard.append(i);
+            preboard.append("|");
+
+            for (j = 0; j < boardSize; j++)
+            {
+                preboard.append(this.board[i][j]);
+                preboard.append("|");
+            }
+
+            preboard.append("\n");
+        }
+
+        return preboard.toString();
         // returns a String that contains the game board to be printed
     }
 }
