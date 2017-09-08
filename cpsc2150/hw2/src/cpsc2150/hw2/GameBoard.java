@@ -1,6 +1,6 @@
 package cpsc2150.hw2;
 
-import java.lang.StringBuilder;
+import java.lang.StringBuffer;
 
 public class GameBoard {
 
@@ -33,9 +33,6 @@ public class GameBoard {
      */
     public boolean checkSpace(BoardPosition pos)
     {
-        // returns true if the position specified in pos is available,
-        // false otherwise
-
         return (this.board[pos.getXPos()][pos.getYPos()] == BLANK);
     }
 
@@ -43,12 +40,10 @@ public class GameBoard {
      *
      * @param marker is the player's marker to place in the given position
      * @requires marker be a valid and initialized BoardPosition object
-     * @ensures that the marker is placed in the array of characters
+     * @ensures that the marker is placed in the array of characters correctly
      */
     public void placeMarker(BoardPosition marker)
     {
-        // places the character in marker on the position specified by marker
-
         this.board[marker.getXPos()][marker.getYPos()] = marker.getPlayer();
     }
 
