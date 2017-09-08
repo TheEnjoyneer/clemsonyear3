@@ -24,53 +24,68 @@ public class GameBoard {
 
     public boolean checkSpace(BoardPosition pos)
     {
-        return (this.board[pos.getXPos()][pos.getYPos()] == BLANK);
         // returns true if the position specified in pos is available,
         // false otherwise
+
+        return (this.board[pos.getXPos()][pos.getYPos()] == BLANK);
     }
 
     public void placeMarker(BoardPosition marker)
     {
-        this.board[marker.getXPos()][marker.getYPos()] = marker.getPlayer();
         // places the character in marker on the position specified by marker
+
+        this.board[marker.getXPos()][marker.getYPos()] = marker.getPlayer();
     }
 
     public boolean checkForWinner(BoardPosition lastPos)
     {
-        return false;
         // this function will check to see if the lastPos placed resulted in a winner.
         // It so it will return true, otherwise false.
         // Passing in the last position will help limit the possible places to check
         // for a win condition, since you can assume that any win condition that
         // did not include the most recent play made would have been caught earlier.
+
+        return checkHorizontalWin(lastPos)
+                || checkVerticalWin(lastPos)
+                || checkDiagonalWin(lastPos);
+
     }
 
     private boolean checkHorizontalWin(BoardPosition lastpos)
     {
-        return false;
         // checks to see if the last marker placed resulted in 5 in a row horizontally.
         // Returns true if it does, otherwise false
+
+        return false;
     }
 
     private boolean checkVerticalWin(BoardPosition lastpos)
     {
-        return false;
         // checks to see if the last marker placed resulted in 5 in a row vertically.
         // Returns true if it does, otherwise false
+
+        return false;
     }
 
     private boolean checkDiagonalWin(BoardPosition lastpos)
     {
-        return false;
         // checks to see if the last marker placed resulted in 5 in a row diagonally.
         // Returns true if it does, otherwise false
         // Note: there are two diagonals to check
+
+        return false;
     }
 
+    /**
+     *
+     * @return toString value of a string that contains the entire board.
+     */
     @Override
     public String toString()
     {
-        StringBuilder preboard = new StringBuilder();
+        // returns a String that contains the game board to be printed
+
+        StringBuffer preboard = new StringBuffer();
         int i, j;
 
         preboard.append("  0 1 2 3 4 5 6 7 \n");
@@ -90,6 +105,5 @@ public class GameBoard {
         }
 
         return preboard.toString();
-        // returns a String that contains the game board to be printed
     }
 }
