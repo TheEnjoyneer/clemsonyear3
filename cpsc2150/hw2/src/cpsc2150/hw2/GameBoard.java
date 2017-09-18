@@ -33,7 +33,7 @@ public class GameBoard {
      */
     public boolean checkSpace(BoardPosition pos)
     {
-        return (this.board[pos.getXPos()][pos.getYPos()] == BLANK);
+        return (this.board[pos.getRow()][pos.getColumn()] == BLANK);
     }
 
     /**
@@ -44,7 +44,7 @@ public class GameBoard {
      */
     public void placeMarker(BoardPosition marker)
     {
-        this.board[marker.getXPos()][marker.getYPos()] = marker.getPlayer();
+        this.board[marker.getRow()][marker.getColumn()] = marker.getPlayer();
     }
 
     /**

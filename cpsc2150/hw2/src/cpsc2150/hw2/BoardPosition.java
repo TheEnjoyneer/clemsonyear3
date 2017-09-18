@@ -31,7 +31,7 @@ public class BoardPosition {
      *
      * @return x position of a cell in the board
      */
-    public int getXPos()
+    public int getRow()
     {
         return this.x_pos;
     }
@@ -40,7 +40,7 @@ public class BoardPosition {
      *
      * @return y position of a cell in the board
      */
-    public int getYPos()
+    public int getColumn()
     {
         return this.y_pos;
     }
