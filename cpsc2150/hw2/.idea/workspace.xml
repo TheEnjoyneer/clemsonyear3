@@ -15,8 +15,8 @@
       <file leaf-file-name="GameScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="1440">
+              <caret line="96" column="81" lean-forward="false" selection-start-line="96" selection-start-column="81" selection-end-line="96" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -25,8 +25,8 @@
       <file leaf-file-name="BoardPosition.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/BoardPosition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+            <state relative-caret-position="360">
+              <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -35,11 +35,13 @@
       <file leaf-file-name="GameBoard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" column="52" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+            <state relative-caret-position="-512">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
-                <element signature="e#828#829#0" expanded="true" />
-                <element signature="e#903#904#0" expanded="true" />
+                <element signature="method#GameBoard#0;class#GameBoard#0" expanded="false" />
+                <element signature="method#placeMarker#0;class#GameBoard#0" expanded="false" />
+                <element signature="method#checkForWinner#0;class#GameBoard#0" expanded="false" />
+                <element signature="method#toString#0;class#GameBoard#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -62,9 +64,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw2/BoardPosition.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameBoard.java" />
+        <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java" />
       </list>
     </option>
   </component>
@@ -221,7 +223,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -247,8 +249,10 @@
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#903#904#0" expanded="true" />
+            <element signature="method#GameBoard#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#placeMarker#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#checkForWinner#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#toString#0;class#GameBoard#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -274,35 +278,50 @@
         <state relative-caret-position="630">
           <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
           <folding>
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#903#904#0" expanded="true" />
+            <element signature="method#GameBoard#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#placeMarker#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#checkForWinner#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#toString#0;class#GameBoard#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-3756">
+          <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
+          <folding>
+            <element signature="e#10065#10066#0" expanded="false" />
+            <element signature="e#10148#10149#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/BoardPosition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        <state relative-caret-position="360">
+          <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="96" column="81" lean-forward="false" selection-start-line="96" selection-start-column="81" selection-end-line="96" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="52" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+        <state relative-caret-position="-512">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#903#904#0" expanded="true" />
+            <element signature="method#GameBoard#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#placeMarker#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#checkForWinner#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#toString#0;class#GameBoard#0" expanded="false" />
           </folding>
         </state>
       </provider>
