@@ -52,6 +52,10 @@ public class GameScreen {
                 if (xoboard.checkSpace(nextPos))
                 {
                     xoboard.placeMarker(nextPos);
+
+                    if (xoboard.checkForWinner(nextPos))
+                        winCondition = 1;
+
                     marker++;
                 }
                 else
@@ -86,6 +90,10 @@ public class GameScreen {
                 if (xoboard.checkSpace(nextPos))
                 {
                     xoboard.placeMarker(nextPos);
+
+                    if (xoboard.checkForWinner(nextPos))
+                        winCondition = 1;
+
                     marker++;
                 }
                 else
@@ -94,7 +102,11 @@ public class GameScreen {
                 }
             }
 
-            // check for win condition and figure out how to restart/end the game
+            if (winCondition == 1)
+            {
+                winCondition = playAgain();
+                again = 1;
+            }
         }
     }
 
