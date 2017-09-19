@@ -79,6 +79,18 @@ public class GameBoard {
     {
         // checks to see if the last marker placed resulted in 5 in a row horizontally.
         // Returns true if it does, otherwise false
+        int col, row = lastPos.getRow();
+        char marker = lastPos.getPlayer();
+
+        for (col = 0; col < boardSize - 4; col++)
+        {
+            if (board[row][col] == marker)
+                if (board[row][col+1] == marker)
+                    if (board[row][col+2] == marker)
+                        if (board[row][col+3] == marker)
+                            if (board[row][col+4] == marker)
+                                return true;
+        }
 
         return false;
     }
@@ -94,6 +106,18 @@ public class GameBoard {
     {
         // checks to see if the last marker placed resulted in 5 in a row vertically.
         // Returns true if it does, otherwise false
+        int row, col = lastPos.getColumn();
+        char marker = lastPos.getPlayer();
+
+        for (col = 0; col < boardSize - 4; col++)
+        {
+            if (board[row][col] == marker)
+                if (board[row+1][col] == marker)
+                    if (board[row+2][col] == marker)
+                        if (board[row+3][col] == marker)
+                            if (board[row+4][col] == marker)
+                                return true;
+        }
 
         return false;
     }
