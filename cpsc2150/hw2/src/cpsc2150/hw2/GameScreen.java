@@ -34,7 +34,7 @@ public class GameScreen {
 
                 while (x < 0 || x > 7)
                 {
-                    System.out.println("Please enter a valid row value between 0 and 7");
+                    System.out.println("\nPlease enter a valid row value between 0 and 7");
                     rowPrompt('X');
                     x = Integer.parseInt(input.next());
                 }
@@ -44,7 +44,7 @@ public class GameScreen {
 
                 while (y < 0 || y > 7)
                 {
-                    System.out.println("Please enter a valid column value between 0 and 7");
+                    System.out.println("\nPlease enter a valid column value between 0 and 7");
                     colPrompt('X');
                     y = Integer.parseInt(input.next());
                 }
@@ -72,7 +72,7 @@ public class GameScreen {
 
                 while (x < 0 || x > 7)
                 {
-                    System.out.println("Please enter a valid row value between 0 and 7");
+                    System.out.println("\nPlease enter a valid row value between 0 and 7");
                     rowPrompt('O');
                     x = Integer.parseInt(input.next());
                 }
@@ -82,7 +82,7 @@ public class GameScreen {
 
                 while (y < 0 || y > 7)
                 {
-                    System.out.println("Please enter a valid column value between 0 and 7");
+                    System.out.println("\nPlease enter a valid column value between 0 and 7");
                     colPrompt('O');
                     y = Integer.parseInt(input.next());
                 }
