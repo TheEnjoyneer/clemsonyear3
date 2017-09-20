@@ -7,6 +7,7 @@ public class GameScreen {
     public static void main(String[] args)
     {
         System.out.println("\nWelcome to 8x8 Tic-Tac-Toe!");
+        System.out.println("First player to 5 in a row wins!");
         System.out.println("\nThis game begins with the player");
         System.out.println("who chooses to use the X marker");
         System.out.println("and alternates with the O marker.\n");
