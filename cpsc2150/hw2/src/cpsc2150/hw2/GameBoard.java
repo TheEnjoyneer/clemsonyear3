@@ -167,7 +167,7 @@ public class GameBoard {
 
         for (i = i2; i < boardSize - 4; i++)
         {
-            for (j = boardSize - 1; j > j2 - 1; j--)
+            for (j = boardSize - 1; j > j2; j--)
             {
                 if (board[i][j] == marker)
                     if (board[i+1][j-1] == marker)

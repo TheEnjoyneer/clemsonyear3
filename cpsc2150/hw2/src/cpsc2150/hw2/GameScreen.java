@@ -52,6 +52,7 @@ public class GameScreen {
                 if (xoboard.checkSpace(nextPos))
                 {
                     xoboard.placeMarker(nextPos);
+                    System.out.println(xoboard.toString());
 
                     if (xoboard.checkForWinner(nextPos))
                         winCondition = 1;
@@ -91,6 +92,7 @@ public class GameScreen {
                 if (xoboard.checkSpace(nextPos))
                 {
                     xoboard.placeMarker(nextPos);
+                    System.out.println(xoboard.toString());
 
                     if (xoboard.checkForWinner(nextPos))
                         winCondition = 1;
