@@ -109,7 +109,7 @@ public class GameBoard {
         int row, col = lastPos.getColumn();
         char marker = lastPos.getPlayer();
 
-        for (col = 0; col < boardSize - 4; col++)
+        for (row = 0; row < boardSize - 4; row++)
         {
             if (board[row][col] == marker)
                 if (board[row+1][col] == marker)
@@ -134,7 +134,7 @@ public class GameBoard {
         // checks to see if the last marker placed resulted in 5 in a row diagonally.
         // Returns true if it does, otherwise false
         // Note: there are two diagonals to check
-
+        int row = lastPos.get
         return false;
     }
 
