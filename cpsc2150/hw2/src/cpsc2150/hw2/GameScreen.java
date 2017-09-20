@@ -53,10 +53,6 @@ public class GameScreen {
                 {
                     xoboard.placeMarker(nextPos);
                     System.out.println(xoboard.toString());
-
-                    if (xoboard.checkForWinner(nextPos))
-                        winCondition = 1;
-
                     marker++;
                 }
                 else
@@ -93,10 +89,6 @@ public class GameScreen {
                 {
                     xoboard.placeMarker(nextPos);
                     System.out.println(xoboard.toString());
-
-                    if (xoboard.checkForWinner(nextPos))
-                        winCondition = 1;
-
                     marker++;
                 }
                 else
@@ -104,6 +96,12 @@ public class GameScreen {
                     System.out.println("\nThis space is already filled. Try again.");
                     System.out.println(xoboard.toString());
                 }
+            }
+
+            if (xoboard.checkForWinner(nextPos))
+            {
+                winCondition = 1;
+                System.out.println("Player using marker " + nextPos.getPlayer() + " wins!");
             }
 
             if (winCondition == 1)
@@ -132,9 +130,9 @@ public class GameScreen {
 
         Scanner again = new Scanner(System.in);
         System.out.println("\nWould you like to play again?");
-        System.out.println("\nInsert a Y for yes or N for no");
-        System.out.println("\n*Not case sensitive*");
-        System.out.println("\nPlay again? ");
+        System.out.println("Insert a Y for yes or N for no");
+        System.out.println("*Not case sensitive*");
+        System.out.println("Play again? ");
 
         char response = again.next().charAt(0);
 
