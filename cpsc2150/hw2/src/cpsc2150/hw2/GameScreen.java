@@ -8,8 +8,8 @@ public class GameScreen {
     {
         System.out.println("\nWelcome to 8x8 Tic-Tac-Toe!");
         System.out.println("\nThis game begins with the player");
-        System.out.println("\nwho chooses to use the X marker");
-        System.out.println("\nand alternates with the O marker.\n");
+        System.out.println("who chooses to use the X marker");
+        System.out.println("and alternates with the O marker.\n");
 
         Scanner input = new Scanner(System.in);
         int marker = 0, winCondition = 0, again = 0;
@@ -61,6 +61,7 @@ public class GameScreen {
                 else
                 {
                     System.out.println("\nThis space is already filled. Try again.");
+                    System.out.println(xoboard.toString());
                 }
 
 
@@ -99,6 +100,7 @@ public class GameScreen {
                 else
                 {
                     System.out.println("\nThis space is already filled. Try again.");
+                    System.out.println(xoboard.toString());
                 }
             }
 
@@ -112,16 +114,14 @@ public class GameScreen {
 
     private static void rowPrompt(char marker)
     {
-        System.out.println("\nPlayer using marker ");
-        System.out.println(marker);
-        System.out.println(" enter desired row: ");
+        System.out.println("\nPlayer using marker " + marker + ",");
+        System.out.println("Enter desired row: ");
     }
 
     private static void colPrompt(char marker)
     {
-        System.out.println("\nPlayer using marker ");
-        System.out.println(marker);
-        System.out.println(" enter desired column: ");
+        System.out.println("\nPlayer using marker " + marker + ",");
+        System.out.println("Enter desired column: ");
     }
 
     private static int playAgain()

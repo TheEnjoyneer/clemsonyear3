@@ -28,7 +28,7 @@ public class GameBoard {
     /**
      *
      * @param pos is the position in the board to check
-     * @requires that pos is a valid and initialized BoardPosition object
+     * @requires pos != null
      * @return a boolean that is true if the position is open and false otherwise
      */
     public boolean checkSpace(BoardPosition pos)
@@ -39,7 +39,7 @@ public class GameBoard {
     /**
      *
      * @param marker is the player's marker to place in the given position
-     * @requires marker be a valid and initialized BoardPosition object
+     * @requires marker != null
      * @ensures that the marker is placed in the array of characters correctly
      */
     public void placeMarker(BoardPosition marker)
@@ -50,7 +50,7 @@ public class GameBoard {
     /**
      *
      * @param lastPos is the most recent position that has been set on the board
-     * @requires lastPos be a valid and initialized BoardPosition object
+     * @requires lastPos != null
      * @return a boolean as to whether or not the game has been won
      * @ensures that all possible win conditions are checked
      */
