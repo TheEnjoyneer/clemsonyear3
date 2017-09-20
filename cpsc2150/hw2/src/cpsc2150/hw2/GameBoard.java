@@ -146,10 +146,10 @@ public class GameBoard {
             j1--;
         }
 
-        while (i2 != 0 && j2 != 0)
+        while (i2 != 0 &&  j2 != 7)
         {
             i2--;
-            j2--;
+            j2++;
         }
 
         for (i = i1; i < boardSize - 4; i++)
@@ -167,7 +167,7 @@ public class GameBoard {
 
         for (i = i2; i < boardSize - 4; i++)
         {
-            for (j = boardSize - 1; j > j2; j--)
+            for (j = j2; j > 3; j--)
             {
                 if (board[i][j] == marker)
                     if (board[i+1][j-1] == marker)
