@@ -18,9 +18,10 @@ public class GameScreen {
         BoardPosition nextPos = new BoardPosition(0, 0, ' ');
         GameBoard xoboard = new GameBoard();
 
-
+        // While loop that loops for input and continuous play
         while (winCondition == 0)
         {
+            // Checks if the player wants to play again.
             if (again == 1)
             {
                 xoboard = new GameBoard();
@@ -28,6 +29,7 @@ public class GameScreen {
                 marker = 0;
             }
 
+            // Runs input intake and checks for marker 'X'
             if (marker % 2 == 0)
             {
                 rowPrompt('X');
@@ -66,6 +68,7 @@ public class GameScreen {
 
 
             }
+            // Runs input intake and checks for marker 'O'
             else if (marker % 2 == 1)
             {
                 rowPrompt('O');
@@ -103,12 +106,15 @@ public class GameScreen {
                 }
             }
 
+            // Checks for win condition
             if (xoboard.checkForWinner(nextPos))
             {
                 winCondition = 1;
                 System.out.println("Player using marker " + nextPos.getPlayer() + " wins!");
             }
 
+            // Checks if the win condition integer has changed and checks if the
+            // user wants to play again.
             if (winCondition == 1)
             {
                 winCondition = playAgain();
@@ -117,18 +123,36 @@ public class GameScreen {
         }
     }
 
+    /**
+     *
+     * @param marker is used to print the correct marker
+     * @requires marker != null
+     * @ensures the row prompt is printed
+     */
     private static void rowPrompt(char marker)
     {
         System.out.println("\nPlayer using marker " + marker + ",");
         System.out.println("Enter desired row: ");
     }
 
+    /**
+     *
+     * @param marker is used to print the correct marker
+     * @requires marker != null
+     * @ensures the column prompt is printed
+     */
     private static void colPrompt(char marker)
     {
         System.out.println("\nPlayer using marker " + marker + ",");
         System.out.println("Enter desired column: ");
     }
 
+    /**
+     *
+     * @return retVal = 1 if the player does not want to play again
+     *         and retVal = 0 if the player does want to play again
+     * @ensures retVal is returned as an int
+     */
     private static int playAgain()
     {
         int retVal = 0;

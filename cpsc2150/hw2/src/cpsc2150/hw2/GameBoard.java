@@ -29,7 +29,7 @@ public class GameBoard {
      *
      * @param pos is the position in the board to check
      * @requires pos != null
-     * @return a boolean that is true if the position is open and false otherwise
+     * @return True if the space requested is an open position
      */
     public boolean checkSpace(BoardPosition pos)
     {
@@ -51,34 +51,25 @@ public class GameBoard {
      *
      * @param lastPos is the most recent position that has been set on the board
      * @requires lastPos != null
-     * @return a boolean as to whether or not the game has been won
+     * @return True if any of the win conditions return True
      * @ensures that all possible win conditions are checked
      */
     public boolean checkForWinner(BoardPosition lastPos)
     {
-        // this function will check to see if the lastPos placed resulted in a winner.
-        // It so it will return true, otherwise false.
-        // Passing in the last position will help limit the possible places to check
-        // for a win condition, since you can assume that any win condition that
-        // did not include the most recent play made would have been caught earlier.
-
         return checkHorizontalWin(lastPos)
                 || checkVerticalWin(lastPos)
                 || checkDiagonalWin(lastPos);
-
     }
 
     /**
      *
      * @param lastPos is the most recent position that has been set on the board
      * @requires lastPos be a valid and initialized BoardPosition object
-     * @return a boolean as to whether or not the game was won horizontally
-     * @ensures that every row is checked for a win condition
+     * @return True if the last position is placed in a position to make 5 in a row horizontally
+     * @ensures Win conditions for lastPos's row are checked
      */
     private boolean checkHorizontalWin(BoardPosition lastPos)
     {
-        // checks to see if the last marker placed resulted in 5 in a row horizontally.
-        // Returns true if it does, otherwise false
         int col, row = lastPos.getRow();
         char marker = lastPos.getPlayer();
 
@@ -99,13 +90,11 @@ public class GameBoard {
      *
      * @param lastPos is the most recent position that has been set on the board
      * @requires lastPos be a valid and initialized BoardPosition object
-     * @return a boolean as to whether or not the game was won vertically
-     * @ensures every column is checked for a win condition
+     * @return True if the last position is placed in a position to make 5 in a row vertically
+     * @ensures Win conditions for lastPos's column are checked
      */
     private boolean checkVerticalWin(BoardPosition lastPos)
     {
-        // checks to see if the last marker placed resulted in 5 in a row vertically.
-        // Returns true if it does, otherwise false
         int row, col = lastPos.getColumn();
         char marker = lastPos.getPlayer();
 
@@ -126,14 +115,11 @@ public class GameBoard {
      *
      * @param lastPos is the most recent position that has been set on the board
      * @requires lastPos be a valid and initialized BoardPosition object
-     * @return a boolean as to whether or not the game was won diagonally
-     * @ensures every diagonal is checked for a win condition
+     * @return True if the last position is placed in a position to make 5 in a row diagonally
+     * @ensures The diagonal including lastPos is checked for a win condition
      */
     private boolean checkDiagonalWin(BoardPosition lastPos)
     {
-        // checks to see if the last marker placed resulted in 5 in a row diagonally.
-        // Returns true if it does, otherwise false
-        // Note: there are two diagonals to check
         int row = lastPos.getRow();
         int col = lastPos.getColumn();
         int i, i1 = row, i2 = row;
