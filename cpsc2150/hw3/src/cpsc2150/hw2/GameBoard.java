@@ -1,4 +1,4 @@
-package cpsc2150.hw3;
+package cpsc2150.hw2;
 
 import java.lang.StringBuffer;
 
