@@ -86,53 +86,270 @@ public class TestGameBoard extends TestCase {
     @Test
     public void testPlaceMarkerR0C0()
     {
+        // Declare and place BoardPosition (0,0) with marker X
+        BoardPosition testPos = new BoardPosition(0,0,'X');
+        xoboard.placeMarker(testPos);
+
+        // Create test board to check against
         int i, j, boardSize = 8;
-        char [][] board = new char[boardSize][boardSize];
+        char [][] testBoard = new char[boardSize][boardSize];
 
         for (i = 0; i < boardSize; i++)
         {
             for (j = 0; j < boardSize; j++)
             {
-                board[i][j] = ' ';
+                if (i == 0 && j == 0)
+                    testBoard[i][j] = 'X';
+                else
+                    testBoard[i][j] = ' ';
             }
         }
 
+        // Change test board to a string
+        StringBuffer preboard = new StringBuffer();
 
+        preboard.append("  0 1 2 3 4 5 6 7 \n");
+
+        for (i = 0; i < boardSize; i++)
+        {
+            preboard.append(i);
+            preboard.append("|");
+
+            for (j = 0; j < boardSize; j++)
+            {
+                preboard.append(testBoard[i][j]);
+                preboard.append("|");
+            }
+
+            preboard.append("\n");
+        }
+
+        assertEquals(preboard.toString(), xoboard.toString());
     }
 
     // placeMarker() test 2
     @Test
     public void testPlaceMarkerR0C7()
     {
+        // Declare and place BoardPosition (0,0) with marker X
+        BoardPosition testPos = new BoardPosition(0,7,'X');
+        xoboard.placeMarker(testPos);
 
+        // Create test board to check against
+        int i, j, boardSize = 8;
+        char [][] testBoard = new char[boardSize][boardSize];
+
+        for (i = 0; i < boardSize; i++)
+        {
+            for (j = 0; j < boardSize; j++)
+            {
+                if (i == 0 && j == 7)
+                    testBoard[i][j] = 'X';
+                else
+                    testBoard[i][j] = ' ';
+            }
+        }
+
+        // Change test board to a string
+        StringBuffer preboard = new StringBuffer();
+
+        preboard.append("  0 1 2 3 4 5 6 7 \n");
+
+        for (i = 0; i < boardSize; i++)
+        {
+            preboard.append(i);
+            preboard.append("|");
+
+            for (j = 0; j < boardSize; j++)
+            {
+                preboard.append(testBoard[i][j]);
+                preboard.append("|");
+            }
+
+            preboard.append("\n");
+        }
+
+        assertEquals(preboard.toString(), xoboard.toString());
     }
 
     // placeMarker() test 3
     @Test
     public void testPlaceMarkerR7C0()
     {
+        // Declare and place BoardPosition (0,0) with marker X
+        BoardPosition testPos = new BoardPosition(7,0,'X');
+        xoboard.placeMarker(testPos);
 
+        // Create test board to check against
+        int i, j, boardSize = 8;
+        char [][] testBoard = new char[boardSize][boardSize];
+
+        for (i = 0; i < boardSize; i++)
+        {
+            for (j = 0; j < boardSize; j++)
+            {
+                if (i == 7 && j == 0)
+                    testBoard[i][j] = 'X';
+                else
+                    testBoard[i][j] = ' ';
+            }
+        }
+
+        // Change test board to a string
+        StringBuffer preboard = new StringBuffer();
+
+        preboard.append("  0 1 2 3 4 5 6 7 \n");
+
+        for (i = 0; i < boardSize; i++)
+        {
+            preboard.append(i);
+            preboard.append("|");
+
+            for (j = 0; j < boardSize; j++)
+            {
+                preboard.append(testBoard[i][j]);
+                preboard.append("|");
+            }
+
+            preboard.append("\n");
+        }
+
+        assertEquals(preboard.toString(), xoboard.toString());
     }
 
     // placeMarker() test 4
     @Test
     public void testPlaceMarkerR7C7()
     {
+        // Declare and place BoardPosition (0,0) with marker X
+        BoardPosition testPos = new BoardPosition(7,7,'X');
+        xoboard.placeMarker(testPos);
 
+        // Create test board to check against
+        int i, j, boardSize = 8;
+        char [][] testBoard = new char[boardSize][boardSize];
+
+        for (i = 0; i < boardSize; i++)
+        {
+            for (j = 0; j < boardSize; j++)
+            {
+                if (i == 7 && j == 7)
+                    testBoard[i][j] = 'X';
+                else
+                    testBoard[i][j] = ' ';
+            }
+        }
+
+        // Change test board to a string
+        StringBuffer preboard = new StringBuffer();
+
+        preboard.append("  0 1 2 3 4 5 6 7 \n");
+
+        for (i = 0; i < boardSize; i++)
+        {
+            preboard.append(i);
+            preboard.append("|");
+
+            for (j = 0; j < boardSize; j++)
+            {
+                preboard.append(testBoard[i][j]);
+                preboard.append("|");
+            }
+
+            preboard.append("\n");
+        }
+
+        assertEquals(preboard.toString(), xoboard.toString());
     }
 
     // placeMarker() test 5
     @Test
     public void testPlaceMarkerR3C3()
     {
+        // Declare and place BoardPosition (0,0) with marker X
+        BoardPosition testPos = new BoardPosition(3,3,'X');
+        xoboard.placeMarker(testPos);
 
+        // Create test board to check against
+        int i, j, boardSize = 8;
+        char [][] testBoard = new char[boardSize][boardSize];
+
+        for (i = 0; i < boardSize; i++)
+        {
+            for (j = 0; j < boardSize; j++)
+            {
+                if (i == 3 && j == 3)
+                    testBoard[i][j] = 'X';
+                else
+                    testBoard[i][j] = ' ';
+            }
+        }
+
+        // Change test board to a string
+        StringBuffer preboard = new StringBuffer();
+
+        preboard.append("  0 1 2 3 4 5 6 7 \n");
+
+        for (i = 0; i < boardSize; i++)
+        {
+            preboard.append(i);
+            preboard.append("|");
+
+            for (j = 0; j < boardSize; j++)
+            {
+                preboard.append(testBoard[i][j]);
+                preboard.append("|");
+            }
+
+            preboard.append("\n");
+        }
+
+        assertEquals(preboard.toString(), xoboard.toString());
     }
 
     // placeMarker() test 6
     @Test
     public void testPlaceMarkerR4C4()
     {
+        // Declare and place BoardPosition (0,0) with marker X
+        BoardPosition testPos = new BoardPosition(4,4,'X');
+        xoboard.placeMarker(testPos);
 
+        // Create test board to check against
+        int i, j, boardSize = 8;
+        char [][] testBoard = new char[boardSize][boardSize];
+
+        for (i = 0; i < boardSize; i++)
+        {
+            for (j = 0; j < boardSize; j++)
+            {
+                if (i == 4 && j == 4)
+                    testBoard[i][j] = 'X';
+                else
+                    testBoard[i][j] = ' ';
+            }
+        }
+
+        // Change test board to a string
+        StringBuffer preboard = new StringBuffer();
+
+        preboard.append("  0 1 2 3 4 5 6 7 \n");
+
+        for (i = 0; i < boardSize; i++)
+        {
+            preboard.append(i);
+            preboard.append("|");
+
+            for (j = 0; j < boardSize; j++)
+            {
+                preboard.append(testBoard[i][j]);
+                preboard.append("|");
+            }
+
+            preboard.append("\n");
+        }
+
+        assertEquals(preboard.toString(), xoboard.toString());
     }
 
     // checkForWinner() test 1 - horizontal true
