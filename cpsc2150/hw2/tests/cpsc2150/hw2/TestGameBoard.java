@@ -35,10 +35,9 @@ public class TestGameBoard extends TestCase {
     public void testCheckSpaceR0C0F()
     {
         BoardPosition testPos = new BoardPosition(0, 0, 'X');
-        BoardPosition fullPos = new BoardPosition(0, 0, 'X');
 
         // Place fullPos into position (0,0)
-        xoboard.placeMarker(fullPos);
+        xoboard.placeMarker(testPos);
         boolean testResponse = xoboard.checkSpace(testPos);
 
         // Test for expected open space
@@ -61,10 +60,9 @@ public class TestGameBoard extends TestCase {
     public void testCheckSpaceR7C7F()
     {
         BoardPosition testPos = new BoardPosition(7, 7, 'X');
-        BoardPosition fullPos = new BoardPosition(7, 7, 'X');
 
         // Place fullPos into position (7,7)
-        xoboard.placeMarker(fullPos);
+        xoboard.placeMarker(testPos);
         boolean testResponse = xoboard.checkSpace(testPos);
 
         // Test for expected open space
