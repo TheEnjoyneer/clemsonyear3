@@ -48,8 +48,8 @@
       <file leaf-file-name="TestGameBoard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/cpsc2150/hw2/TestGameBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="461" column="5" lean-forward="false" selection-start-line="461" selection-start-column="5" selection-end-line="461" selection-end-column="5" />
+            <state relative-caret-position="-4680">
+              <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#196#197#0" expanded="true" />
@@ -531,8 +531,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/cpsc2150/hw2/TestGameBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="461" column="5" lean-forward="false" selection-start-line="461" selection-start-column="5" selection-end-line="461" selection-end-column="5" />
+        <state relative-caret-position="-4680">
+          <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#196#197#0" expanded="true" />

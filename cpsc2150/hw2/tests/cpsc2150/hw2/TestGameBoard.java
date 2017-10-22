@@ -21,7 +21,7 @@ public class TestGameBoard extends TestCase {
 
     // checkSpace() test 1 - available
     @Test
-    public void testCheckSpaceR0C0T()
+    public void testCheckSpace_R0_C0_T()
     {
         BoardPosition testPos = new BoardPosition(0, 0, 'X');
         boolean testResponse = xoboard.checkSpace(testPos);
@@ -32,7 +32,7 @@ public class TestGameBoard extends TestCase {
 
     // checkSpace() test 2 - not available
     @Test
-    public void testCheckSpaceR0C0F()
+    public void testCheckSpace_R0_C0_F()
     {
         BoardPosition testPos = new BoardPosition(0, 0, 'X');
 
@@ -46,7 +46,7 @@ public class TestGameBoard extends TestCase {
 
     // checkSpace() test 3 - available
     @Test
-    public void testCheckSpaceR7C7T()
+    public void testCheckSpace_R7_C7_T()
     {
         BoardPosition testPos = new BoardPosition(7, 7, 'X');
         boolean testResponse = xoboard.checkSpace(testPos);
@@ -57,7 +57,7 @@ public class TestGameBoard extends TestCase {
 
     // checkSpace() test 4 - not available
     @Test
-    public void testCheckSpaceR7C7F()
+    public void testCheckSpace_R7_C7_F()
     {
         BoardPosition testPos = new BoardPosition(7, 7, 'X');
 
@@ -71,7 +71,7 @@ public class TestGameBoard extends TestCase {
 
     // checkSpace() test 5 - available
     @Test
-    public void testCheckSpaceR4C4T()
+    public void testCheckSpace_R4_C4_T()
     {
         BoardPosition testPos = new BoardPosition(4, 4, 'X');
         boolean testResponse = xoboard.checkSpace(testPos);
@@ -82,7 +82,7 @@ public class TestGameBoard extends TestCase {
 
     // placeMarker() test 1 - places correctly
     @Test
-    public void testPlaceMarkerR0C0()
+    public void testPlaceMarker_R0_C0()
     {
         // Declare and place BoardPosition (0,0) with marker X
         BoardPosition testPos = new BoardPosition(0,0,'X');
@@ -127,7 +127,7 @@ public class TestGameBoard extends TestCase {
 
     // placeMarker() test 2
     @Test
-    public void testPlaceMarkerR0C7()
+    public void testPlaceMarker_R0_C7()
     {
         // Declare and place BoardPosition (0,0) with marker X
         BoardPosition testPos = new BoardPosition(0,7,'X');
@@ -172,7 +172,7 @@ public class TestGameBoard extends TestCase {
 
     // placeMarker() test 3
     @Test
-    public void testPlaceMarkerR7C0()
+    public void testPlaceMarker_R7_C0()
     {
         // Declare and place BoardPosition (0,0) with marker X
         BoardPosition testPos = new BoardPosition(7,0,'X');
@@ -217,7 +217,7 @@ public class TestGameBoard extends TestCase {
 
     // placeMarker() test 4
     @Test
-    public void testPlaceMarkerR7C7()
+    public void testPlaceMarker_R7_C7()
     {
         // Declare and place BoardPosition (0,0) with marker X
         BoardPosition testPos = new BoardPosition(7,7,'X');
@@ -262,7 +262,7 @@ public class TestGameBoard extends TestCase {
 
     // placeMarker() test 5
     @Test
-    public void testPlaceMarkerR3C3()
+    public void testPlaceMarker_R3_C3()
     {
         // Declare and place BoardPosition (0,0) with marker X
         BoardPosition testPos = new BoardPosition(3,3,'X');
@@ -307,7 +307,7 @@ public class TestGameBoard extends TestCase {
 
     // placeMarker() test 6
     @Test
-    public void testPlaceMarkerR4C4()
+    public void testPlaceMarker_R4_C4()
     {
         // Declare and place BoardPosition (0,0) with marker X
         BoardPosition testPos = new BoardPosition(4,4,'X');
@@ -352,111 +352,120 @@ public class TestGameBoard extends TestCase {
 
     // checkForWinner() test 1 - horizontal true
     @Test
-    public void testCheckForWinnerHorizontalT1()
+    public void testCheckForWinnerHorizontal_T1()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,0, 'X');
+        BoardPosition pos2 = new BoardPosition(0,1, 'X');
+        BoardPosition pos3 = new BoardPosition(0,2, 'X');
+        BoardPosition pos4 = new BoardPosition(0,3, 'X');
+        BoardPosition pos5 = new BoardPosition(0,4, 'X');
 
+        //
+        xoboard.placeMarker(pos1);
     }
 
     // checkForWinner() test 2 - horizontal true
     @Test
-    public void testCheckForWinnerHorizontalT2()
+    public void testCheckForWinnerHorizontal_T2()
     {
 
     }
 
     // checkForWinner() test 3 - horizontal false
     @Test
-    public void testCheckForWinnerHorizontalF1()
+    public void testCheckForWinnerHorizontal_F1()
     {
 
     }
 
     // checkForWinner() test 4 - horizontal false
     @Test
-    public void testCheckForWinnerHorizontalF2()
+    public void testCheckForWinnerHorizontal_F2()
     {
 
     }
 
     // checkForWinner() test 5 - vertical true
     @Test
-    public void testCheckForWinnerVerticalT1()
+    public void testCheckForWinnerVertical_T1()
     {
 
     }
 
     // checkForWinner() test 6 - vertical true
     @Test
-    public void testCheckForWinnerVerticalT2()
+    public void testCheckForWinnerVertical_T2()
     {
 
     }
 
     // checkForWinner() test 7 - vertical false
     @Test
-    public void testCheckForWinnerVertical1()
+    public void testCheckForWinnerVertical_F1()
     {
 
     }
 
     // checkForWinner() test 8 - vertical false
     @Test
-    public void testCheckForWinnerVerticalF2()
+    public void testCheckForWinnerVertical_F2()
     {
 
     }
 
     // checkForWinner() test 9 - major diagonal true
     @Test
-    public void testCheckForWinnerMajorDiagonalT1()
+    public void testCheckForWinnerMajorDiagonal_T1()
     {
 
     }
 
     // checkForWinner() test 10 - major diagonal true
     @Test
-    public void testCheckForWinnerMajorDiagonalT2()
+    public void testCheckForWinnerMajorDiagonal_T2()
     {
 
     }
 
     // checkForWinner() test 11 - major diagonal false
     @Test
-    public void testCheckForWinnerMajorDiagonalF1()
+    public void testCheckForWinnerMajorDiagonal_F1()
     {
 
     }
 
     // checkForWinner() test 12 - major diagonal false
     @Test
-    public void testCheckForWinnerMajorDiagonalF2()
+    public void testCheckForWinnerMajorDiagonal_F2()
     {
 
     }
 
     // checkForWinner() test 13 - minor diagonal true
     @Test
-    public void testCheckForWinnerMinorDiagonalT1()
+    public void testCheckForWinnerMinorDiagonal_T1()
     {
 
     }
 
     // checkForWinner() test 14 - minor diagonal true
     @Test
-    public void testCheckForWinnerMinorDiagonalT2()
+    public void testCheckForWinnerMinorDiagonal_T2()
     {
 
     }
 
     // checkForWinner() test 15 - minor diagonal false
     @Test
-    public void testCheckForWinnerMinorDiagonalF1()
+    public void testCheckForWinnerMinorDiagonal_F1()
     {
 
     }
 
     // checkForWinner() test 16 - minor diagonal false
-    public void testCheckForWinnerMinorDiagonalF2()
+    @Test
+    public void testCheckForWinnerMinorDiagonal_F2()
     {
 
     }
