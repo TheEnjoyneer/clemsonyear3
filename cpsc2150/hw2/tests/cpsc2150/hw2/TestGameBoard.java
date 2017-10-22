@@ -350,7 +350,6 @@ public class TestGameBoard extends TestCase {
         assertEquals(preboard.toString(), xoboard.toString());
     }
 
-    /*
     // checkForWinner() test 1 - horizontal true
     @Test
     public void testCheckForWinnerHorizontalT1()
@@ -461,6 +460,5 @@ public class TestGameBoard extends TestCase {
     {
 
     }
-*/
 
 }
