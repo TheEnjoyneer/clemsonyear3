@@ -352,7 +352,7 @@ public class TestGameBoard extends TestCase {
 
     // checkForWinner() test 1 - horizontal true
     @Test
-    public void testCheckForWinnerHorizontal_T1()
+    public void testCheckForWinnerHorizontal_R0_C04_T1()
     {
         // Declare and initialize positions
         BoardPosition pos1 = new BoardPosition(0,0, 'X');
@@ -361,113 +361,676 @@ public class TestGameBoard extends TestCase {
         BoardPosition pos4 = new BoardPosition(0,3, 'X');
         BoardPosition pos5 = new BoardPosition(0,4, 'X');
 
-        //
+        // Place markers in position
         xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
     // checkForWinner() test 2 - horizontal true
     @Test
-    public void testCheckForWinnerHorizontal_T2()
+    public void testCheckForWinnerHorizontal_R0_C37_T2()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,3, 'X');
+        BoardPosition pos2 = new BoardPosition(0,4, 'X');
+        BoardPosition pos3 = new BoardPosition(0,5, 'X');
+        BoardPosition pos4 = new BoardPosition(0,6, 'X');
+        BoardPosition pos5 = new BoardPosition(0,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 3 - horizontal false
+    // checkForWinner() test 3 - horizontal true
     @Test
-    public void testCheckForWinnerHorizontal_F1()
+    public void testCheckForWinnerHorizontal_R7_C04_T3()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(7,0, 'X');
+        BoardPosition pos2 = new BoardPosition(7,1, 'X');
+        BoardPosition pos3 = new BoardPosition(7,2, 'X');
+        BoardPosition pos4 = new BoardPosition(7,3, 'X');
+        BoardPosition pos5 = new BoardPosition(7,4, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 4 - horizontal false
+    // checkForWinner() test 4 - horizontal true
     @Test
-    public void testCheckForWinnerHorizontal_F2()
+    public void testCheckForWinnerHorizontal_R7_C37_T4()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(7,3, 'X');
+        BoardPosition pos2 = new BoardPosition(7,4, 'X');
+        BoardPosition pos3 = new BoardPosition(7,5, 'X');
+        BoardPosition pos4 = new BoardPosition(7,6, 'X');
+        BoardPosition pos5 = new BoardPosition(7,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 5 - vertical true
+    // checkForWinner() test 5 - horizontal true
     @Test
-    public void testCheckForWinnerVertical_T1()
+    public void testCheckForWinnerHorizontal_R3_C26_T5()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(3,2, 'X');
+        BoardPosition pos2 = new BoardPosition(3,3, 'X');
+        BoardPosition pos3 = new BoardPosition(3,4, 'X');
+        BoardPosition pos4 = new BoardPosition(3,5, 'X');
+        BoardPosition pos5 = new BoardPosition(3,6, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 6 - vertical true
+    // checkForWinner() test 6 - horizontal false
     @Test
-    public void testCheckForWinnerVertical_T2()
+    public void testCheckForWinnerHorizontal_R0_F1()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,0, 'X');
+        BoardPosition pos2 = new BoardPosition(0,2, 'X');
+        BoardPosition pos3 = new BoardPosition(0,3, 'X');
+        BoardPosition pos4 = new BoardPosition(0,4, 'X');
+        BoardPosition pos5 = new BoardPosition(0,5, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 7 - vertical false
+    // checkForWinner() test 7 - horizontal false
     @Test
-    public void testCheckForWinnerVertical_F1()
+    public void testCheckForWinnerHorizontal_R7_F2()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(7,0, 'X');
+        BoardPosition pos2 = new BoardPosition(7,1, 'X');
+        BoardPosition pos3 = new BoardPosition(7,2, 'X');
+        BoardPosition pos4 = new BoardPosition(7,6, 'X');
+        BoardPosition pos5 = new BoardPosition(7,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 8 - vertical false
+    // checkForWinner() test 8 - horizontal false
     @Test
-    public void testCheckForWinnerVertical_F2()
+    public void testCheckForWinnerHorizontal_R4_CF3()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(4,0, 'X');
+        BoardPosition pos2 = new BoardPosition(4,1, 'X');
+        BoardPosition pos3 = new BoardPosition(4,2, 'X');
+        BoardPosition pos4 = new BoardPosition(4,3, 'X');
+        BoardPosition pos5 = new BoardPosition(4,4, 'O');
+        BoardPosition pos6 = new BoardPosition(4,5, 'X');
+        BoardPosition pos7 = new BoardPosition(4,6, 'X');
+        BoardPosition pos8 = new BoardPosition(4,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+        xoboard.placeMarker(pos6);
+        xoboard.placeMarker(pos7);
+        xoboard.placeMarker(pos8);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos8));
     }
 
-    // checkForWinner() test 9 - major diagonal true
+    // checkForWinner() test 9 - vertical true
     @Test
-    public void testCheckForWinnerMajorDiagonal_T1()
+    public void testCheckForWinnerVertical_R04_C0_T1()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,0, 'X');
+        BoardPosition pos2 = new BoardPosition(1,0, 'X');
+        BoardPosition pos3 = new BoardPosition(2,0, 'X');
+        BoardPosition pos4 = new BoardPosition(3,0, 'X');
+        BoardPosition pos5 = new BoardPosition(4,0, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 10 - major diagonal true
+    // checkForWinner() test 10 - vertical true
     @Test
-    public void testCheckForWinnerMajorDiagonal_T2()
+    public void testCheckForWinnerVertical_R37_C0_T2()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(3,0, 'X');
+        BoardPosition pos2 = new BoardPosition(4,0, 'X');
+        BoardPosition pos3 = new BoardPosition(5,0, 'X');
+        BoardPosition pos4 = new BoardPosition(6,0, 'X');
+        BoardPosition pos5 = new BoardPosition(7,0, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 11 - major diagonal false
+    // checkForWinner() test 11 - vertical true
     @Test
-    public void testCheckForWinnerMajorDiagonal_F1()
+    public void testCheckForWinnerVertical_R04_C7_T3()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,7, 'X');
+        BoardPosition pos2 = new BoardPosition(1,7, 'X');
+        BoardPosition pos3 = new BoardPosition(2,7, 'X');
+        BoardPosition pos4 = new BoardPosition(3,7, 'X');
+        BoardPosition pos5 = new BoardPosition(4,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 12 - major diagonal false
+    // checkForWinner() test 12 - vertical true
     @Test
-    public void testCheckForWinnerMajorDiagonal_F2()
+    public void testCheckForWinnerVertical_R37_C7_T4()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(3,7, 'X');
+        BoardPosition pos2 = new BoardPosition(4,7, 'X');
+        BoardPosition pos3 = new BoardPosition(5,7, 'X');
+        BoardPosition pos4 = new BoardPosition(6,7, 'X');
+        BoardPosition pos5 = new BoardPosition(7,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 13 - minor diagonal true
+    // checkForWinner() test 13 - vertical true
     @Test
-    public void testCheckForWinnerMinorDiagonal_T1()
+    public void testCheckForWinnerVertical_R26_C4_T5()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(2,4, 'X');
+        BoardPosition pos2 = new BoardPosition(3,4, 'X');
+        BoardPosition pos3 = new BoardPosition(4,4, 'X');
+        BoardPosition pos4 = new BoardPosition(5,4, 'X');
+        BoardPosition pos5 = new BoardPosition(6,4, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 14 - minor diagonal true
+    // checkForWinner() test 14 - vertical false
     @Test
-    public void testCheckForWinnerMinorDiagonal_T2()
+    public void testCheckForWinnerVertical_C0_F1()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,0, 'X');
+        BoardPosition pos2 = new BoardPosition(1,0, 'X');
+        BoardPosition pos3 = new BoardPosition(2,0, 'X');
+        BoardPosition pos4 = new BoardPosition(4,0, 'X');
+        BoardPosition pos5 = new BoardPosition(5,0, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 15 - minor diagonal false
+    // checkForWinner() test 15 - vertical false
     @Test
-    public void testCheckForWinnerMinorDiagonal_F1()
+    public void testCheckForWinnerVertical_C7_F2()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(2,7, 'X');
+        BoardPosition pos2 = new BoardPosition(3,7, 'X');
+        BoardPosition pos3 = new BoardPosition(5,7, 'X');
+        BoardPosition pos4 = new BoardPosition(6,7, 'X');
+        BoardPosition pos5 = new BoardPosition(7,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
     }
 
-    // checkForWinner() test 16 - minor diagonal false
+    // checkForWinner() test 16 - vertical false
     @Test
-    public void testCheckForWinnerMinorDiagonal_F2()
+    public void testCheckForWinnerVertical_C4_F3()
     {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(4,0, 'X');
+        BoardPosition pos2 = new BoardPosition(4,1, 'X');
+        BoardPosition pos3 = new BoardPosition(4,2, 'X');
+        BoardPosition pos4 = new BoardPosition(4,3, 'X');
+        BoardPosition pos5 = new BoardPosition(4,4, 'O');
+        BoardPosition pos6 = new BoardPosition(4,5, 'X');
+        BoardPosition pos7 = new BoardPosition(4,6, 'X');
+        BoardPosition pos8 = new BoardPosition(4,7, 'X');
 
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+        xoboard.placeMarker(pos6);
+        xoboard.placeMarker(pos7);
+        xoboard.placeMarker(pos8);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos8));
     }
 
+    // checkForWinner() test 17 - major diagonal true
+    @Test
+    public void testCheckForWinnerMajorDiagonal_R04_C04_T1()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,0, 'X');
+        BoardPosition pos2 = new BoardPosition(1,1, 'X');
+        BoardPosition pos3 = new BoardPosition(2,2, 'X');
+        BoardPosition pos4 = new BoardPosition(3,3, 'X');
+        BoardPosition pos5 = new BoardPosition(4,4, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 18 - major diagonal true
+    @Test
+    public void testCheckForWinnerMajorDiagonal_R33_C77_T2()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(3,3, 'X');
+        BoardPosition pos2 = new BoardPosition(4,4, 'X');
+        BoardPosition pos3 = new BoardPosition(5,5, 'X');
+        BoardPosition pos4 = new BoardPosition(6,6, 'X');
+        BoardPosition pos5 = new BoardPosition(7,7, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 19 - major diagonal true
+    @Test
+    public void testCheckForWinnerMajorDiagonal_R37_C04_T3()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(3,0, 'X');
+        BoardPosition pos2 = new BoardPosition(4,1, 'X');
+        BoardPosition pos3 = new BoardPosition(5,2, 'X');
+        BoardPosition pos4 = new BoardPosition(6,3, 'X');
+        BoardPosition pos5 = new BoardPosition(7,4, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 20 - major diagonal true
+    @Test
+    public void testCheckForWinnerMajorDiagonal_R04_C37_T4()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,3, 'X');
+        BoardPosition pos2 = new BoardPosition(1,4, 'X');
+        BoardPosition pos3 = new BoardPosition(2,5, 'X');
+        BoardPosition pos4 = new BoardPosition(3,6, 'X');
+        BoardPosition pos5 = new BoardPosition(4,7, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 21 - major diagonal false
+    @Test
+    public void testCheckForWinnerMajorDiagonal_R07_C07_F1()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,0, 'X');
+        BoardPosition pos2 = new BoardPosition(1,1, 'X');
+        BoardPosition pos3 = new BoardPosition(2,2, 'X');
+        BoardPosition pos4 = new BoardPosition(3,3, 'X');
+        BoardPosition pos5 = new BoardPosition(4,4, 'O');
+        BoardPosition pos6 = new BoardPosition(5,5, 'X');
+        BoardPosition pos7 = new BoardPosition(6,6, 'X');
+        BoardPosition pos8 = new BoardPosition(7,7, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+        xoboard.placeMarker(pos6);
+        xoboard.placeMarker(pos7);
+        xoboard.placeMarker(pos8);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos8));
+    }
+
+    // checkForWinner() test 22 - major diagonal false
+    @Test
+    public void testCheckForWinnerMajorDiagonal_R04_C37_F2()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(0,3, 'X');
+        BoardPosition pos2 = new BoardPosition(1,4, 'X');
+        BoardPosition pos3 = new BoardPosition(2,5, 'X');
+        BoardPosition pos4 = new BoardPosition(3,6, 'X');
+        BoardPosition pos5 = new BoardPosition(4,7, '0');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 23 - major diagonal false
+    @Test
+    public void testCheckForWinnerMajorDiagonal_R37_C04_F3()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(3,0, 'X');
+        BoardPosition pos2 = new BoardPosition(4,1, 'X');
+        BoardPosition pos3 = new BoardPosition(5,2, 'X');
+        BoardPosition pos4 = new BoardPosition(6,3, 'X');
+        BoardPosition pos5 = new BoardPosition(7,4, '0');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 24 - minor diagonal true
+    @Test
+    public void testCheckForWinnerMinorDiagonal_R73_C04_T1()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(7,0, 'X');
+        BoardPosition pos2 = new BoardPosition(6,1, 'X');
+        BoardPosition pos3 = new BoardPosition(5,2, 'X');
+        BoardPosition pos4 = new BoardPosition(4,3, 'X');
+        BoardPosition pos5 = new BoardPosition(3,4, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 25 - minor diagonal true
+    @Test
+    public void testCheckForWinnerMinorDiagonal_R40_C37_T2()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(4,3, 'X');
+        BoardPosition pos2 = new BoardPosition(3,4, 'X');
+        BoardPosition pos3 = new BoardPosition(2,5, 'X');
+        BoardPosition pos4 = new BoardPosition(1,6, 'X');
+        BoardPosition pos5 = new BoardPosition(0,7, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 26 - minor diagonal true
+    @Test
+    public void testCheckForWinnerMinorDiagonal_R40_C04_T3()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(4,0, 'X');
+        BoardPosition pos2 = new BoardPosition(3,1, 'X');
+        BoardPosition pos3 = new BoardPosition(2,2, 'X');
+        BoardPosition pos4 = new BoardPosition(1,3, 'X');
+        BoardPosition pos5 = new BoardPosition(0,4, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 27 - minor diagonal true
+    @Test
+    public void testCheckForWinnerMinorDiagonal_R73_C37_T4()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(7,3, 'X');
+        BoardPosition pos2 = new BoardPosition(6,4, 'X');
+        BoardPosition pos3 = new BoardPosition(5,5, 'X');
+        BoardPosition pos4 = new BoardPosition(4,6, 'X');
+        BoardPosition pos5 = new BoardPosition(3,7, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertTrue(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 28 - minor diagonal false
+    @Test
+    public void testCheckForWinnerMinorDiagonal_R70_C07_F1()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(7,0, 'X');
+        BoardPosition pos2 = new BoardPosition(6,1, 'X');
+        BoardPosition pos3 = new BoardPosition(5,2, 'X');
+        BoardPosition pos4 = new BoardPosition(4,3, 'X');
+        BoardPosition pos5 = new BoardPosition(3,4, 'O');
+        BoardPosition pos6 = new BoardPosition(2,5, 'X');
+        BoardPosition pos7 = new BoardPosition(1,6, 'X');
+        BoardPosition pos8 = new BoardPosition(0,7, 'X');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+        xoboard.placeMarker(pos6);
+        xoboard.placeMarker(pos7);
+        xoboard.placeMarker(pos8);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos8));
+    }
+
+    // checkForWinner() test 29 - minor diagonal false
+    @Test
+    public void testCheckForWinnerMinorDiagonal_R40_C04_F2()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(4,0, 'X');
+        BoardPosition pos2 = new BoardPosition(3,1, 'X');
+        BoardPosition pos3 = new BoardPosition(2,2, 'X');
+        BoardPosition pos4 = new BoardPosition(1,3, 'X');
+        BoardPosition pos5 = new BoardPosition(0,4, '0');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
+    }
+
+    // checkForWinner() test 30 - minor diagonal false
+    @Test
+    public void testCheckForWinnerMinorDiagonal_R73_C37_F3()
+    {
+        // Declare and initialize positions
+        BoardPosition pos1 = new BoardPosition(7,3, 'X');
+        BoardPosition pos2 = new BoardPosition(6,4, 'X');
+        BoardPosition pos3 = new BoardPosition(5,5, 'X');
+        BoardPosition pos4 = new BoardPosition(4,6, 'X');
+        BoardPosition pos5 = new BoardPosition(3,7, '0');
+
+        // Place markers in position
+        xoboard.placeMarker(pos1);
+        xoboard.placeMarker(pos2);
+        xoboard.placeMarker(pos3);
+        xoboard.placeMarker(pos4);
+        xoboard.placeMarker(pos5);
+
+        // Test for win and assert True
+        assertFalse(xoboard.checkForWinner(pos5));
+    }
 }
