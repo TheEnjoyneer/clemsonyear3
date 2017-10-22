@@ -19,45 +19,84 @@ public class TestGameBoard extends TestCase {
         xoboard = null;
     }
 
-    // checkSpace() test 1
+    // checkSpace() test 1 - available
     @Test
     public void testCheckSpaceR0C0T()
     {
+        BoardPosition testPos = new BoardPosition(0, 0, 'X');
+        boolean testResponse = xoboard.checkSpace(testPos);
 
+        // Test for expected open space
+        assertTrue(testResponse);
     }
 
-    // checkSpace() test 2
+    // checkSpace() test 2 - not available
     @Test
     public void testCheckSpaceR0C0F()
     {
+        BoardPosition testPos = new BoardPosition(0, 0, 'X');
+        BoardPosition fullPos = new BoardPosition(0, 0, 'X');
 
+        // Place fullPos into position (0,0)
+        xoboard.placeMarker(fullPos);
+        boolean testResponse = xoboard.checkSpace(testPos);
+
+        // Test for expected open space
+        assertFalse(testResponse);
     }
 
-    // checkSpace() test 3
+    // checkSpace() test 3 - available
     @Test
     public void testCheckSpaceR7C7T()
     {
+        BoardPosition testPos = new BoardPosition(7, 7, 'X');
+        boolean testResponse = xoboard.checkSpace(testPos);
 
+        // Test for expected open space
+        assertTrue(testResponse);
     }
 
-    // checkSpace() test 4
+    // checkSpace() test 4 - not available
     @Test
     public void testCheckSpaceR7C7F()
     {
+        BoardPosition testPos = new BoardPosition(7, 7, 'X');
+        BoardPosition fullPos = new BoardPosition(7, 7, 'X');
 
+        // Place fullPos into position (7,7)
+        xoboard.placeMarker(fullPos);
+        boolean testResponse = xoboard.checkSpace(testPos);
+
+        // Test for expected open space
+        assertFalse(testResponse);
     }
 
-    // checkSpace() test 5
+    // checkSpace() test 5 - not in bounds
     @Test
     public void testCheckSpaceR8C8F()
     {
+        BoardPosition testPos = new BoardPosition(0, 0, 'X');
+        boolean testResponse = xoboard.checkSpace(testPos);
 
+        // Test for expected open space
+        assertFalse(testResponse);
     }
 
-    // placeMarker() test 1
+    // placeMarker() test 1 - places correctly
     @Test
     public void testPlaceMarkerR0C0()
     {
+        int i, j, boardSize = 8;
+        char [][] board = new char[boardSize][boardSize];
+
+        for (i = 0; i < boardSize; i++)
+        {
+            for (j = 0; j < boardSize; j++)
+            {
+                board[i][j] = ' ';
+            }
+        }
+
 
     }
 
