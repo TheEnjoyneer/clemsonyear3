@@ -75,7 +75,7 @@ public class TestGameBoard extends TestCase {
     @Test
     public void testCheckSpaceR8C8F()
     {
-        BoardPosition testPos = new BoardPosition(0, 0, 'X');
+        BoardPosition testPos = new BoardPosition(8, 8, 'X');
         boolean testResponse = xoboard.checkSpace(testPos);
 
         // Test for expected open space
@@ -352,6 +352,7 @@ public class TestGameBoard extends TestCase {
         assertEquals(preboard.toString(), xoboard.toString());
     }
 
+    /*
     // checkForWinner() test 1 - horizontal true
     @Test
     public void testCheckForWinnerHorizontalT1()
@@ -462,6 +463,6 @@ public class TestGameBoard extends TestCase {
     {
 
     }
-
+*/
 
 }
