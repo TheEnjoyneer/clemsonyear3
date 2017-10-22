@@ -69,15 +69,15 @@ public class TestGameBoard extends TestCase {
         assertFalse(testResponse);
     }
 
-    // checkSpace() test 5 - not in bounds
+    // checkSpace() test 5 - available
     @Test
-    public void testCheckSpaceR8C8F()
+    public void testCheckSpaceR4C4T()
     {
-        BoardPosition testPos = new BoardPosition(8, 8, 'X');
+        BoardPosition testPos = new BoardPosition(4, 4, 'X');
         boolean testResponse = xoboard.checkSpace(testPos);
 
         // Test for expected open space
-        assertFalse(testResponse);
+        assertTrue(testResponse);
     }
 
     // placeMarker() test 1 - places correctly
