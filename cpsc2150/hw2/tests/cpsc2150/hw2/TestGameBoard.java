@@ -2,6 +2,11 @@ package cpsc2150.hw2;
 
 import junit.framework.TestCase;
 import org.junit.*;
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
+import static org.junit.Assert.*;
+
 
 public class TestGameBoard extends TestCase {
 
