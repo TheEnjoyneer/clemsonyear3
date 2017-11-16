@@ -198,10 +198,7 @@ public class GameScreen {
         int retVal = 0;
 
         Scanner again = new Scanner(System.in);
-        System.out.println("\nWould you like to play again?");
-        System.out.println("Insert a Y for yes or N for no");
-        System.out.println("*Not case sensitive*");
-        System.out.println("Play again? ");
+        System.out.println("\nWould you like to play again? Y/N");
 
         char response = again.next().charAt(0);
 
