@@ -154,17 +154,65 @@ public class GameBoardFast implements IGameBoard {
      */
     private boolean checkVerticalWin(BoardPosition lastPos)
     {
-        int row, col = lastPos.getColumn();
+        int i, j, checkWin = 0, col = lastPos.getColumn(), row = lastPos.getRow();
         char marker = lastPos.getPlayer();
 
-        for (row = 0; row < this.rows - numToWin - 1; row++)
+        if (row >= this.numToWin && row < (this.rows - this.numToWin - 1))
         {
-            if (board[row][col] == marker)
-                if (board[row+1][col] == marker)
-                    if (board[row+2][col] == marker)
-                        if (board[row+3][col] == marker)
-                            if (board[row+4][col] == marker)
-                                return true;
+            for (i = rows - this.numToWin, j = 0; i < rows + this.numToWin; i++, j++)
+            {
+                if (board[i][col] == marker)
+                {
+                    checkWin++;
+                }
+                else
+                {
+                    checkWin = 0;
+                    i = 0;
+                }
+
+                if (checkWin == this.numToWin && i == this.numToWin)
+                    return true;
+
+            }
+        }
+        else
+        {
+            checkWin = 0;
+
+            for (i = 0, j = 0; i < row + this.numToWin; i++, j++)
+            {
+                if (board[i][col] == marker)
+                {
+                    checkWin++;
+                }
+                else
+                {
+                    checkWin = 0;
+                    i = 0;
+                }
+
+                if (checkWin == this.numToWin && i == this.numToWin)
+                    return true;
+            }
+
+            checkWin = 0;
+
+            for (i = row - this.numToWin - 1, j = 0; j < this.rows - 1; i++, j++)
+            {
+                if (board[row][j] == marker)
+                {
+                    checkWin++;
+                }
+                else
+                {
+                    checkWin = 0;
+                    i = 0;
+                }
+
+                if (checkWin == this.numToWin && i == this.numToWin)
+                    return true;
+            }
         }
 
         return false;
