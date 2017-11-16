@@ -6,17 +6,45 @@ public class GameScreen {
 
     public static void main(String[] args)
     {
-        System.out.println("\nWelcome to 8x8 Tic-Tac-Toe!");
-        System.out.println("First player to 5 in a row wins!");
-        System.out.println("\nThis game begins with the player");
-        System.out.println("who chooses to use the X marker");
-        System.out.println("and alternates with the O marker.\n");
-
         Scanner input = new Scanner(System.in);
-        int marker = 0, winCondition = 0, again = 0;
+        int rowSize, colSize, winNum;
+        char impType = ' ';
+        int marker = 0, winCondition = 0, again = 1;
         int x, y;
         BoardPosition nextPos = new BoardPosition(0, 0, ' ');
-        GameBoard xoboard = new GameBoard();
+
+        System.out.println("\nWelcome to Customizable Tic-Tac-Toe!\n");
+        System.out.println("How many rows should be on the board?");
+        rowSize = Integer.parseInt(input.next());
+
+        while (rowSize > 100)
+        {
+            System.out.println("Can only have 100 rows or less");
+            System.out.println("How many rows should be on the board?");
+            rowSize = Integer.parseInt(input.next());
+        }
+
+        System.out.println("How many columns should be on the board?");
+        colSize = Integer.parseInt(input.next());
+
+        while (colSize > 100)
+        {
+            System.out.println("Can only have 100 columns or less");
+            System.out.println("How many columns should be on the board?");
+            colSize = Integer.parseInt(input.next());
+        }
+
+        System.out.println("How many in a row to win?");
+        winNum = Integer.parseInt(input.next());
+
+        while (winNum > rowSize || winNum > colSize)
+        {
+            System.out.println("You can't have that because thats more than the number of rows or columns");
+            System.out.println("How many in a row to win?");
+            winNum = Integer.parseInt(input.next());
+        }
+
+        IGameBoard xoboard;
 
         // While loop that loops for input and continuous play
         while (winCondition == 0)
@@ -24,10 +52,24 @@ public class GameScreen {
             // Checks if the player wants to play again.
             if (again == 1)
             {
-                xoboard = new GameBoard();
+                while (impType != 'f' && impType != 'F' && impType != 'm' && impType != 'M')
+                {
+                    System.out.println("Enter F for a (F)ast implementation or M for a (M)emory efficient implementation");
+                    impType = input.next().charAt(0);
+                }
+
+                if (impType == 'f' || impType == 'F')
+                    xoboard = new GameBoardFast();
+                else
+                    xoboard = new GameBoardMem();
+
                 again = 0;
                 marker = 0;
             }
+
+            System.out.println("\nThis game begins with the player");
+            System.out.println("who chooses to use the X marker");
+            System.out.println("and alternates with the O marker.\n");
 
             // Runs input intake and checks for marker 'X'
             if (marker % 2 == 0)
@@ -35,7 +77,7 @@ public class GameScreen {
                 rowPrompt('X');
                 x = Integer.parseInt(input.next());
 
-                while (x < 0 || x > 7)
+                while (x < 0 || x >= rowSize)
                 {
                     System.out.println("\nPlease enter a valid row value between 0 and 7");
                     rowPrompt('X');
@@ -45,7 +87,7 @@ public class GameScreen {
                 colPrompt('X');
                 y = Integer.parseInt(input.next());
 
-                while (y < 0 || y > 7)
+                while (y < 0 || y >= colSize)
                 {
                     System.out.println("\nPlease enter a valid column value between 0 and 7");
                     colPrompt('X');
@@ -74,7 +116,7 @@ public class GameScreen {
                 rowPrompt('O');
                 x = Integer.parseInt(input.next());
 
-                while (x < 0 || x > 7)
+                while (x < 0 || x >= rowSize)
                 {
                     System.out.println("\nPlease enter a valid row value between 0 and 7");
                     rowPrompt('O');
@@ -84,7 +126,7 @@ public class GameScreen {
                 colPrompt('O');
                 y = Integer.parseInt(input.next());
 
-                while (y < 0 || y > 7)
+                while (y < 0 || y >= colSize)
                 {
                     System.out.println("\nPlease enter a valid column value between 0 and 7");
                     colPrompt('O');
@@ -110,7 +152,7 @@ public class GameScreen {
             if (xoboard.checkForWinner(nextPos))
             {
                 winCondition = 1;
-                System.out.println("Player using marker " + nextPos.getPlayer() + " wins!");
+                System.out.println("Player " + nextPos.getPlayer() + " wins!");
             }
 
             // Checks if the win condition integer has changed and checks if the
@@ -131,8 +173,7 @@ public class GameScreen {
      */
     private static void rowPrompt(char marker)
     {
-        System.out.println("\nPlayer using marker " + marker + ",");
-        System.out.println("Enter desired row: ");
+        System.out.println("\nPlayer " + marker + " enter your ROW");
     }
 
     /**
@@ -143,8 +184,7 @@ public class GameScreen {
      */
     private static void colPrompt(char marker)
     {
-        System.out.println("\nPlayer using marker " + marker + ",");
-        System.out.println("Enter desired column: ");
+        System.out.println("\nPlayer " + marker + " enter your COLUMN");
     }
 
     /**
