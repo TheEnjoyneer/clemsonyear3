@@ -16,6 +16,7 @@ public class GameBoardFast implements IGameBoard {
 
     /**
      * GameBoard constructor initializes the board to all BLANK characters
+     * @requires numOfRows >= 0 && numOfCols >= 0 && winNum >= 0
      */
     GameBoardFast(int numOfRows, int numOfCols, int winNum)
     {

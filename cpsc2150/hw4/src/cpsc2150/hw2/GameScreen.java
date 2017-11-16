@@ -7,44 +7,13 @@ public class GameScreen {
     public static void main(String[] args)
     {
         Scanner input = new Scanner(System.in);
-        int rowSize, colSize, winNum;
-        char impType = ' ';
+        Integer rowSize = 0, colSize = 0, winNum = 0;
+        Character impType = ' ';
         int marker = 0, winCondition = 0, again = 1;
         int x, y;
         BoardPosition nextPos = new BoardPosition(0, 0, ' ');
 
-        System.out.println("\nWelcome to Customizable Tic-Tac-Toe!\n");
-        System.out.println("How many rows should be on the board?");
-        rowSize = Integer.parseInt(input.next());
-
-        while (rowSize > 100)
-        {
-            System.out.println("Can only have 100 rows or less");
-            System.out.println("How many rows should be on the board?");
-            rowSize = Integer.parseInt(input.next());
-        }
-
-        System.out.println("How many columns should be on the board?");
-        colSize = Integer.parseInt(input.next());
-
-        while (colSize > 100)
-        {
-            System.out.println("Can only have 100 columns or less");
-            System.out.println("How many columns should be on the board?");
-            colSize = Integer.parseInt(input.next());
-        }
-
-        System.out.println("How many in a row to win?");
-        winNum = Integer.parseInt(input.next());
-
-        while (winNum > rowSize || winNum > colSize)
-        {
-            System.out.println("You can't have that because thats more than the number of rows or columns");
-            System.out.println("How many in a row to win?");
-            winNum = Integer.parseInt(input.next());
-        }
-
-        IGameBoard xoboard;
+        IGameBoard xoboard = new GameBoardFast(rowSize,colSize,winNum);
 
         // While loop that loops for input and continuous play
         while (winCondition == 0)
@@ -52,6 +21,8 @@ public class GameScreen {
             // Checks if the player wants to play again.
             if (again == 1)
             {
+                newGamePrompt(rowSize, colSize, winNum);
+
                 while (impType != 'f' && impType != 'F' && impType != 'm' && impType != 'M')
                 {
                     System.out.println("Enter F for a (F)ast implementation or M for a (M)emory efficient implementation");
@@ -162,6 +133,49 @@ public class GameScreen {
                 winCondition = playAgain();
                 again = 1;
             }
+        }
+    }
+
+    /**
+     *
+     * @param numRows is the object that will store the input for number of rows
+     * @param numCols is the object that will store the input for number of columns
+     * @param targetNum is the object that will store the input for the number to win
+     * @requires numRows != null && numCols != null && targetNum != null
+     * @ensures numRows, numCols, and targetNum get populated with correct values for game
+     */
+    private static void newGamePrompt(Integer numRows, Integer numCols, Integer targetNum)
+    {
+        Scanner promptIn = new Scanner(System.in);
+        System.out.println("\nWelcome to Customizable Tic-Tac-Toe!\n");
+        System.out.println("How many rows should be on the board?");
+        numRows = Integer.parseInt(promptIn.next());
+
+        while (numRows > 100)
+        {
+            System.out.println("Can only have 100 rows or less");
+            System.out.println("How many rows should be on the board?");
+            numRows = Integer.parseInt(promptIn.next());
+        }
+
+        System.out.println("How many columns should be on the board?");
+        numCols = Integer.parseInt(promptIn.next());
+
+        while (numCols > 100)
+        {
+            System.out.println("Can only have 100 columns or less");
+            System.out.println("How many columns should be on the board?");
+            numCols = Integer.parseInt(promptIn.next());
+        }
+
+        System.out.println("How many in a row to win?");
+        targetNum = Integer.parseInt(promptIn.next());
+
+        while (targetNum > numRows || targetNum > numCols)
+        {
+            System.out.println("You can't have that because thats more than the number of rows or columns");
+            System.out.println("How many in a row to win?");
+            targetNum = Integer.parseInt(promptIn.next());
         }
     }
 
