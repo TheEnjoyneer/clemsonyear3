@@ -54,4 +54,24 @@ public class BoardPosition {
         return this.marker;
     }
 
+    /**
+     * @param obj must be an object and not a primitive data type
+     * @return True if the two objects are equal to each other
+     */
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj instanceof BoardPosition)
+        {
+            BoardPosition cmpPos = (BoardPosition) obj;
+
+            if (cmpPos.getRow() == this.x_pos)
+                if (cmpPos.getColumn() == this.y_pos)
+                    if (cmpPos.getPlayer() == this.marker)
+                        return true;
+        }
+
+        return false;
+    }
+
 }

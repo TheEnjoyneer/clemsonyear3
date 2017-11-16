@@ -59,9 +59,9 @@ public class GameScreen {
                 }
 
                 if (impType == 'f' || impType == 'F')
-                    xoboard = new GameBoardFast();
+                    xoboard = new GameBoardFast(rowSize, colSize, winNum);
                 else
-                    xoboard = new GameBoardMem();
+                    xoboard = new GameBoardMem(rowSize, colSize, winNum);
 
                 again = 0;
                 marker = 0;

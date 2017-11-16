@@ -2,6 +2,8 @@ package cpsc2150.hw2;
 
 import java.lang.StringBuffer;
 
+
+// Make sure to come in here and add contracts/correspondences
 public class GameBoardFast implements IGameBoard {
 
     private static final int rows;
