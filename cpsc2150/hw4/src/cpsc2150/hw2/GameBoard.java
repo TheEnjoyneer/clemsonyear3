@@ -5,9 +5,13 @@ import java.lang.StringBuffer;
 public class GameBoard {
 
     private static final int boardSize = 8;
+    private static final int rows = boardSize;
+    private static final int cols = boardSize;
+    private static final int numToWin = 5;
     private static final char BLANK = ' ';
 
-    private char [][] board = new char[boardSize][boardSize];
+
+    private char [][] board = new char[this.rows][this.cols];
 
     /**
      * GameBoard constructor initializes the board to all BLANK characters
@@ -16,9 +20,9 @@ public class GameBoard {
     {
         int i, j;
 
-        for (i = 0; i < boardSize; i++)
+        for (i = 0; i < this.rows; i++)
         {
-            for (j = 0; j < boardSize; j++)
+            for (j = 0; j < this.cols; j++)
             {
                 board[i][j] = BLANK;
             }
@@ -73,7 +77,7 @@ public class GameBoard {
         int col, row = lastPos.getRow();
         char marker = lastPos.getPlayer();
 
-        for (col = 0; col < boardSize - 4; col++)
+        for (col = 0; col < this.cols - numToWin - 1; col++)
         {
             if (board[row][col] == marker)
                 if (board[row][col+1] == marker)
@@ -98,7 +102,7 @@ public class GameBoard {
         int row, col = lastPos.getColumn();
         char marker = lastPos.getPlayer();
 
-        for (row = 0; row < boardSize - 4; row++)
+        for (row = 0; row < this.rows - numToWin - 1; row++)
         {
             if (board[row][col] == marker)
                 if (board[row+1][col] == marker)
@@ -138,9 +142,9 @@ public class GameBoard {
             j2++;
         }
 
-        for (i = i1; i < boardSize - 4; i++)
+        for (i = i1; i < this.rows - numToWin - 1; i++)
         {
-            for (j = j1; j < boardSize - 4; j++)
+            for (j = j1; j < this.cols - numToWin - 1; j++)
             {
                 if (board[i][j] == marker)
                     if (board[i+1][j+1] == marker)
@@ -151,9 +155,10 @@ public class GameBoard {
             }
         }
 
-        for (i = i2; i < boardSize - 4; i++)
+        for (i = i2; i < this.rows - numToWin - 1; i++)
         {
-            for (j = j2; j > 3; j--)
+            // Check for what the j needs to be greater than, used to be j>3
+            for (j = j2; j > numToWin - 2; j--)
             {
                 if (board[i][j] == marker)
                     if (board[i+1][j-1] == marker)
