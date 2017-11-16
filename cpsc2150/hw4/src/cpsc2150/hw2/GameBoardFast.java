@@ -2,12 +2,11 @@ package cpsc2150.hw2;
 
 import java.lang.StringBuffer;
 
-public class GameBoard {
+public class GameBoardFast implements IGameBoard {
 
-    private static final int boardSize = 8;
-    private static final int rows = boardSize;
-    private static final int cols = boardSize;
-    private static final int numToWin = 5;
+    private static final int rows;
+    private static final int cols;
+    private static final int numToWin;
     private static final char BLANK = ' ';
 
 
@@ -16,9 +15,13 @@ public class GameBoard {
     /**
      * GameBoard constructor initializes the board to all BLANK characters
      */
-    GameBoard()
+    GameBoardFast(int numOfRows, int numOfCols, int winNum)
     {
         int i, j;
+
+        this.rows = numOfRows;
+        this.cols = numOfCols;
+        this.numToWin = winNum;
 
         for (i = 0; i < this.rows; i++)
         {
@@ -32,8 +35,9 @@ public class GameBoard {
     /**
      *
      * @param pos is the position in the board to check
-     * @requires pos != null
+     * @requires pos != null and pos contains Row and Col values
      * @return True if the space requested is an open position
+     *         returns False otherwise
      */
     public boolean checkSpace(BoardPosition pos)
     {
@@ -186,12 +190,12 @@ public class GameBoard {
 
         preboard.append("  0 1 2 3 4 5 6 7 \n");
 
-        for (i = 0; i < boardSize; i++)
+        for (i = 0; i < this.rows; i++)
         {
             preboard.append(i);
             preboard.append("|");
 
-            for (j = 0; j < boardSize; j++)
+            for (j = 0; j < this.cols; j++)
             {
                 preboard.append(this.board[i][j]);
                 preboard.append("|");
