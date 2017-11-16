@@ -6,9 +6,9 @@ import java.lang.StringBuffer;
 // Make sure to come in here and add contracts/correspondences
 public class GameBoardFast implements IGameBoard {
 
-    private static final int rows;
-    private static final int cols;
-    private static final int numToWin;
+    private static int rows = 0;
+    private static int cols = 0;
+    private static int numToWin = 0;
     private static final char BLANK = ' ';
 
 
@@ -81,17 +81,65 @@ public class GameBoardFast implements IGameBoard {
      */
     private boolean checkHorizontalWin(BoardPosition lastPos)
     {
-        int col, row = lastPos.getRow();
+        int i, j, checkWin = 0, col = lastPos.getColumn(), row = lastPos.getRow();
         char marker = lastPos.getPlayer();
 
-        for (col = 0; col < this.cols - numToWin - 1; col++)
+        if (col >= this.numToWin && col < (this.cols - this.numToWin - 1))
         {
-            if (board[row][col] == marker)
-                if (board[row][col+1] == marker)
-                    if (board[row][col+2] == marker)
-                        if (board[row][col+3] == marker)
-                            if (board[row][col+4] == marker)
-                                return true;
+            for (j = col - this.numToWin, i = 0; j < col + this.numToWin; j++, i++)
+            {
+                if (board[row][j] == marker)
+                {
+                    checkWin++;
+                }
+                else
+                {
+                    checkWin = 0;
+                    i = 0;
+                }
+
+                if (checkWin == this.numToWin && i == this.numToWin)
+                    return true;
+
+            }
+        }
+        else
+        {
+            checkWin = 0;
+
+            for (j = 0, i = 0; j < col + this.numToWin; j++, i++)
+            {
+                if (board[row][j] == marker)
+                {
+                    checkWin++;
+                }
+                else
+                {
+                    checkWin = 0;
+                    i = 0;
+                }
+
+                if (checkWin == this.numToWin && i == this.numToWin)
+                    return true;
+            }
+
+            checkWin = 0;
+
+            for (j = col - this.numToWin - 1, i = 0; j < this.cols - 1; j++, i++)
+            {
+                if (board[row][j] == marker)
+                {
+                    checkWin++;
+                }
+                else
+                {
+                    checkWin = 0;
+                    i = 0;
+                }
+
+                if (checkWin == this.numToWin && i == this.numToWin)
+                    return true;
+            }
         }
 
         return false;
