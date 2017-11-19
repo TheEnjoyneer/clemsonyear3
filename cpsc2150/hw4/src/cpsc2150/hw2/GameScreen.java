@@ -19,7 +19,7 @@ public class GameScreen {
         System.out.println("How many rows should be on the board?");
         rowSize = Integer.parseInt(input.next());
 
-        while (rowSize > 100 || rowSize < 3)
+        while (rowSize > IGameBoard.MAX_SIZE || rowSize < IGameBoard.MIN_SIZE)
         {
             System.out.println("Can only have between 3 and 100 rows");
             System.out.println("How many rows should be on the board?");
@@ -29,7 +29,7 @@ public class GameScreen {
         System.out.println("How many columns should be on the board?");
         colSize = Integer.parseInt(input.next());
 
-        while (colSize > 100 || colSize < 3)
+        while (colSize > IGameBoard.MAX_SIZE || colSize < IGameBoard.MIN_SIZE)
         {
             System.out.println("Can only have between 3 and 100 columns");
             System.out.println("How many columns should be on the board?");
@@ -39,10 +39,10 @@ public class GameScreen {
         System.out.println("How many in a row to win?");
         winNum = Integer.parseInt(input.next());
 
-        while (winNum > rowSize || winNum > colSize || winNum < 2)
+        while (winNum > rowSize || winNum > colSize || winNum < IGameBoard.MIN_WIN)
         {
             System.out.println("You can't have that because thats more than the number of rows or columns");
-            System.out.println("Or you cannot have a number less than 2 to win")
+            System.out.println("Or you cannot have a number less than 2 to win");
             System.out.println("How many in a row to win?");
             winNum = Integer.parseInt(input.next());
         }
@@ -76,7 +76,7 @@ public class GameScreen {
                 System.out.println("How many rows should be on the board?");
                 rowSize = Integer.parseInt(input.next());
 
-                while (rowSize > 100 || rowSize < 3)
+                while (rowSize > IGameBoard.MAX_SIZE || rowSize < IGameBoard.MIN_SIZE)
                 {
                     System.out.println("Can only have between 3 and 100 rows");
                     System.out.println("How many rows should be on the board?");
@@ -86,7 +86,7 @@ public class GameScreen {
                 System.out.println("How many columns should be on the board?");
                 colSize = Integer.parseInt(input.next());
 
-                while (colSize > 100 || colSize < 3)
+                while (colSize > IGameBoard.MAX_SIZE || colSize < IGameBoard.MIN_SIZE)
                 {
                     System.out.println("Can only have between 3 and 100 columns");
                     System.out.println("How many columns should be on the board?");
@@ -96,10 +96,10 @@ public class GameScreen {
                 System.out.println("How many in a row to win?");
                 winNum = Integer.parseInt(input.next());
 
-                while (winNum > rowSize || winNum > colSize || winNum < 2)
+                while (winNum > rowSize || winNum > colSize || winNum < IGameBoard.MIN_WIN)
                 {
                     System.out.println("You can't have that because thats more than the number of rows or columns");
-                    System.out.println("Or you cannot have a number less than 2 to win")
+                    System.out.println("Or you cannot have a number less than 2 to win");
                     System.out.println("How many in a row to win?");
                     winNum = Integer.parseInt(input.next());
                 }

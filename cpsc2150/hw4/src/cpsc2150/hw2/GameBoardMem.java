@@ -4,16 +4,18 @@ import java.util.*;
 
 /**
  *
- * @invariant 0 < rows <= MAX_SIZE
- * @invariant 0 < cols <= MAX_SIZE
+ * @invariant MIN_SIZE < rows <= MAX_SIZE
+ * @invariant MIN_SIZE < cols <= MAX_SIZE
+ * @invariant MIN_WIN < numToWin <= MAX_SIZE
  * Correspondence NUM_ROWS = rows
  * Correspondence NUM_COLS = cols
+ * Correspondence NUM_TO_WIN = numToWin
  */
 public class GameBoardMem implements IGameBoard {
 
-    private int rows = 0;
-    private int cols = 0;
-    private int numToWin = 0;
+    private int rows = MIN_SIZE;
+    private int cols = MIN_SIZE;
+    private int numToWin = MIN_WIN;
 
     private List<BoardPosition> listX = new ArrayList<>();
     private List<BoardPosition> listO = new ArrayList<>();

@@ -7,15 +7,16 @@ import java.lang.StringBuilder;
  *
  * @invariant MIN_SIZE < rows <= MAX_SIZE
  * @invariant MIN_SIZE < cols <= MAX_SIZE
+ * @invariant MIN_WIN < numToWin <= MAX_SIZE
  * Correspondence NUM_ROWS = rows
  * Correspondence NUM_COLS = cols
- * Correspondence this = board[0...rows-1][0...cols-1]
+ * Correspondence NUM_TO_WIN = numToWin
  */
 public class GameBoardFast implements IGameBoard {
 
-    private int rows = 0;
-    private int cols = 0;
-    private int numToWin = 0;
+    private int rows = MIN_SIZE;
+    private int cols = MIN_SIZE;
+    private int numToWin = MIN_WIN;
     private static final char BLANK = ' ';
 
     private char [][] board = null;
