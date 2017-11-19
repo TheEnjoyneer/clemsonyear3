@@ -48,36 +48,19 @@ public class GameBoardFast implements IGameBoard {
         }
     }
 
-    /**
-     *
-     * @param pos is the position in the board to check
-     * @requires pos != null and pos contains Row and Col values
-     * @return True if the space requested is an open position
-     *         returns False otherwise
-     */
+    @Override
     public boolean checkSpace(BoardPosition pos)
     {
         return (board[pos.getRow()][pos.getColumn()] == BLANK);
     }
 
-    /**
-     *
-     * @param marker is the player's marker to place in the given position
-     * @requires marker != null
-     * @ensures that the marker is placed in the array of characters correctly
-     */
+    @Override
     public void placeMarker(BoardPosition marker)
     {
         board[marker.getRow()][marker.getColumn()] = marker.getPlayer();
     }
 
-    /**
-     *
-     * @param lastPos is the most recent position that has been set on the board
-     * @requires lastPos != null
-     * @return True if any of the win conditions return True
-     * @ensures that all possible win conditions are checked
-     */
+    @Override
     public boolean checkForWinner(BoardPosition lastPos)
     {
         return checkHorizontalWin(lastPos)
@@ -190,6 +173,20 @@ public class GameBoardFast implements IGameBoard {
             col = checkCol - i;
             // Check when the value is outside of bounds
             if (row < 0 || col < 0)
+                break;
+
+            if (board[row][col] == marker)
+                checkWinCount++;
+            else
+                break;
+        }
+
+        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
+        {
+            row = checkRow + i;
+            col = checkCol + i;
+            // Check when the value is outside of bounds
+            if (row > MAX_SIZE - 1 || col > MAX_SIZE - 1)
                 break;
 
             if (board[row][col] == marker)

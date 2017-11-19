@@ -27,22 +27,24 @@ public class GameBoardMem implements IGameBoard {
      * @requires numOfRows >= 0 && numOfCols >= 0 && winNum >= 0
      * @ensures rows, cols, and numToWin private variables are set
      */
-     GameBoardMem(int numOfRows, int numOfCols, int winNum)
-     {
+    GameBoardMem(int numOfRows, int numOfCols, int winNum)
+    {
         rows = numOfRows;
         cols = numOfCols;
         numToWin = winNum;
-     }
+    }
 
-     boolean checkSpace(BoardPosition pos)
-     {
+    @Override
+    public boolean checkSpace(BoardPosition pos)
+    {
          if (pos.getPlayer() == 'X')
              return listX.contains(pos);
          else
              return listO.contains(pos);
-     }
+    }
 
-    void placeMarker(BoardPosition marker)
+    @Override
+    public void placeMarker(BoardPosition marker)
     {
         if (marker.getPlayer() == 'X')
             listX.add(marker);
@@ -50,6 +52,7 @@ public class GameBoardMem implements IGameBoard {
             listO.add(marker);
     }
 
+    @Override
     public boolean checkForWinner(BoardPosition lastPos)
     {
         return checkHorizontalWin(lastPos)
@@ -59,15 +62,148 @@ public class GameBoardMem implements IGameBoard {
 
     private boolean checkHorizontalWin(BoardPosition lastPos)
     {
+        int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
+        int i, col;
+        char marker = lastPos.getPlayer();
+        List<BoardPosition> checkList = null;
+        BoardPosition checkPos = null;
 
+        if (marker == 'X')
+            checkList = listX;
+        else
+            checkList = listO;
+
+        for (i = 0; i < numToWin; i++)
+        {
+            col = checkCol - i;
+            // Check when the value is outside of bounds
+            if (col < 0)
+                break;
+
+            checkPos = new BoardPosition(checkRow, col, marker);
+
+            if (checkList.contains(checkPos))
+                checkWinCount++;
+            else
+                break;
+        }
+
+        for (i = 0; i < numToWin; i++)
+        {
+            col = checkCol + i;
+            // Check when the value is outside of bounds
+            if (col > MAX_SIZE - 1)
+                break;
+
+            checkPos = new BoardPosition(checkRow, col, marker);
+
+            if (checkList.contains(checkPos))
+                checkWinCount++;
+            else
+                break;
+        }
+
+        return checkWinCount >= numToWin;
     }
 
     private boolean checkVerticalWin(BoardPosition lastPos)
     {
+        int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
+        int i, row;
+        char marker = lastPos.getPlayer();
+        List<BoardPosition> checkList = null;
+        BoardPosition checkPos = null;
 
+        if (marker == 'X')
+            checkList = listX;
+        else
+            checkList = listO;
+
+        for (i = 0; i < numToWin; i++)
+        {
+            row = checkRow - i;
+            // Check when the value is outside of bounds
+            if (row < 0)
+                break;
+
+            checkPos = new BoardPosition(row, checkCol, marker);
+
+            if (checkList.contains(checkPos))
+                checkWinCount++;
+            else
+                break;
+        }
+
+        for (i = 0; i < numToWin; i++)
+        {
+            row = checkRow + i;
+            // Check when the value is outside of bounds
+            if (row > MAX_SIZE - 1)
+                break;
+
+            checkPos = new BoardPosition(row, checkCol, marker);
+
+            if (checkList.contains(checkPos))
+                checkWinCount++;
+            else
+                break;
+        }
+
+        return checkWinCount >= numToWin;
     }
 
     private boolean checkDiagonalWin(BoardPosition lastPos)
+    {
+        int checkRow = lastPos.getRow();
+        int checkCol = lastPos.getColumn();
+        char marker = lastPos.getPlayer();
+        int i, j, row, col;
+        int checkWinCount = 1;
+        List<BoardPosition> checkList = null;
+        BoardPosition checkPos = null;
+
+        if (marker == 'X')
+            checkList = listX;
+        else
+            checkList = listO;
+
+        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
+        {
+            row = checkRow - i;
+            col = checkCol - i;
+            // Check when the value is outside of bounds
+            if (row < 0 || col < 0)
+                break;
+
+            checkPos = new BoardPosition(row, col, marker);
+
+            if (checkList.contains(checkPos));
+                checkWinCount++;
+            else
+                break;
+        }
+
+        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
+        {
+            row = checkRow + i;
+            col = checkCol + i;
+            // Check when the value is outside of bounds
+            if (row < 0 || col < 0)
+                break;
+
+            checkPos = new BoardPosition(row, col, marker);
+
+            if (checkList.contains(checkPos));
+                checkWinCount++;
+            else
+                break;
+        }
+
+        return checkWinCount >= numToWin;
+    }
+
+    @Override
+    public String toString()
     {
         
     }
