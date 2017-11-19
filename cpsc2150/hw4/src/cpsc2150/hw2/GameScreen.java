@@ -7,13 +7,64 @@ public class GameScreen {
     public static void main(String[] args)
     {
         Scanner input = new Scanner(System.in);
-        Integer rowSize = 0, colSize = 0, winNum = 0;
+        int rowSize, colSize, winNum;
         Character impType = ' ';
-        int marker = 0, winCondition = 0, again = 1;
+        int marker = 0, winCondition = 0, again = 0;
         int x, y;
-        BoardPosition nextPos = new BoardPosition(0, 0, ' ');
+        BoardPosition nextPos = null;
 
-        IGameBoard xoboard = new GameBoardFast(rowSize,colSize,winNum);
+        IGameBoard xoboard = null;
+
+        System.out.println("\nWelcome to Customizable Tic-Tac-Toe!\n");
+        System.out.println("How many rows should be on the board?");
+        rowSize = Integer.parseInt(input.next());
+
+        while (rowSize > 100)
+        {
+            System.out.println("Can only have 100 rows or less");
+            System.out.println("How many rows should be on the board?");
+            rowSize = Integer.parseInt(input.next());
+        }
+
+        System.out.println("How many columns should be on the board?");
+        colSize = Integer.parseInt(input.next());
+
+        while (colSize > 100)
+        {
+            System.out.println("Can only have 100 columns or less");
+            System.out.println("How many columns should be on the board?");
+            colSize = Integer.parseInt(input.next());
+        }
+
+        System.out.println("How many in a row to win?");
+        winNum = Integer.parseInt(input.next());
+
+        while (winNum > rowSize || winNum > colSize)
+        {
+            System.out.println("You can't have that because thats more than the number of rows or columns");
+            System.out.println("How many in a row to win?");
+            winNum = Integer.parseInt(input.next());
+        }
+
+        System.out.println("Enter F for a (F)ast implementation or M for a (M)emory efficient implementation");
+        impType = input.next().charAt(0);
+
+        while (impType != 'f' && impType != 'F' && impType != 'm' && impType != 'M')
+        {
+            System.out.println("Enter F for a (F)ast implementation or M for a (M)emory efficient implementation");
+            impType = input.next().charAt(0);
+        }
+
+        System.out.println("rows: " + rowSize + " cols: " + colSize + " winNum: " + winNum);
+
+
+        if (impType == 'f' || impType == 'F')
+            xoboard = new GameBoardFast(rowSize, colSize, winNum);
+        //else
+        //xoboard = new GameBoardMem(rowSize, colSize, winNum);
+
+        again = 0;
+        marker = 0;
 
         // While loop that loops for input and continuous play
         while (winCondition == 0)
@@ -21,7 +72,36 @@ public class GameScreen {
             // Checks if the player wants to play again.
             if (again == 1)
             {
-                newGamePrompt(rowSize, colSize, winNum);
+                System.out.println("\nWelcome to Customizable Tic-Tac-Toe!\n");
+                System.out.println("How many rows should be on the board?");
+                rowSize = Integer.parseInt(input.next());
+
+                while (rowSize > 100)
+                {
+                    System.out.println("Can only have 100 rows or less");
+                    System.out.println("How many rows should be on the board?");
+                    rowSize = Integer.parseInt(input.next());
+                }
+
+                System.out.println("How many columns should be on the board?");
+                colSize = Integer.parseInt(input.next());
+
+                while (colSize > 100)
+                {
+                    System.out.println("Can only have 100 columns or less");
+                    System.out.println("How many columns should be on the board?");
+                    colSize = Integer.parseInt(input.next());
+                }
+
+                System.out.println("How many in a row to win?");
+                winNum = Integer.parseInt(input.next());
+
+                while (winNum > rowSize || winNum > colSize)
+                {
+                    System.out.println("You can't have that because thats more than the number of rows or columns");
+                    System.out.println("How many in a row to win?");
+                    winNum = Integer.parseInt(input.next());
+                }
 
                 while (impType != 'f' && impType != 'F' && impType != 'm' && impType != 'M')
                 {
@@ -31,13 +111,14 @@ public class GameScreen {
 
                 if (impType == 'f' || impType == 'F')
                     xoboard = new GameBoardFast(rowSize, colSize, winNum);
-                else
-                    xoboard = new GameBoardMem(rowSize, colSize, winNum);
+                //else
+                    //xoboard = new GameBoardMem(rowSize, colSize, winNum);
 
                 again = 0;
                 marker = 0;
             }
 
+            System.out.println(xoboard.toString());
             System.out.println("\nThis game begins with the player");
             System.out.println("who chooses to use the X marker");
             System.out.println("and alternates with the O marker.\n");
@@ -50,7 +131,7 @@ public class GameScreen {
 
                 while (x < 0 || x >= rowSize)
                 {
-                    System.out.println("\nPlease enter a valid row value between 0 and 7");
+                    System.out.println("\nPlease enter a valid row value");
                     rowPrompt('X');
                     x = Integer.parseInt(input.next());
                 }
@@ -60,7 +141,7 @@ public class GameScreen {
 
                 while (y < 0 || y >= colSize)
                 {
-                    System.out.println("\nPlease enter a valid column value between 0 and 7");
+                    System.out.println("\nPlease enter a valid column value");
                     colPrompt('X');
                     y = Integer.parseInt(input.next());
                 }
@@ -89,7 +170,7 @@ public class GameScreen {
 
                 while (x < 0 || x >= rowSize)
                 {
-                    System.out.println("\nPlease enter a valid row value between 0 and 7");
+                    System.out.println("\nPlease enter a valid row value");
                     rowPrompt('O');
                     x = Integer.parseInt(input.next());
                 }
@@ -99,7 +180,7 @@ public class GameScreen {
 
                 while (y < 0 || y >= colSize)
                 {
-                    System.out.println("\nPlease enter a valid column value between 0 and 7");
+                    System.out.println("\nPlease enter a valid column value");
                     colPrompt('O');
                     y = Integer.parseInt(input.next());
                 }
@@ -133,49 +214,6 @@ public class GameScreen {
                 winCondition = playAgain();
                 again = 1;
             }
-        }
-    }
-
-    /**
-     *
-     * @param numRows is the object that will store the input for number of rows
-     * @param numCols is the object that will store the input for number of columns
-     * @param targetNum is the object that will store the input for the number to win
-     * @requires numRows != null && numCols != null && targetNum != null
-     * @ensures numRows, numCols, and targetNum get populated with correct values for game
-     */
-    private static void newGamePrompt(Integer numRows, Integer numCols, Integer targetNum)
-    {
-        Scanner promptIn = new Scanner(System.in);
-        System.out.println("\nWelcome to Customizable Tic-Tac-Toe!\n");
-        System.out.println("How many rows should be on the board?");
-        numRows = Integer.parseInt(promptIn.next());
-
-        while (numRows > 100)
-        {
-            System.out.println("Can only have 100 rows or less");
-            System.out.println("How many rows should be on the board?");
-            numRows = Integer.parseInt(promptIn.next());
-        }
-
-        System.out.println("How many columns should be on the board?");
-        numCols = Integer.parseInt(promptIn.next());
-
-        while (numCols > 100)
-        {
-            System.out.println("Can only have 100 columns or less");
-            System.out.println("How many columns should be on the board?");
-            numCols = Integer.parseInt(promptIn.next());
-        }
-
-        System.out.println("How many in a row to win?");
-        targetNum = Integer.parseInt(promptIn.next());
-
-        while (targetNum > numRows || targetNum > numCols)
-        {
-            System.out.println("You can't have that because thats more than the number of rows or columns");
-            System.out.println("How many in a row to win?");
-            targetNum = Integer.parseInt(promptIn.next());
         }
     }
 

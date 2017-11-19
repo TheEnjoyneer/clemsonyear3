@@ -12,7 +12,7 @@ public class GameBoardFast implements IGameBoard {
     private static final char BLANK = ' ';
 
 
-    private char [][] board = new char[this.rows][this.cols];
+    private char [][] board = new char[MAX_SIZE][MAX_SIZE];
 
     /**
      * GameBoard constructor initializes the board to all BLANK characters
@@ -22,13 +22,13 @@ public class GameBoardFast implements IGameBoard {
     {
         int i, j;
 
-        this.rows = numOfRows;
-        this.cols = numOfCols;
-        this.numToWin = winNum;
+        rows = numOfRows;
+        cols = numOfCols;
+        numToWin = winNum;
 
-        for (i = 0; i < this.rows; i++)
+        for (i = 0; i < rows; i++)
         {
-            for (j = 0; j < this.cols; j++)
+            for (j = 0; j < cols; j++)
             {
                 board[i][j] = BLANK;
             }
@@ -44,7 +44,7 @@ public class GameBoardFast implements IGameBoard {
      */
     public boolean checkSpace(BoardPosition pos)
     {
-        return (this.board[pos.getRow()][pos.getColumn()] == BLANK);
+        return (board[pos.getRow()][pos.getColumn()] == BLANK);
     }
 
     /**
@@ -55,7 +55,7 @@ public class GameBoardFast implements IGameBoard {
      */
     public void placeMarker(BoardPosition marker)
     {
-        this.board[marker.getRow()][marker.getColumn()] = marker.getPlayer();
+        board[marker.getRow()][marker.getColumn()] = marker.getPlayer();
     }
 
     /**
@@ -84,9 +84,9 @@ public class GameBoardFast implements IGameBoard {
         int i, j, checkWin = 0, col = lastPos.getColumn(), row = lastPos.getRow();
         char marker = lastPos.getPlayer();
 
-        if (col >= this.numToWin && col < (this.cols - this.numToWin - 1))
+        if (col >= numToWin && col < (cols - numToWin - 1))
         {
-            for (j = col - this.numToWin, i = 0; j < col + this.numToWin; j++, i++)
+            for (j = col - numToWin, i = 0; j < col + numToWin; j++, i++)
             {
                 if (board[row][j] == marker)
                 {
@@ -98,7 +98,7 @@ public class GameBoardFast implements IGameBoard {
                     i = 0;
                 }
 
-                if (checkWin == this.numToWin && i == this.numToWin)
+                if (checkWin == numToWin && i == numToWin)
                     return true;
 
             }
@@ -107,7 +107,7 @@ public class GameBoardFast implements IGameBoard {
         {
             checkWin = 0;
 
-            for (j = 0, i = 0; j < col + this.numToWin; j++, i++)
+            for (j = 0, i = 0; j < col + numToWin; j++, i++)
             {
                 if (board[row][j] == marker)
                 {
@@ -119,13 +119,13 @@ public class GameBoardFast implements IGameBoard {
                     i = 0;
                 }
 
-                if (checkWin == this.numToWin && i == this.numToWin)
+                if (checkWin == numToWin && i == numToWin)
                     return true;
             }
 
             checkWin = 0;
 
-            for (j = col - this.numToWin - 1, i = 0; j < this.cols - 1; j++, i++)
+            for (j = col - numToWin - 1, i = 0; j < cols - 1; j++, i++)
             {
                 if (board[row][j] == marker)
                 {
@@ -137,7 +137,7 @@ public class GameBoardFast implements IGameBoard {
                     i = 0;
                 }
 
-                if (checkWin == this.numToWin && i == this.numToWin)
+                if (checkWin == numToWin && i == numToWin)
                     return true;
             }
         }
@@ -157,9 +157,9 @@ public class GameBoardFast implements IGameBoard {
         int i, j, checkWin = 0, col = lastPos.getColumn(), row = lastPos.getRow();
         char marker = lastPos.getPlayer();
 
-        if (row >= this.numToWin && row < (this.rows - this.numToWin - 1))
+        if (row >= numToWin && row < (rows - numToWin - 1))
         {
-            for (i = rows - this.numToWin, j = 0; i < rows + this.numToWin; i++, j++)
+            for (i = rows - numToWin, j = 0; i < rows + numToWin; i++, j++)
             {
                 if (board[i][col] == marker)
                 {
@@ -171,7 +171,7 @@ public class GameBoardFast implements IGameBoard {
                     i = 0;
                 }
 
-                if (checkWin == this.numToWin && i == this.numToWin)
+                if (checkWin == numToWin && i == numToWin)
                     return true;
             }
         }
@@ -179,7 +179,7 @@ public class GameBoardFast implements IGameBoard {
         {
             checkWin = 0;
 
-            for (i = 0, j = 0; i < row + this.numToWin; i++, j++)
+            for (i = 0, j = 0; i < row + numToWin; i++, j++)
             {
                 if (board[i][col] == marker)
                 {
@@ -191,13 +191,13 @@ public class GameBoardFast implements IGameBoard {
                     i = 0;
                 }
 
-                if (checkWin == this.numToWin && i == this.numToWin)
+                if (checkWin == numToWin && i == numToWin)
                     return true;
             }
 
             checkWin = 0;
 
-            for (i = row - this.numToWin - 1, j = 0; j < this.rows - 1; i++, j++)
+            for (i = row - numToWin - 1, j = 0; j < rows - 1; i++, j++)
             {
                 if (board[row][j] == marker)
                 {
@@ -209,7 +209,7 @@ public class GameBoardFast implements IGameBoard {
                     i = 0;
                 }
 
-                if (checkWin == this.numToWin && i == this.numToWin)
+                if (checkWin == numToWin && i == numToWin)
                     return true;
             }
         }
@@ -257,7 +257,7 @@ public class GameBoardFast implements IGameBoard {
             }
         }
 
-        for (i = i2; i < this.rows - numToWin - 1; i++)
+        for (i = i2; i < rows - numToWin - 1; i++)
         {
             // Check for what the j needs to be greater than, used to be j>3
             for (j = j2; j > numToWin - 2; j--)
@@ -288,7 +288,7 @@ public class GameBoardFast implements IGameBoard {
 
         preboard.append("  |");
 
-        for (i = 0; i < this.cols; i++)
+        for (i = 0; i < cols; i++)
         {
             if (i < 10)
             {
@@ -306,7 +306,7 @@ public class GameBoardFast implements IGameBoard {
 
         preboard.append("\n");
 
-        for (i = 0; i < this.rows; i++)
+        for (i = 0; i < rows; i++)
         {
             if (i < 10)
             {
@@ -318,7 +318,7 @@ public class GameBoardFast implements IGameBoard {
                 preboard.append(i);
                 preboard.append("| ");
             }
-            for (j = 0; j < this.cols; j++)
+            for (j = 0; j < cols; j++)
             {
                 preboard.append(board[i][j]);
                 preboard.append(" | ");
