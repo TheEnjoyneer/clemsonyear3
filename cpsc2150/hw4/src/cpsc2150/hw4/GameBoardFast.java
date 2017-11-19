@@ -1,7 +1,6 @@
 package cpsc2150.hw4;
 
-import java.lang.StringBuilder;
-
+import java.lang.StringBuffer;
 
 /**
  *
@@ -239,7 +238,7 @@ public class GameBoardFast implements IGameBoard {
     {
         // returns a String that contains the game board to be printed
 
-        StringBuilder preboard = new StringBuilder();
+        StringBuffer preboard = new StringBuffer();
         int i, j;
 
         preboard.append("  |");

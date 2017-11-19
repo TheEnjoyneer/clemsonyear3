@@ -1,6 +1,7 @@
 package cpsc2150.hw4;
 
 import java.util.*;
+import java.lang.StringBuffer;
 
 /**
  *
@@ -267,7 +268,7 @@ public class GameBoardMem implements IGameBoard {
     @Override
     public String toString()
     {
-        StringBuilder preboard = new StringBuilder();
+        StringBuffer preboard = new StringBuffer();
         int i, j;
         BoardPosition printPosX;
         BoardPosition printPosO;

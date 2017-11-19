@@ -47,25 +47,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameBoardFast.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameBoardFast.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardFast.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+            <state relative-caret-position="3795">
+              <caret line="256" column="35" lean-forward="true" selection-start-line="256" selection-start-column="35" selection-end-line="256" selection-end-column="35" />
               <folding>
-                <element signature="e#1588#1589#0" expanded="true" />
-                <element signature="e#1667#1668#0" expanded="true" />
+                <element signature="e#1586#1587#0" expanded="true" />
+                <element signature="e#1665#1666#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameBoardMem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameBoardMem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardMem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="45">
+              <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,9 +98,9 @@
         <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardMem.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw4/BoardPosition.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw4/IGameBoard.java" />
-        <option value="$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardFast.java" />
-        <option value="$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardMem.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw4/GameScreen.java" />
+        <option value="$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardMem.java" />
+        <option value="$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardFast.java" />
       </list>
     </option>
   </component>
@@ -271,8 +273,8 @@
         <state relative-caret-position="60">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
-            <element signature="e#1588#1589#0" expanded="true" />
-            <element signature="e#1667#1668#0" expanded="true" />
+            <element signature="e#1586#1587#0" expanded="true" />
+            <element signature="e#1665#1666#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -320,22 +322,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardFast.java">
+    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardMem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+        <state relative-caret-position="45">
+          <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
           <folding>
-            <element signature="e#1588#1589#0" expanded="true" />
-            <element signature="e#1667#1668#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardMem.java">
+    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw4/GameBoardFast.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="3795">
+          <caret line="256" column="35" lean-forward="true" selection-start-line="256" selection-start-column="35" selection-end-line="256" selection-end-column="35" />
+          <folding>
+            <element signature="e#1586#1587#0" expanded="true" />
+            <element signature="e#1665#1666#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
