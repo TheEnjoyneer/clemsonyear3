@@ -21,8 +21,13 @@ public class GameBoardFast implements IGameBoard {
     private char [][] board = null;
 
     /**
+     *
      * GameBoardFast constructor initializes the board to all BLANK characters
+     * @param numOfRows int value for number of rows
+     * @param numOfCols int value for number of columns
+     * @param winNum int value for number of markers in a row to win
      * @requires numOfRows >= 0 && numOfCols >= 0 && winNum >= 0
+     * @ensures rows, cols, and numToWin private variables are set
      */
     GameBoardFast(int numOfRows, int numOfCols, int winNum)
     {
