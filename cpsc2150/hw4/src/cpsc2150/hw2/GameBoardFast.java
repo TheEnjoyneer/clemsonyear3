@@ -81,7 +81,7 @@ public class GameBoardFast implements IGameBoard {
         int i, col;
         char marker = lastPos.getPlayer();
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             col = checkCol - i;
             // Check when the value is outside of bounds
@@ -94,11 +94,11 @@ public class GameBoardFast implements IGameBoard {
                 break;
         }
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             col = checkCol + i;
             // Check when the value is outside of bounds
-            if (col > MAX_SIZE - 1)
+            if (col > cols - 1)
                 break;
 
             if (board[checkRow][col] == marker)
@@ -123,7 +123,7 @@ public class GameBoardFast implements IGameBoard {
         int i, row;
         char marker = lastPos.getPlayer();
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             row = checkRow - i;
             // Check when the value is outside of bounds
@@ -136,11 +136,11 @@ public class GameBoardFast implements IGameBoard {
                 break;
         }
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             row = checkRow + i;
             // Check when the value is outside of bounds
-            if (row > MAX_SIZE - 1)
+            if (row > rows - 1)
                 break;
 
             if (board[row][checkCol] == marker)
@@ -165,9 +165,10 @@ public class GameBoardFast implements IGameBoard {
         int checkCol = lastPos.getColumn();
         char marker = lastPos.getPlayer();
         int i, j, row, col;
-        int checkWinCount = 1;
+        int checkMajorWin = 1;
+        int checkMinorWin = 1;
 
-        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
         {
             row = checkRow - i;
             col = checkCol - i;
@@ -176,26 +177,54 @@ public class GameBoardFast implements IGameBoard {
                 break;
 
             if (board[row][col] == marker)
-                checkWinCount++;
+                checkMajorWin++;
             else
                 break;
         }
 
-        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
         {
             row = checkRow + i;
             col = checkCol + i;
             // Check when the value is outside of bounds
-            if (row > MAX_SIZE - 1 || col > MAX_SIZE - 1)
+            if (row > rows - 1 || col > cols - 1)
                 break;
 
             if (board[row][col] == marker)
-                checkWinCount++;
+                checkMajorWin++;
             else
                 break;
         }
 
-        return checkWinCount >= numToWin;
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
+        {
+            row = checkRow - i;
+            col = checkCol + i;
+            // Check when the value is outside of bounds
+            if (row < 0 || col > cols - 1)
+                break;
+
+            if (board[row][col] == marker)
+                checkMinorWin++;
+            else
+                break;
+        }
+
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
+        {
+            row = checkRow + i;
+            col = checkCol - i;
+            // Check when the value is outside of bounds
+            if (row > rows - 1 || col < 0)
+                break;
+
+            if (board[row][col] == marker)
+                checkMinorWin++;
+            else
+                break;
+        }
+
+        return (checkMajorWin >= numToWin) || (checkMinorWin >= numToWin);
     }
 
     /**

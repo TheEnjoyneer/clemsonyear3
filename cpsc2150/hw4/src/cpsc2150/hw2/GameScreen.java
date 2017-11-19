@@ -55,9 +55,6 @@ public class GameScreen {
             impType = input.next().charAt(0);
         }
 
-        System.out.println("rows: " + rowSize + " cols: " + colSize + " winNum: " + winNum);
-
-
         if (impType == 'f' || impType == 'F')
             xoboard = new GameBoardFast(rowSize, colSize, winNum);
         else
@@ -65,6 +62,8 @@ public class GameScreen {
 
         again = 0;
         marker = 0;
+
+        System.out.println(xoboard.toString());
 
         // While loop that loops for input and continuous play
         while (winCondition == 0)
@@ -103,6 +102,9 @@ public class GameScreen {
                     winNum = Integer.parseInt(input.next());
                 }
 
+                System.out.println("Enter F for a (F)ast implementation or M for a (M)emory efficient implementation");
+                impType = input.next().charAt(0);
+
                 while (impType != 'f' && impType != 'F' && impType != 'm' && impType != 'M')
                 {
                     System.out.println("Enter F for a (F)ast implementation or M for a (M)emory efficient implementation");
@@ -111,14 +113,15 @@ public class GameScreen {
 
                 if (impType == 'f' || impType == 'F')
                     xoboard = new GameBoardFast(rowSize, colSize, winNum);
-                //else
-                    //xoboard = new GameBoardMem(rowSize, colSize, winNum);
+                else
+                    xoboard = new GameBoardMem(rowSize, colSize, winNum);
 
                 again = 0;
                 marker = 0;
+
+                System.out.println(xoboard.toString());
             }
 
-            System.out.println(xoboard.toString());
             System.out.println("\nThis game begins with the player");
             System.out.println("who chooses to use the X marker");
             System.out.println("and alternates with the O marker.\n");

@@ -38,9 +38,9 @@ public class GameBoardMem implements IGameBoard {
     public boolean checkSpace(BoardPosition pos)
     {
          if (pos.getPlayer() == 'X')
-             return listX.contains(pos);
+             return !(listX.contains(pos));
          else
-             return listO.contains(pos);
+             return !(listO.contains(pos));
     }
 
     @Override
@@ -65,15 +65,15 @@ public class GameBoardMem implements IGameBoard {
         int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
         int i, col;
         char marker = lastPos.getPlayer();
-        List<BoardPosition> checkList = null;
-        BoardPosition checkPos = null;
+        List<BoardPosition> checkList;
+        BoardPosition checkPos;
 
         if (marker == 'X')
             checkList = listX;
         else
             checkList = listO;
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             col = checkCol - i;
             // Check when the value is outside of bounds
@@ -88,11 +88,11 @@ public class GameBoardMem implements IGameBoard {
                 break;
         }
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             col = checkCol + i;
             // Check when the value is outside of bounds
-            if (col > MAX_SIZE - 1)
+            if (col > cols - 1)
                 break;
 
             checkPos = new BoardPosition(checkRow, col, marker);
@@ -111,15 +111,15 @@ public class GameBoardMem implements IGameBoard {
         int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
         int i, row;
         char marker = lastPos.getPlayer();
-        List<BoardPosition> checkList = null;
-        BoardPosition checkPos = null;
+        List<BoardPosition> checkList;
+        BoardPosition checkPos;
 
         if (marker == 'X')
             checkList = listX;
         else
             checkList = listO;
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             row = checkRow - i;
             // Check when the value is outside of bounds
@@ -134,11 +134,11 @@ public class GameBoardMem implements IGameBoard {
                 break;
         }
 
-        for (i = 0; i < numToWin; i++)
+        for (i = 1; i <= numToWin; i++)
         {
             row = checkRow + i;
             // Check when the value is outside of bounds
-            if (row > MAX_SIZE - 1)
+            if (row > rows - 1)
                 break;
 
             checkPos = new BoardPosition(row, checkCol, marker);
@@ -158,16 +158,17 @@ public class GameBoardMem implements IGameBoard {
         int checkCol = lastPos.getColumn();
         char marker = lastPos.getPlayer();
         int i, j, row, col;
-        int checkWinCount = 1;
-        List<BoardPosition> checkList = null;
-        BoardPosition checkPos = null;
+        int checkMajorWin = 1;
+        int checkMinorWin = 1;
+        List<BoardPosition> checkList;
+        BoardPosition checkPos;
 
         if (marker == 'X')
             checkList = listX;
         else
             checkList = listO;
 
-        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
         {
             row = checkRow - i;
             col = checkCol - i;
@@ -177,29 +178,61 @@ public class GameBoardMem implements IGameBoard {
 
             checkPos = new BoardPosition(row, col, marker);
 
-            if (checkList.contains(checkPos));
-                checkWinCount++;
+            if (checkList.contains(checkPos))
+                checkMajorWin++;
             else
                 break;
         }
 
-        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
         {
             row = checkRow + i;
             col = checkCol + i;
             // Check when the value is outside of bounds
-            if (row < 0 || col < 0)
+            if (row > rows - 1 || col > cols - 1)
                 break;
 
             checkPos = new BoardPosition(row, col, marker);
 
-            if (checkList.contains(checkPos));
-                checkWinCount++;
+            if (checkList.contains(checkPos))
+                checkMajorWin++;
             else
                 break;
         }
 
-        return checkWinCount >= numToWin;
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
+        {
+            row = checkRow - i;
+            col = checkCol + i;
+            // Check when the value is outside of bounds
+            if (row < 0 || col > cols - 1)
+                break;
+
+            checkPos = new BoardPosition(row, col, marker);
+
+            if (checkList.contains(checkPos))
+                checkMinorWin++;
+            else
+                break;
+        }
+
+        for (i = 1, j = 1; i <= numToWin && j <= numToWin; i++, j++)
+        {
+            row = checkRow + i;
+            col = checkCol - i;
+            // Check when the value is outside of bounds
+            if (row > rows - 1 || col < 0)
+                break;
+
+            checkPos = new BoardPosition(row, col, marker);
+
+            if (checkList.contains(checkPos))
+                checkMinorWin++;
+            else
+                break;
+        }
+
+        return (checkMajorWin >= numToWin) || (checkMinorWin >= numToWin);
     }
 
     /**
@@ -211,8 +244,8 @@ public class GameBoardMem implements IGameBoard {
     {
         StringBuilder preboard = new StringBuilder();
         int i, j;
-        BoardPosition printPosX = null;
-        BoardPosition printPosO = null;
+        BoardPosition printPosX;
+        BoardPosition printPosO;
 
         preboard.append("  |");
 
@@ -263,5 +296,7 @@ public class GameBoardMem implements IGameBoard {
 
             preboard.append("\n");
         }
+
+        return preboard.toString();
     }
 }
