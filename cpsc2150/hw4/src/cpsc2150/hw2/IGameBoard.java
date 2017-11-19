@@ -7,8 +7,8 @@ package cpsc2150.hw2;
  * Initialization ensures: the Board does not have any markers on it
  * Defines: NUM_ROWS: Z
  * Defines: NUM_COLS: Z
- * Constraints: 0< NUM_ROWS <= MAX_SIZE
- *              0< NUM_COLS <= MAX_SIZE
+ * Constraints: 0 < NUM_ROWS <= MAX_SIZE
+ *              0 < NUM_COLS <= MAX_SIZE
  */
 public interface IGameBoard {
     int MAX_SIZE = 100;

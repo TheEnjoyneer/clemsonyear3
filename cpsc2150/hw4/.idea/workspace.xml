@@ -15,13 +15,13 @@
       <file leaf-file-name="GameScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+            <state relative-caret-position="-468">
+              <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
               <folding>
-                <element signature="e#8120#8121#0" expanded="true" />
-                <element signature="e#8196#8197#0" expanded="true" />
-                <element signature="e#8407#8408#0" expanded="true" />
-                <element signature="e#8486#8487#0" expanded="true" />
+                <element signature="e#8112#8113#0" expanded="true" />
+                <element signature="e#8188#8189#0" expanded="true" />
+                <element signature="e#8399#8400#0" expanded="true" />
+                <element signature="e#8478#8479#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,31 +40,31 @@
       <file leaf-file-name="IGameBoard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/IGameBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="7" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+            <state relative-caret-position="150">
+              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameBoardFast.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameBoardFast.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardFast.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="187" column="41" lean-forward="false" selection-start-line="187" selection-start-column="41" selection-end-line="187" selection-end-column="41" />
+            <state relative-caret-position="345">
+              <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
               <folding>
-                <element signature="e#1482#1483#0" expanded="true" />
-                <element signature="e#1561#1562#0" expanded="true" />
+                <element signature="e#1641#1642#0" expanded="true" />
+                <element signature="e#1720#1721#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameBoardMem.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameBoardMem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardMem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -89,10 +89,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameBoard.java" />
-        <option value="$PROJECT_DIR$/src/cpsc2150/hw2/IGameBoard.java" />
-        <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardMem.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw2/BoardPosition.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java" />
+        <option value="$PROJECT_DIR$/src/cpsc2150/hw2/IGameBoard.java" />
+        <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardMem.java" />
         <option value="$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardFast.java" />
       </list>
     </option>
@@ -266,8 +266,8 @@
         <state relative-caret-position="60">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
-            <element signature="e#1482#1483#0" expanded="true" />
-            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+            <element signature="e#1720#1721#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -277,31 +277,15 @@
         <state relative-caret-position="60">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
-            <element signature="e#8120#8121#0" expanded="true" />
-            <element signature="e#8196#8197#0" expanded="true" />
-            <element signature="e#8407#8408#0" expanded="true" />
-            <element signature="e#8486#8487#0" expanded="true" />
+            <element signature="e#8112#8113#0" expanded="true" />
+            <element signature="e#8188#8189#0" expanded="true" />
+            <element signature="e#8399#8400#0" expanded="true" />
+            <element signature="e#8478#8479#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/IGameBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="7" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardMem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/BoardPosition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
@@ -312,25 +296,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+        <state relative-caret-position="-468">
+          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
           <folding>
-            <element signature="e#8120#8121#0" expanded="true" />
-            <element signature="e#8196#8197#0" expanded="true" />
-            <element signature="e#8407#8408#0" expanded="true" />
-            <element signature="e#8486#8487#0" expanded="true" />
+            <element signature="e#8112#8113#0" expanded="true" />
+            <element signature="e#8188#8189#0" expanded="true" />
+            <element signature="e#8399#8400#0" expanded="true" />
+            <element signature="e#8478#8479#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/IGameBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardFast.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="187" column="41" lean-forward="false" selection-start-line="187" selection-start-column="41" selection-end-line="187" selection-end-column="41" />
+        <state relative-caret-position="345">
+          <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
           <folding>
-            <element signature="e#1482#1483#0" expanded="true" />
-            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+            <element signature="e#1720#1721#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cpsc2150/hw2/GameBoardMem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

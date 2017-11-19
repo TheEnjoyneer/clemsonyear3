@@ -9,7 +9,7 @@ public class GameScreen {
         Scanner input = new Scanner(System.in);
         int rowSize, colSize, winNum;
         Character impType = ' ';
-        int marker = 0, winCondition = 0, again = 0;
+        int marker, winCondition = 0, again;
         int x, y;
         BoardPosition nextPos = null;
 

@@ -3,7 +3,14 @@ package cpsc2150.hw2;
 import java.lang.StringBuilder;
 
 
-// Make sure to come in here and add contracts/correspondences
+/**
+ *
+ * @invariant 0 < rows <= MAX_SIZE
+ * @invariant 0 < cols <= MAX_SIZE
+ * Correspondence NUM_ROWS = rows
+ * Correspondence NUM_COLS = cols
+ * Correspondence this = board[0...rows-1][0...cols-1]
+ */
 public class GameBoardFast implements IGameBoard {
 
     private int rows = 0;
@@ -11,11 +18,10 @@ public class GameBoardFast implements IGameBoard {
     private int numToWin = 0;
     private static final char BLANK = ' ';
 
-
-    private char [][] board = new char[MAX_SIZE][MAX_SIZE];
+    private char [][] board = null;
 
     /**
-     * GameBoard constructor initializes the board to all BLANK characters
+     * GameBoardFast constructor initializes the board to all BLANK characters
      * @requires numOfRows >= 0 && numOfCols >= 0 && winNum >= 0
      */
     GameBoardFast(int numOfRows, int numOfCols, int winNum)
@@ -25,6 +31,8 @@ public class GameBoardFast implements IGameBoard {
         rows = numOfRows;
         cols = numOfCols;
         numToWin = winNum;
+
+        board = new char[rows][cols];
 
         for (i = 0; i < rows; i++)
         {
