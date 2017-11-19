@@ -202,10 +202,66 @@ public class GameBoardMem implements IGameBoard {
         return checkWinCount >= numToWin;
     }
 
+    /**
+     *
+     * @return toString value of a string that contains the entire board.
+     */
     @Override
     public String toString()
     {
-        
-    }
+        StringBuilder preboard = new StringBuilder();
+        int i, j;
+        BoardPosition printPosX = null;
+        BoardPosition printPosO = null;
 
+        preboard.append("  |");
+
+        for (i = 0; i < cols; i++)
+        {
+            if (i < 10)
+            {
+                preboard.append("  ");
+                preboard.append(i);
+                preboard.append("|");
+            }
+            else
+            {
+                preboard.append(" ");
+                preboard.append(i);
+                preboard.append("|");
+            }
+        }
+
+        preboard.append("\n");
+
+        for (i = 0; i < rows; i++)
+        {
+            if (i < 10)
+            {
+                preboard.append(i);
+                preboard.append(" | ");
+            }
+            else
+            {
+                preboard.append(i);
+                preboard.append("| ");
+            }
+            for (j = 0; j < cols; j++)
+            {
+                printPosX = new BoardPosition(i, j, 'X');
+                printPosO = new BoardPosition(i, j, 'O');
+
+                if (listX.contains(printPosX))
+                    preboard.append('X');
+                else if (listO.contains(printPosO))
+                    preboard.append('O');
+                else
+                    preboard.append(' ');
+
+                preboard.append(" | ");
+            }
+
+            preboard.append("\n");
+        }
+    }
 }
