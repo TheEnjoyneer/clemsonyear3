@@ -81,68 +81,37 @@ public class GameBoardFast implements IGameBoard {
      */
     private boolean checkHorizontalWin(BoardPosition lastPos)
     {
-        int i, j, checkWin = 0, col = lastPos.getColumn(), row = lastPos.getRow();
+        int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
+        int i, col;
         char marker = lastPos.getPlayer();
 
-        if (col >= numToWin && col < (cols - numToWin - 1))
+        for (i = 0; i < numToWin; i++)
         {
-            for (j = col - numToWin, i = 0; j < col + numToWin; j++, i++)
-            {
-                if (board[row][j] == marker)
-                {
-                    checkWin++;
-                }
-                else
-                {
-                    checkWin = 0;
-                    i = 0;
-                }
+            col = checkCol - i;
+            // Check when the value is outside of bounds
+            if (col < 0)
+                break;
 
-                if (checkWin == numToWin && i == numToWin)
-                    return true;
-
-            }
-        }
-        else
-        {
-            checkWin = 0;
-
-            for (j = 0, i = 0; j < col + numToWin; j++, i++)
-            {
-                if (board[row][j] == marker)
-                {
-                    checkWin++;
-                }
-                else
-                {
-                    checkWin = 0;
-                    i = 0;
-                }
-
-                if (checkWin == numToWin && i == numToWin)
-                    return true;
-            }
-
-            checkWin = 0;
-
-            for (j = col - numToWin - 1, i = 0; j < cols - 1; j++, i++)
-            {
-                if (board[row][j] == marker)
-                {
-                    checkWin++;
-                }
-                else
-                {
-                    checkWin = 0;
-                    i = 0;
-                }
-
-                if (checkWin == numToWin && i == numToWin)
-                    return true;
-            }
+            if (board[checkRow][col] == marker)
+                checkWinCount++;
+            else
+                break;
         }
 
-        return false;
+        for (i = 0; i < numToWin; i++)
+        {
+            col = checkCol + i;
+            // Check when the value is outside of bounds
+            if (col > MAX_SIZE - 1)
+                break;
+
+            if (board[checkRow][col] == marker)
+                checkWinCount++;
+            else
+                break;
+        }
+
+        return checkWinCount >= numToWin;
     }
 
     /**
@@ -154,67 +123,37 @@ public class GameBoardFast implements IGameBoard {
      */
     private boolean checkVerticalWin(BoardPosition lastPos)
     {
-        int i, j, checkWin = 0, col = lastPos.getColumn(), row = lastPos.getRow();
+        int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
+        int i, row;
         char marker = lastPos.getPlayer();
 
-        if (row >= numToWin && row < (rows - numToWin - 1))
+        for (i = 0; i < numToWin; i++)
         {
-            for (i = rows - numToWin, j = 0; i < rows + numToWin; i++, j++)
-            {
-                if (board[i][col] == marker)
-                {
-                    checkWin++;
-                }
-                else
-                {
-                    checkWin = 0;
-                    i = 0;
-                }
+            row = checkRow - i;
+            // Check when the value is outside of bounds
+            if (row < 0)
+                break;
 
-                if (checkWin == numToWin && i == numToWin)
-                    return true;
-            }
-        }
-        else
-        {
-            checkWin = 0;
-
-            for (i = 0, j = 0; i < row + numToWin; i++, j++)
-            {
-                if (board[i][col] == marker)
-                {
-                    checkWin++;
-                }
-                else
-                {
-                    checkWin = 0;
-                    i = 0;
-                }
-
-                if (checkWin == numToWin && i == numToWin)
-                    return true;
-            }
-
-            checkWin = 0;
-
-            for (i = row - numToWin - 1, j = 0; j < rows - 1; i++, j++)
-            {
-                if (board[row][j] == marker)
-                {
-                    checkWin++;
-                }
-                else
-                {
-                    checkWin = 0;
-                    i = 0;
-                }
-
-                if (checkWin == numToWin && i == numToWin)
-                    return true;
-            }
+            if (board[row][checkCol] == marker)
+                checkWinCount++;
+            else
+                break;
         }
 
-        return false;
+        for (i = 0; i < numToWin; i++)
+        {
+            row = checkRow + i;
+            // Check when the value is outside of bounds
+            if (row > MAX_SIZE - 1)
+                break;
+
+            if (board[row][checkCol] == marker)
+                checkWinCount++;
+            else
+                break;
+        }
+
+        return checkWinCount >= numToWin;
     }
 
     /**
@@ -226,52 +165,27 @@ public class GameBoardFast implements IGameBoard {
      */
     private boolean checkDiagonalWin(BoardPosition lastPos)
     {
-        int row = lastPos.getRow();
-        int col = lastPos.getColumn();
-        int i, i1 = row, i2 = row;
-        int j, j1 = col, j2 = col;
+        int checkRow = lastPos.getRow();
+        int checkCol = lastPos.getColumn();
         char marker = lastPos.getPlayer();
+        int i, j, row, col;
+        int checkWinCount = 1;
 
-        while (i1 != 0 && j1 != 0)
+        for (i = 0, j = 0; i < numToWin && j < numToWin; i++, j++)
         {
-            i1--;
-            j1--;
+            row = checkRow - i;
+            col = checkCol - i;
+            // Check when the value is outside of bounds
+            if (row < 0 || col < 0)
+                break;
+
+            if (board[row][col] == marker)
+                checkWinCount++;
+            else
+                break;
         }
 
-        while (i2 != 0 &&  j2 != numToWin - 1)
-        {
-            i2--;
-            j2++;
-        }
-
-        for (i = row - numToWin; i < row + numToWin; i++)
-        {
-            for (j = j1; j < this.cols - numToWin - 1; j++)
-            {
-                if (board[i][j] == marker)
-                    if (board[i+1][j+1] == marker)
-                        if (board[i+2][j+2] == marker)
-                            if (board[i+3][j+3] == marker)
-                                if (board[i+4][j+4] == marker)
-                                    return true;
-            }
-        }
-
-        for (i = i2; i < rows - numToWin - 1; i++)
-        {
-            // Check for what the j needs to be greater than, used to be j>3
-            for (j = j2; j > numToWin - 2; j--)
-            {
-                if (board[i][j] == marker)
-                    if (board[i+1][j-1] == marker)
-                        if (board[i+2][j-2] == marker)
-                            if (board[i+3][j-3] == marker)
-                                if (board[i+4][j-4] == marker)
-                                    return true;
-            }
-        }
-
-        return false;
+        return checkWinCount >= numToWin;
     }
 
     /**
