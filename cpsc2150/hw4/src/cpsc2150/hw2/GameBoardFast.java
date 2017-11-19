@@ -1,14 +1,14 @@
 package cpsc2150.hw2;
 
-import java.lang.StringBuffer;
+import java.lang.StringBuilder;
 
 
 // Make sure to come in here and add contracts/correspondences
 public class GameBoardFast implements IGameBoard {
 
-    private static int rows = 0;
-    private static int cols = 0;
-    private static int numToWin = 0;
+    private int rows = 0;
+    private int cols = 0;
+    private int numToWin = 0;
     private static final char BLANK = ' ';
 
 
@@ -173,7 +173,6 @@ public class GameBoardFast implements IGameBoard {
 
                 if (checkWin == this.numToWin && i == this.numToWin)
                     return true;
-
             }
         }
         else
@@ -239,13 +238,13 @@ public class GameBoardFast implements IGameBoard {
             j1--;
         }
 
-        while (i2 != 0 &&  j2 != 7)
+        while (i2 != 0 &&  j2 != numToWin - 1)
         {
             i2--;
             j2++;
         }
 
-        for (i = i1; i < this.rows - numToWin - 1; i++)
+        for (i = row - numToWin; i < row + numToWin; i++)
         {
             for (j = j1; j < this.cols - numToWin - 1; j++)
             {
@@ -284,20 +283,45 @@ public class GameBoardFast implements IGameBoard {
     {
         // returns a String that contains the game board to be printed
 
-        StringBuffer preboard = new StringBuffer();
+        StringBuilder preboard = new StringBuilder();
         int i, j;
 
-        preboard.append("  0 1 2 3 4 5 6 7 \n");
+        preboard.append("  |");
+
+        for (i = 0; i < this.cols; i++)
+        {
+            if (i < 10)
+            {
+                preboard.append("  ");
+                preboard.append(i);
+                preboard.append("|");
+            }
+            else
+            {
+                preboard.append(" ");
+                preboard.append(i);
+                preboard.append("|");
+            }
+        }
+
+        preboard.append("\n");
 
         for (i = 0; i < this.rows; i++)
         {
-            preboard.append(i);
-            preboard.append("|");
-
+            if (i < 10)
+            {
+                preboard.append(i);
+                preboard.append(" | ");
+            }
+            else
+            {
+                preboard.append(i);
+                preboard.append("| ");
+            }
             for (j = 0; j < this.cols; j++)
             {
-                preboard.append(this.board[i][j]);
-                preboard.append("|");
+                preboard.append(board[i][j]);
+                preboard.append(" | ");
             }
 
             preboard.append("\n");
