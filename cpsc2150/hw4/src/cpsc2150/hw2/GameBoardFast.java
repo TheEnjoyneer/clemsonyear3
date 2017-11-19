@@ -5,8 +5,8 @@ import java.lang.StringBuilder;
 
 /**
  *
- * @invariant 0 < rows <= MAX_SIZE
- * @invariant 0 < cols <= MAX_SIZE
+ * @invariant MIN_SIZE < rows <= MAX_SIZE
+ * @invariant MIN_SIZE < cols <= MAX_SIZE
  * Correspondence NUM_ROWS = rows
  * Correspondence NUM_COLS = cols
  * Correspondence this = board[0...rows-1][0...cols-1]
@@ -26,7 +26,7 @@ public class GameBoardFast implements IGameBoard {
      * @param numOfRows int value for number of rows
      * @param numOfCols int value for number of columns
      * @param winNum int value for number of markers in a row to win
-     * @requires numOfRows >= 0 && numOfCols >= 0 && winNum >= 0
+     * @requires numOfRows >= MIN_SIZE && numOfCols >= MIN_SIZE && winNum >= MIN_SIZE
      * @ensures rows, cols, and numToWin private variables are set
      */
     GameBoardFast(int numOfRows, int numOfCols, int winNum)
