@@ -62,6 +62,13 @@ public class GameBoardMem implements IGameBoard {
                 || checkDiagonalWin(lastPos);
     }
 
+    /**
+     *
+     * @param lastPos is the most recent position that has been set on the board
+     * @requires lastPos be a valid and initialized BoardPosition object
+     * @return True if the last position is placed in a position to make 5 in a row horizontally
+     * @ensures Win conditions for lastPos's row are checked
+     */
     private boolean checkHorizontalWin(BoardPosition lastPos)
     {
         int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
@@ -108,6 +115,13 @@ public class GameBoardMem implements IGameBoard {
         return checkWinCount >= numToWin;
     }
 
+    /**
+     *
+     * @param lastPos is the most recent position that has been set on the board
+     * @requires lastPos be a valid and initialized BoardPosition object
+     * @return True if the last position is placed in a position to make 5 in a row vertically
+     * @ensures Win conditions for lastPos's column are checked
+     */
     private boolean checkVerticalWin(BoardPosition lastPos)
     {
         int checkWinCount = 1, checkCol = lastPos.getColumn(), checkRow = lastPos.getRow();
@@ -154,6 +168,13 @@ public class GameBoardMem implements IGameBoard {
         return checkWinCount >= numToWin;
     }
 
+    /**
+     *
+     * @param lastPos is the most recent position that has been set on the board
+     * @requires lastPos be a valid and initialized BoardPosition object
+     * @return True if the last position is placed in a position to make 5 in a row diagonally
+     * @ensures The diagonal including lastPos is checked for a win condition
+     */
     private boolean checkDiagonalWin(BoardPosition lastPos)
     {
         int checkRow = lastPos.getRow();
