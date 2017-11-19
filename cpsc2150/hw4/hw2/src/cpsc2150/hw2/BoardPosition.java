@@ -1,4 +1,4 @@
-package cpsc2150.hw2;
+package cpsc2150.hw4;
 
 public class BoardPosition {
 

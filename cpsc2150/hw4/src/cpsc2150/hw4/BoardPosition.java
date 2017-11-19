@@ -1,5 +1,9 @@
-package cpsc2150.hw2;
+package cpsc2150.hw4;
 
+/**
+ *
+ * Completed by cbrant on 11/9/19
+ */
 public class BoardPosition {
 
     private final int x_pos;

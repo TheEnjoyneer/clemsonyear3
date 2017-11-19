@@ -1,7 +1,11 @@
-package cpsc2150.hw2;
+package cpsc2150.hw4;
 
 import java.util.Scanner;
 
+/**
+ *
+ * Completed by cbrant on 11/9/19
+ */
 public class GameScreen {
 
     public static void main(String[] args)

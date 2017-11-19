@@ -1,8 +1,10 @@
-package cpsc2150.hw2;
+package cpsc2150.hw4;
 
 import java.util.*;
 
 /**
+ *
+ * Completed by cbrant on 11/9/19
  *
  * @invariant MIN_SIZE < rows <= MAX_SIZE
  * @invariant MIN_SIZE < cols <= MAX_SIZE
