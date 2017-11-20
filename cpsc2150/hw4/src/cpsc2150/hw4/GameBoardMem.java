@@ -42,10 +42,26 @@ public class GameBoardMem implements IGameBoard {
     @Override
     public boolean checkSpace(BoardPosition pos)
     {
+        int row = pos.getRow();
+        int col = pos.getColumn();
+        BoardPosition pos2;
+        boolean checkX, checkO;
+
          if (pos.getPlayer() == 'X')
-             return !(listX.contains(pos));
+         {
+             pos2 = new BoardPosition(row, col, 'O');
+             checkX = listX.contains(pos);
+             checkO = listO.contains(pos2);
+
+         }
          else
-             return !(listO.contains(pos));
+         {
+             pos2 = new BoardPosition(row, col, 'X');
+             checkX = listX.contains(pos2);
+             checkO = listO.contains(pos);
+         }
+
+         return checkX || checkO;
     }
 
     @Override
