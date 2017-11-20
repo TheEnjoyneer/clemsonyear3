@@ -167,7 +167,7 @@ public class GameScreen {
                 }
                 else
                 {
-                    System.out.println("\nThis space is already filled. Try again.");
+                    System.out.println("\nThis space is already filled. Try again.\n");
                     System.out.println(xoboard.toString());
                 }
 
@@ -206,7 +206,7 @@ public class GameScreen {
                 }
                 else
                 {
-                    System.out.println("\nThis space is already filled. Try again.");
+                    System.out.println("\nThis space is already filled. Try again.\n");
                     System.out.println(xoboard.toString());
                 }
             }

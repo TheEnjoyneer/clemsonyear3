@@ -61,7 +61,7 @@ public class GameBoardMem implements IGameBoard {
              checkO = !(listO.contains(pos));
          }
 
-         return checkX || checkO;
+         return checkX && checkO;
     }
 
     @Override
