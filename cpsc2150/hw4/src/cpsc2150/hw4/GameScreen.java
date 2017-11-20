@@ -69,6 +69,9 @@ public class GameScreen {
         marker = 0;
 
         System.out.println(xoboard.toString());
+        System.out.println("\nThis game begins with the player");
+        System.out.println("who chooses to use the X marker");
+        System.out.println("and alternates with the O marker.\n");
 
         // While loop that loops for input and continuous play
         while (winCondition == 0)
@@ -126,11 +129,10 @@ public class GameScreen {
                 marker = 0;
 
                 System.out.println(xoboard.toString());
+                System.out.println("\nThis game begins with the player");
+                System.out.println("who chooses to use the X marker");
+                System.out.println("and alternates with the O marker.\n");
             }
-
-            System.out.println("\nThis game begins with the player");
-            System.out.println("who chooses to use the X marker");
-            System.out.println("and alternates with the O marker.\n");
 
             // Runs input intake and checks for marker 'X'
             if (marker % 2 == 0)
