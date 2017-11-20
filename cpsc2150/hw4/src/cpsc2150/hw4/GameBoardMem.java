@@ -50,15 +50,15 @@ public class GameBoardMem implements IGameBoard {
          if (pos.getPlayer() == 'X')
          {
              pos2 = new BoardPosition(row, col, 'O');
-             checkX = listX.contains(pos);
-             checkO = listO.contains(pos2);
+             checkX = !(listX.contains(pos));
+             checkO = !(listO.contains(pos2));
 
          }
          else
          {
              pos2 = new BoardPosition(row, col, 'X');
-             checkX = listX.contains(pos2);
-             checkO = listO.contains(pos);
+             checkX = !(listX.contains(pos2));
+             checkO = !(listO.contains(pos));
          }
 
          return checkX || checkO;
