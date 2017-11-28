@@ -16,8 +16,8 @@ public final class TicTacToeGame {
         int row = 10;
         int col = 10;
         int win = 5;
-        //what implementation are you using
-        IGameBoard model = new
+        // Utilizing a GameBoardFast Implementation
+        IGameBoard model = new GameBoardFast(row, col, win);
         TicTacToeView view = new TicTacToeView(row, col);
         TicTacToeController controller = new TicTacToeController(model, view);
 
