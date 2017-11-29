@@ -23,9 +23,18 @@ public class TicTacToeController {
     // add the code and contracts for the constructor of our tic tac toe game
     TicTacToeController(IGameBoard model, TicTacToeView view)
     {
+        // Initialize the game to the IGameBoard model parameter
         this.curGame = model;
+
+        // Initialize current player to X as the first move will be by X
         this.curPlayer = 'X';
+
+        // Initialize the screen to the TicTacToeView view parameter
         this.screen = view;
+
+        // Display initial message to the user
+        String curMessage = "Welcome to Tic Tac Toe! Now Featuring GUI! Player " + curPlayer + " choose your location.";
+        screen.setMessage(curMessage);
     }
 
     //Add the code to respond to a user clicking on a button to try to claim a space
@@ -39,6 +48,37 @@ public class TicTacToeController {
     // remember your javadoc comments and contracts
     public void processButtonClick(int row, int col)
     {
+        BoardPosition pos = new BoardPosition(row, col, curPlayer);
+        String curMessage;
 
+        if (curGame.checkSpace(pos))
+        {
+            // Place marker and change the screen
+            curGame.placeMarker(pos);
+            screen.setMarker(pos.getRow(), pos.getColumn(), pos.getPlayer());
+
+            // Check for a winner
+            if (curGame.checkForWinner(pos))
+            {
+                curMessage = "Player " + curPlayer + " wins!";
+                screen.setMessage(curMessage);
+            }
+            else
+            {
+                if (curPlayer == 'X')
+                    curPlayer = 'O';
+                else
+                    curPlayer = 'X';
+
+                // Display the next player message prompt
+                curMessage = "Player " + curPlayer + " choose your location.";
+                screen.setMessage(curMessage);
+            }
+        }
+        else
+        {
+            curMessage = "Invalid input, space is taken. Try again Player " + curPlayer + ".";
+            screen.setMessage(curMessage);
+        }
     }
 }
