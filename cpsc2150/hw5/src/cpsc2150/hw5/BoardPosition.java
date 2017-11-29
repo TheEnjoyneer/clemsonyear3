@@ -2,7 +2,7 @@ package cpsc2150.hw5;
 
 /**
  *
- * Completed by cbrant on 11/9/19
+ * Completed by cbrant on 11/9/19, ensured correct for hw5 turn in on 12/5/17
  */
 public class BoardPosition {
 

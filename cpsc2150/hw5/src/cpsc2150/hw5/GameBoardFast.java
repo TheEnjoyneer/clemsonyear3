@@ -6,6 +6,8 @@ import java.lang.StringBuffer;
  *
  * Completed by cbrant on 11/9/19
  *
+ * Ensured correct for hw5 turn in on 12/5/17
+ *
  * @invariant MIN_SIZE < rows <= MAX_SIZE
  * @invariant MIN_SIZE < cols <= MAX_SIZE
  * @invariant MIN_WIN < numToWin <= MAX_SIZE

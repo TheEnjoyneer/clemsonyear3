@@ -4,6 +4,8 @@ package cpsc2150.hw5;
  * This class exists to declare our model, view, and controller objects, connect them, and start the game
  *
  * The only change you need to make is to call the appropriate constructor for your IGameBoard model variable
+ *
+ * Edited by cbrant and finalized on 12/5/17
  */
 public final class TicTacToeGame {
 

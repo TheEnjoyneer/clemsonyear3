@@ -23,8 +23,9 @@ public class TicTacToeController {
     // add the code and contracts for the constructor of our tic tac toe game
     TicTacToeController(IGameBoard model, TicTacToeView view)
     {
-
-
+        this.curGame = model;
+        this.curPlayer = 'X';
+        this.screen = view;
     }
 
     //Add the code to respond to a user clicking on a button to try to claim a space

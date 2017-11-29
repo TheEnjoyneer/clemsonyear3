@@ -4,6 +4,8 @@ package cpsc2150.hw5;
  *
  * Completed by cbrant on 11/9/19
  *
+ * Ensured correct for hw5 turn in on 12/5/17
+ *
  * IGameBoard represents a 2-dimensional gameboard that has characters
  * on it as markers (X, O). No space on the board can have multiple
  * players, and there can be a clear winner. Board is NUM_ROWS x NUM_COLS in size

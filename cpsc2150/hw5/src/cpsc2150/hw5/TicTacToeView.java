@@ -20,6 +20,8 @@ import java.util.List;
  * All events will be passed to the controller
  *
  * You do not need to make any changes to this code, but you do need to understand much of what is happening
+ *
+ * Code is reviewed and understood for turning in on 12/5/17
  */
 
 public final class TicTacToeView extends JFrame implements ActionListener {
@@ -190,7 +192,7 @@ public final class TicTacToeView extends JFrame implements ActionListener {
      * @param row the row of the button in our grid
      * @param col the column of the button in our grid
      * @param player the player who will now claim that button
-     * @requires 0<= row < ROWS_IN_BUTTON_PANEL and 0<= col <= COLUMNS_IN_BUTTON_PANEL
+     * @requires 0 <= row < ROWS_IN_BUTTON_PANEL and 0<= col <= COLUMNS_IN_BUTTON_PANEL
      * @ensures the button at row, col will display the character for the player
      *
      */
