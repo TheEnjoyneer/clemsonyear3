@@ -83,6 +83,8 @@ public class TicTacToeController {
      */
     public void processButtonClick(int row, int col)
     {
+        // pos has row and col asserted to it, therefore row, col, and curPlayer
+        // will be asserted correct when processButtonClick is pressed
         BoardPosition pos = new BoardPosition(row, col, curPlayer);
         String curMessage;
 
