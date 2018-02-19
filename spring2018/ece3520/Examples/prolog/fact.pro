@@ -1,3 +1,4 @@
+/* fact.pro is a basic factorial recursive program */
 /* set factorial(1,1) = 1 */
 
 factorial(0,1).
