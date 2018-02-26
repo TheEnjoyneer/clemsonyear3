@@ -13,15 +13,16 @@ listCellVal(Idx,[_|List],X) :-
 
 get_table_values_cell([I,J],Table,ContentsL) :- 
 	listCellVal(J,Table,JList),
-	listCellVal(I,JList,ContentsL).
+	listCellVal(I,JList,ContentsL), !.
 
 /* append(+OriginalList,+CellToAppend,-NewList) */
+/* May not need this append function, however will keep it until certain */
 append([],A,A).
 append([H|T],A,[H|NT]) :- append(T,A,NT).
 
 /* decompose prediate is below */
 /* decompose([+X,+Y],[[-X1,-Y1]|-List]) gives us a continually appended list */
-decompose([1,_],[]).
+decompose([1,_],[]) :- !.
 decompose([X,Y],[[X1,Y1]|List]) :-
 	X>0,
 	X1 is X-1,
@@ -34,6 +35,34 @@ decompose([X,Y],[[X1,Y1]|List]) :-
 decompositions(N,_) :- N<2, write('Do not use decompositions with an argument less than 2'),!.
 decompositions(N,Result) :-
 	decompose([N,0],Result).
+
+/* one_product predicate is below */
+/* one_product(+Nonterminal,+Cell,-Product) */
+one_product(_,[],[]).
+one_product([],_,[]).
+one_product(Nonterm,[CH|CT],[Prod1|ProdList]) :-
+	string_concat(Nonterm,CH,Prod1),
+	one_product(Nonterm,CT,ProdList), !.
+
+/* cell_products predicate is below */
+/* cell_products(+Cell1,+Cell2,-Product) */
+cell_products([],_,[]).
+cell_products(_,[],[]).
+cell_products([CH1|CT1],Cell2,List) :-
+	one_product(CH1,Cell2,Prod1),
+	cell_products(CT1,Cell2,ProdList),
+	append(Prod1,ProdList,List), !.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
