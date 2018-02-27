@@ -52,21 +52,38 @@ cell_products([CH1|CT1],Cell2,List) :-
 	cell_products(CT1,Cell2,ProdList),
 	append(Prod1,ProdList,List), !.
 
-/* iterate_cont predicate is used to find incorrect cases, */
-/* but to still continue iterating through the list */
-iterate_cont() :- .
+/* member predicate below is true if the input is a member of the list */
+/* member(+Value,+List) */
+member(X,[X|_]).
+member(X,[_|Y]) :- member(X,Y), !.
 
+/* retEmpty predicate is true if the given list is not empty */
+/* retEmpty(+List,-EmptyList) */
+retEmpty(List,[]) :- not(emptyEq(List,[])).
+
+/* singletonList predicate is true if the given list has a length of 1 */
+/* singletonList(+InputList,-OutputList) */
+singletonList(List) :- length(List, L1), L1 == 1.
 
 /* iterate_found predicate is used to find correct cases, */
 /* and to append their result to the list of answers */
-iterate_count() :- .
+/* iterate_find(+StringElement,+InputCell,-Nonterminal) */
+iterate_find(Term,Cell,Nonterm) :- 
+	subtract(Cell,[Term],Nonterm),
+	singletonList(Nonterm), !.
+iterate_find(Term,Cell,Nonterm) :-
+	subtract(Cell,[Term],Result),
+	not(singletonList(Result)),
+	retEmpty(Result,Nonterm), !.
 
 /* form_row1_cell predicate is below */
 /* form_row1_cell(+StringElement,+ProductionsList,-Row1Cell) */
 /*form_row1_cell(_,[],[]).*/
-form_row1_cell(Term,[LH|LT],List) :- .
-
-
+form_row1_cell(_,[],[]).
+form_row1_cell(Term,[LH|LT],ResultList) :-
+	iterate_find(Term,LH,Nonterm),
+	form_row1_cell(Term,LT,List),
+	append(Nonterm,List,ResultList), !.
 
 /* emptyEq defines 2 empty lists to be equal */
 emptyEq([],[]).
