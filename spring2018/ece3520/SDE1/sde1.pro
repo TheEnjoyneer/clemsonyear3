@@ -15,8 +15,8 @@ get_table_values_cell([I,J],Table,ContentsL) :-
 	listCellVal(J,Table,JList),
 	listCellVal(I,JList,ContentsL), !.
 
+/* append predicate for use in this program is listed below */
 /* append(+OriginalList,+CellToAppend,-NewList) */
-/* May not need this append function, however will keep it until certain */
 append([],A,A).
 append([H|T],A,[H|NT]) :- append(T,A,NT).
 
@@ -53,10 +53,19 @@ cell_products([CH1|CT1],Cell2,List) :-
 	cell_products(CT1,Cell2,ProdList),
 	append(Prod1,ProdList,List), !.
 
+/* iterate_cont predicate is used to find incorrect cases, */
+/* but to still continue iterating through the list */
+iterate_cont() :- .
+
+
+/* iterate_found predicate is used to find correct cases, */
+/* and to append their result to the list of answers */
+iterate_count() :- .
+
 /* form_row1_cell predicate is below */
 /* form_row1_cell(+StringElement,+ProductionsList,-Row1Cell) */
-
-
+/*form_row1_cell(_,[],[]).*/
+form_row1_cell(Term,[LH|LT],List) :- .
 
 
 
