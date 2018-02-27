@@ -1,9 +1,6 @@
 /* sde1.pro */
 /* This file contains all required predicates for ECE 3520 SDE1 */
 
-/* get_tables_values_cell predicate is below */
-/* get_table_values_cell([+I,+J],+Table,-ContentsL) */
-
 /* listCellVal(+Idx,+List,-CellContents) similar to nth1 prolog library function */
 listCellVal(1,[X|_],X) :- !.
 listCellVal(Idx,[_|List],X) :- 
@@ -11,6 +8,8 @@ listCellVal(Idx,[_|List],X) :-
 	Idx1 is Idx-1,
 	listCellVal(Idx1,List,X).
 
+/* get_tables_values_cell predicate is below */
+/* get_table_values_cell([+I,+J],+Table,-ContentsL) */
 get_table_values_cell([I,J],Table,ContentsL) :- 
 	listCellVal(J,Table,JList),
 	listCellVal(I,JList,ContentsL), !.
