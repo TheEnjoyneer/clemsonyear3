@@ -53,6 +53,54 @@ cell_products([CH1|CT1],Cell2,List) :-
 	cell_products(CT1,Cell2,ProdList),
 	append(Prod1,ProdList,List), !.
 
+/* form_row1_cell predicate is below */
+/* form_row1_cell(+StringElement,+ProductionsList,-Row1Cell) */
+
+
+
+
+
+
+/* emptyEq defines 2 empty lists to be equal */
+emptyEq([],[]).
+
+/* equivalent predicate is below */
+/* equivalent(+A,+B) */
+equivalent(Cell1,Cell2) :- 
+	subtract(Cell1,Cell2,Result1),
+	subtract(Cell2,Cell1,Result2),
+	emptyEq([],Result1),
+	emptyEq([],Result2), !.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
