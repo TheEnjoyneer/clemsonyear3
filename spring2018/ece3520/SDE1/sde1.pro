@@ -60,7 +60,6 @@ cell_products([CH1|CT1],Cell2,List) :-
 
 
 
-
 /* emptyEq defines 2 empty lists to be equal */
 emptyEq([],[]).
 
@@ -72,10 +71,19 @@ equivalent(Cell1,Cell2) :-
 	emptyEq([],Result1),
 	emptyEq([],Result2), !.
 
+/* row_equivalent predicate is below */
+/* row_equivalent(+RowA,+RowB) */
+row_equivalent([],[]).
+row_equivalent([RH1|RT1],[RH2|RT2]) :-
+	equivalent(RH1,RH2),
+	row_equivalent(RT1,RT2), !.
 
-
-
-
+/* table_equivalent predicate is below */
+/* table_equivalent(+TableA,+TableB) */
+table_equivalent([],[]).
+table_equivalent([RH1|RT1],[RH2|RT2]) :-
+	row_equivalent(RH1,RH2),
+	table_equivalent(RT1,RT2), !.
 
 
 
