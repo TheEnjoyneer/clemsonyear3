@@ -52,11 +52,6 @@ cell_products([CH1|CT1],Cell2,List) :-
 	cell_products(CT1,Cell2,ProdList),
 	append(Prod1,ProdList,List), !.
 
-/* member predicate below is true if the input is a member of the list */
-/* member(+Value,+List) */
-member(X,[X|_]).
-member(X,[_|Y]) :- member(X,Y), !.
-
 /* retEmpty predicate is true if the given list is not empty */
 /* retEmpty(+List,-EmptyList) */
 retEmpty(List,[]) :- not(emptyEq(List,[])).
