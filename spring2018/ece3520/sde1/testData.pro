@@ -32,6 +32,8 @@ table(book2,[
 [["AB", "E", "S", "CD"]]
 ]).
 
+/* bookbad1 and bookbad2 should not be equal to either book1 or book2 */
+
 table(bookbad1,[
 [["A"], ["A"], ["B", "C"], ["B", "C"]],
 [["C"], ["S", "A"], ["S", "B", "A"]],
