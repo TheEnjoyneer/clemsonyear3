@@ -72,9 +72,7 @@ int main(void)
 		{
 			// Choose amount of numbers to send this time and add them to total
 			// Also ensure that the number is nonzero
-			iterate_size = rand() % SEND_SIZE;
-			if (iterate_size == 0)
-				iterate_size = 1;
+			iterate_size = (rand() % SEND_SIZE) + 1;
 			send_size += iterate_size;
 
 			/* Create "iterate_size" random numbers to send
@@ -83,7 +81,7 @@ int main(void)
 			 */
 			for (j = 0; j < iterate_size; j++)
 			{
-				num_to_send = rand() % MAX_NUM;
+				num_to_send = (rand() % MAX_NUM) + 1;
 				send_sum += num_to_send;
 				write(pipe_end[PIPE_WRITE], &num_to_send, sizeof(num_to_send));
 			}
