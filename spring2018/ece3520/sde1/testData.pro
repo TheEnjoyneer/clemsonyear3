@@ -8,7 +8,7 @@ table(sample_table,[
 [["1","4"]]
 ]).
 
-table(book_result,[
+table(book_prods,[
 [["S"],["A"],["B","C"],["B","D"],["C","E"]],
 [["C"],["S","A"],["S","B","A"],["B","C","E"]],
 [["C","A"],["C","S","A"],["D","S","A","B"]],
@@ -49,7 +49,8 @@ table(bookbad2,[
 ]).
 
 productions(book_prods,[["S","AC"],["S","BD"],["A","CD"],["A","AD"],["A","a"],
-["B","BD"],["B","CA"],["B","b"],["C","BA"],["C","AA"],["C","b"],["D","AA"],["D","d"]]).
+["B","BD"],["B","CA"],["B","a"],["B","b"],["C","BA"],["C","AA"],["C","b"],
+["D","AA"],["D","d"]]).
 
 
 

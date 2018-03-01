@@ -37,16 +37,16 @@ decompositions(N,Result) :-
 
 /* one_product predicate is below */
 /* one_product(+Nonterminal,+Cell,-Product) */
-one_product(_,[],[]).
-one_product([],_,[]).
+one_product(_,[],[]) :- !.
+one_product([],_,[]) :- !.
 one_product(Nonterm,[CH|CT],[Prod1|ProdList]) :-
 	string_concat(Nonterm,CH,Prod1),
 	one_product(Nonterm,CT,ProdList), !.
 
 /* cell_products predicate is below */
 /* cell_products(+Cell1,+Cell2,-Product) */
-cell_products([],_,[]).
-cell_products(_,[],[]).
+cell_products([],_,[]) :- !.
+cell_products(_,[],[]) :- !.
 cell_products([CH1|CT1],Cell2,List) :-
 	one_product(CH1,Cell2,Prod1),
 	cell_products(CT1,Cell2,ProdList),
