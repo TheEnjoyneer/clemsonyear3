@@ -32,10 +32,10 @@ int main(void)
 	int pipe_end[2];
 	int iterate_size, rec_total;
 	int send_size, rec_size;
-	unsigned long int num_to_send;
-	unsigned long int num_received;
-	unsigned long int send_sum, rec_ind_sum, rec_sum;
-	unsigned long int send_avg, rec_avg;
+	unsigned long long num_to_send;
+	unsigned long long num_received;
+	unsigned long long send_sum, rec_ind_sum, rec_sum;
+	unsigned long long send_avg, rec_avg;
 
 	// Seed the random number sequence
 	srand(time(NULL));
