@@ -22,7 +22,6 @@
 #define SEND_SIZE 4
 #define PIPE_READ 0
 #define PIPE_WRITE 1
-#define EXP_NUM_TO_AVG 50
 
 int main(void)
 {
