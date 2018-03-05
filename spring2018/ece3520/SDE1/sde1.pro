@@ -30,7 +30,6 @@ decompose([X,Y],[[X1,Y1]|List]) :-
 
 /* decompositions predicate is below */
 /* decompositions(+N, -List_of_decomposition_sublists) */
-
 decompositions(N,_) :- N<2, write('Do not use decompositions with an argument less than 2'),!.
 decompositions(N,Result) :-
 	decompose([N,0],Result).
