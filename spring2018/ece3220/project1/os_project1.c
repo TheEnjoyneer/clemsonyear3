@@ -56,7 +56,13 @@ int main(void)
 		fprintf(stderr,"\nERROR: Consumer process failed to fork.\n");
 		exit(1);
 	}
-	// Producer section of code is below 
+	/* Producer will run for 5000 iterations.
+     * At each iteration create 1-4 random positive numbers [1-1,000,000] and write
+     * them into the pipe.
+     * At the end the producer should close the pipe.
+     * The producer should report how many random numbers were written and their average.
+     * Producer section of code is below
+     */
 	else if (pid > 0)
 	{
 		// Initialize send sum and total numbers sent to 0
@@ -96,7 +102,14 @@ int main(void)
 		// Ensure the producer waits until the consumer finishes running to end itself
 		wait(NULL);
 	}
-	// Consumer section of code is below
+	/* Consumer will read from the pipe until the pipe is closed.
+     * For each 50 numbers read from the pipe, compute and report a partial average.
+     * When the pipe closes report the pipe is closed, also compute and report a final
+     * partial average (may be less than 50 numbers).
+     * The consumer should report how many random numbers in total were read and their
+     * average.
+     * Consumer section of code is below
+     */
 	else
 	{
 		// Close the writing end of the pipe on the consumer end
