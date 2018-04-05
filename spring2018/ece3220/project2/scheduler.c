@@ -4,7 +4,7 @@
 /* Due: April 9, 2018                     */
 /*                                        */
 /* Compile: gcc scheduler.c               */
-/* Run: ./a.out                           */
+/* Run: ./scheduler,                       */
 /******************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,8 +37,9 @@ int processes_left;  /* processes currently loaded in the work_queue */
 int switches;  /* number of context switches in simulation */
 
 /* otuput section for reporting purposes */
-void print_report() {
-     int i, avg;
+void print_report()
+{
+   int i, avg;
 
    avg = 0;
    if (scheduling_policy == 0) { printf("Scheduling Policy: FIFO\n"); }
@@ -51,7 +52,8 @@ void print_report() {
    printf("Time Quantium: %d\n", time_quantium);
    printf("Number of Processes: %d\n\n", number_of_processes);
 
-   for (i=0; i<number_of_processes; i++) {
+   for (i=0; i<number_of_processes; i++)
+   {
       printf("Process ID: %d\n", simulation_load[i].process_id);
       printf("   Arrival Time: %d\n", simulation_load[i].arrival_time);
       printf("   Process Length: %d\n", simulation_load[i].process_length);
@@ -70,7 +72,9 @@ void print_machine_state() {
     int i;
 
    printf("\n\n TOTAL WORK LOAD \n");
-   for (i=0; i<number_of_processes; i++) {
+
+   for (i=0; i<number_of_processes; i++)
+   {
       printf("Process ID: %d\n", simulation_load[i].process_id);
       printf("   Arrival Time: %d\n", simulation_load[i].arrival_time);
       printf("   Process Length: %d\n", simulation_load[i].process_length);
@@ -87,7 +91,9 @@ void print_machine_state() {
    printf("   Time Waiting: %d\n", on_cpu.time_waiting);
 
    printf("\n\n WORK QUEUE \n");
-   for (i=0; i<processes_left; i++) {
+
+   for (i=0; i<processes_left; i++)
+   {
       printf("Process ID: %d\n", work_queue[i].process_id);
       printf("   Time Remaining: %d\n", work_queue[i].time_remaining);
       printf("   Time Waiting: %d\n", work_queue[i].time_waiting);
@@ -104,8 +110,28 @@ void print_machine_state() {
 /*       compute results and update total_simulation */
 /*    else                                           */
 /*       move task to the end of the work_queue      */
-void preempt_process() {
-   ;
+void preempt_process()
+{
+   int i;
+
+   if (on_cpu.time_remaining <= 0)
+   {
+      for(i = 0; total_simulation[i].process_id != on_cpu.process_id; i++);
+
+      total_simulation[i].completion_time = master_clock;
+      total_simulation[i].response_time = master_clock - total_simulation[i].arrival_time;
+      on_cpu.process_id = -1;
+      processes_left--;
+   }
+   else
+   {
+      for(i = 0; work_queue[i].process_id != -1; i++);
+
+      work_queue[i].process_id = on_cpu.process_id;
+      work_queue[i].time_remaining = on_cpu.time_remaining;
+
+      on_cpu.process_id = -1;
+   }
 }
 
 /* Run one process and update the waiting time for all processes in the work_queue */
@@ -121,8 +147,18 @@ void preempt_process() {
 /*       else                                                                      */
 /*          "run task for one time_quantium"                                       */
 /*          update all the waiting times for processes in the work_queue           */
-void run_process() {
-   ;
+void run_process()
+{
+   if (scheduling_policy == 0 || on_cpu.time_remaining < time_quantium)
+   {
+      master_clock += on_cpu.time_remaining;
+      on_cpu.time_remaining = 0;
+   }
+   else
+   {
+      master_clock += time_quantium;
+      on_cpu.time_remaining -= time_quantium;
+   }
 }
 
 /* Decide which process will be loaded onto the cpu to run next based on Scheduling Policy */
@@ -132,24 +168,33 @@ void run_process() {
 /*    If SJF (premption does not matter)                                                      */
 /*       find "shortest job left" and move it to cpu                                          */
 /*       move all other tasks up one slot                                                     */
-void load_process() {
+void load_process()
+{
    ;
 }
 
 /* Copy "new" processes from simulation load to the end of work queue */
 /*    For each task in simulation_load <= master_clock and NOT loaded */
 /*       copy task from simulation_load to the end of the work_queue */
-void new_process() {
-   ;
+void new_process()
+{
+   int i, j;
+
+   for (i = 0; simulation_load[i].process_id != -1; i++)
+   {
+      if (simulation_load[i].arrival_time <= master_clock && simulation_load.process_loaded == )
+   }
 }
 
-void load_task_simulation_data() {
+void load_task_simulation_data()
+{
      FILE *fp;
      int i;
      char filler[100];  // used to read to end of line in the config files -- like a NULL read
 
    // set all process slots to "empty (-1)"
-   for (i=0; i<MAX; i++) {
+   for (i=0; i<MAX; i++)
+   {
       simulation_load[i].process_id = -1;
       work_queue[i].process_id = -1;
    }
@@ -169,7 +214,8 @@ void load_task_simulation_data() {
    fscanf(fp,"%d",&number_of_processes);
    fgets(filler, 100, fp);
 
-   for (i=0; i<number_of_processes; i++) {
+   for (i=0; i<number_of_processes; i++)
+   {
       fscanf(fp,"%d",&(simulation_load[i].process_id));
       fgets(filler, 100, fp);
 
@@ -187,13 +233,16 @@ void load_task_simulation_data() {
    }
    fclose(fp);
 
-   if (scheduling_policy == 0) {  // FIFO requires Premption to be turned OFF
+   if (scheduling_policy == 0)
+   {  // FIFO requires Premption to be turned OFF
       premption_policy = 0;
    }
-   if (scheduling_policy == 2) {  // RR requires Premption to be turned ON
+   if (scheduling_policy == 2)
+   {  // RR requires Premption to be turned ON
       premption_policy = 1;
    }
-   if (premption_policy < 0 || premption_policy > 1) {  // Catch bad input
+   if (premption_policy < 0 || premption_policy > 1)
+   {  // Catch bad input
       premption_policy = 1;
    }
    master_clock = 0;
@@ -201,10 +250,12 @@ void load_task_simulation_data() {
    switches = 0;
 }
 
-int main() {
+int main()
+{
    load_task_simulation_data();  // Get input
    new_process();                // Load at least 1+ processes onto work queue
-   while (processes_left) {
+   while (processes_left)
+   {
       load_process();    // Move work from work queue to cpu
       run_process();     // run ONE process (add wait times to processes in work_queue)
       new_process();     // Load any "newly" arriving processes
