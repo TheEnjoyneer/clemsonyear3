@@ -118,8 +118,10 @@ void preempt_process()
    // Increment switches counter
    switches++;
 
+   // Check if the task is done and update the simulation_load information
    if (on_cpu.time_remaining <= 0)
    {
+      // Searching for loop to find the simulation load location to place info
       for(i = 0; simulation_load[i].process_id != on_cpu.process_id; i++);
 
       simulation_load[i].completion_time = master_clock;
@@ -127,6 +129,7 @@ void preempt_process()
       on_cpu.process_id = -1;
       processes_left--;
    }
+   // If task is not done, move the task to the end of the work queue
    else
    {
       for(i = 0; work_queue[i].process_id != -1; i++);
@@ -153,42 +156,25 @@ void preempt_process()
 /*          update all the waiting times for processes in the work_queue           */
 void run_process()
 {
-   int i;
+   int i, add_wait;
 
    if (preemption_policy == 0 || on_cpu.time_remaining < time_quantum)
    {
       master_clock += on_cpu.time_remaining;
+      add_wait = on_cpu.time_remaining;
       on_cpu.time_remaining = 0;
-      on_cpu.completion_time = master_clock;
-      on_cpu.response_time = master_clock - on_cpu.arrival_time;
 
       for (i = 0; i < processes_left; i++)
-      {
-         work_queue[i].time_waiting = master_clock - work_queue[i].arrival_time;
-      }
+         work_queue[i].time_waiting += add_wait;
    }
    else
    {
-      if (on_cpu.time_remaining <= time_quantum)
-      {
-         master_clock += on_cpu.time_remaining;
-         on_cpu.time_remaining = 0;
+      master_clock += time_quantum;
+      add_wait = time_quantum;
+      on_cpu.time_remaining -= time_quantum;
 
-         for (i = 0; i < processes_left; i++)
-         {
-            work_queue[i].time_waiting = master_clock - work_queue[i].arrival_time;
-         }
-      }
-      else
-      {
-         master_clock += time_quantum;
-         on_cpu.time_remaining -= time_quantum;
-
-         for (i = 0; i < processes_left; i++)
-         {
-            work_queue[i].time_waiting = master_clock - work_queue[i].arrival_time;
-         }
-      }
+      for (i = 0; i < processes_left; i++)
+         work_queue[i].time_waiting += add_wait;
    }
 }
 
@@ -203,34 +189,35 @@ void load_process()
 {
    int i, min = 0;
 
-   if ((scheduling_policy == 0) || (scheduling_policy == 2))
+   // If FIFO or Round Robin
+   if (scheduling_policy == 0 || scheduling_policy == 2)
    {
+      // Move work_queue[0] to cpu
       on_cpu = work_queue[0];
 
+      // Loop through to move all other tasks up a slot in the work_queue
       for (i = 0; i < processes_left; i++)
-      {
          work_queue[i] = work_queue[i+1];
-      }
 
+      // Decrement the amount of processess left
       processes_left--;
    }
+   // If Shortest job first
    else if (scheduling_policy == 1)
    {
+      // Find the shortest job remaining in this for loop
       for (i = 0; i < processes_left; i++)
-      {
          if (work_queue[i].process_length < work_queue[min].process_length)
-         {
             min = i;
-         }
-      }
 
+      // set the shortest job to be the one on the processor
       on_cpu = work_queue[min];
 
+      //  Loop through to move all other tasks up a slot in the work_queue
       for (i = min; i < processes_left; i++)
-      {
          work_queue[i] = work_queue[i+1];
-      }
 
+      // Decrement the amount of processes left
       processes_left--;
    }
 }
@@ -244,13 +231,14 @@ void new_process()
 
    for (i = 0; simulation_load[i].process_id != -1; i++)
    {
-      // fix the last test for equality
-      if (simulation_load[i].arrival_time <= master_clock && simulation_load[i].process_loaded == 1)
+      if (simulation_load[i].arrival_time <= master_clock && simulation_load[i].process_loaded == 0)
       {
-         for (j = 0; work_queue[i].process_id != -1; j++);
+         for (j = 0; work_queue[j].process_id != -1; j++);
 
+         simulation_load[i].process_loaded = 1;
          work_queue[j] = simulation_load[i];
          processes_left++;
+         printf("Processes left %d\n", processes_left);
       }
    }
 }
