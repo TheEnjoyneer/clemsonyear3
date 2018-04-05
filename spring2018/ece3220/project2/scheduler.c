@@ -1,10 +1,11 @@
 /******************************************/
-/* Name: Christopher Brant                */
+/* Names: Christopher Brant               */
+/*    and Jennifer Starcher               */
 /* Project: CPSC 3220 Scheduling Project  */
 /* Due: April 9, 2018                     */
 /*                                        */
 /* Compile: gcc scheduler.c               */
-/* Run: ./scheduler,                       */
+/* Run: ./scheduler                       */
 /******************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,8 +31,8 @@ process on_cpu;  /* cpu hold the one task running on the cpu */
 
 int number_of_processes;  /* number of processes to simulate during the simulation (total workload)*/
 int scheduling_policy; /* 0=FIFO (no premption), 1=SJF (choose), 2=RR (premption is needed) */
-int premption_policy;  /* 0 is off 1 is on (scheduling policy will overrule this setting) */
-int time_quantium;  /* used in preemption */
+int preemption_policy;  /* 0 is off 1 is on (scheduling policy will overrule this setting) */
+int time_quantum;  /* used in preemption */
 int master_clock;  /* clock start at 0 */
 int processes_left;  /* processes currently loaded in the work_queue */
 int switches;  /* number of context switches in simulation */
@@ -46,10 +47,10 @@ void print_report()
    else if (scheduling_policy == 1) { printf("Scheduling Policy: SJF\n"); }
    else if (scheduling_policy == 2) { printf("Scheduling Policy: RR\n"); }
 
-   if (premption_policy == 0) { printf("Premption: OFF\n"); }
-   else if (premption_policy == 1) { printf("Premption: ON\n"); }
+   if (preemption_policy == 0) { printf("Premption: OFF\n"); }
+   else if (preemption_policy == 1) { printf("Premption: ON\n"); }
 
-   printf("Time Quantium: %d\n", time_quantium);
+   printf("Time Quantium: %d\n", time_quantum);
    printf("Number of Processes: %d\n\n", number_of_processes);
 
    for (i=0; i<number_of_processes; i++)
@@ -116,10 +117,10 @@ void preempt_process()
 
    if (on_cpu.time_remaining <= 0)
    {
-      for(i = 0; total_simulation[i].process_id != on_cpu.process_id; i++);
+      for(i = 0; simulation_load[i].process_id != on_cpu.process_id; i++);
 
-      total_simulation[i].completion_time = master_clock;
-      total_simulation[i].response_time = master_clock - total_simulation[i].arrival_time;
+      simulation_load[i].completion_time = master_clock;
+      simulation_load[i].response_time = master_clock - simulation_load[i].arrival_time;
       on_cpu.process_id = -1;
       processes_left--;
    }
@@ -141,23 +142,23 @@ void preempt_process()
 /*       "run task to completion"                                                  */
 /*       update all the waiting times for processes in the work_queue              */
 /*    else (YES premption)                                                         */
-/*       if (time_remaining <= time_quantium) [check for short task]               */
+/*       if (time_remaining <= time_quantum) [check for short task]               */
 /*          "run task to completion"                                               */
 /*          update all the waiting times for processes in the work_queue           */
 /*       else                                                                      */
-/*          "run task for one time_quantium"                                       */
+/*          "run task for one time_quantum"                                       */
 /*          update all the waiting times for processes in the work_queue           */
 void run_process()
 {
-   if (scheduling_policy == 0 || on_cpu.time_remaining < time_quantium)
+   if (preemption_policy == 0 || on_cpu.time_remaining < time_quantum)
    {
       master_clock += on_cpu.time_remaining;
       on_cpu.time_remaining = 0;
    }
    else
    {
-      master_clock += time_quantium;
-      on_cpu.time_remaining -= time_quantium;
+      master_clock += time_quantum;
+      on_cpu.time_remaining -= time_quantum;
    }
 }
 
@@ -170,7 +171,38 @@ void run_process()
 /*       move all other tasks up one slot                                                     */
 void load_process()
 {
-   ;
+   int i, min = 0;
+
+   if ((scheduling_policy == 0) || (scheduling_policy == 2))
+   {
+      on_cpu = work_queue[0];
+
+      for (i = 0; i < processes_left; i++)
+      {
+         work_queue[i] = work_queue[i+1];
+      }
+
+      processes_left--;
+   }
+   else if (scheduling_policy == 1)
+   {
+      for (i = 0; i < processes_left; i++)
+      {
+         if (work_queue[i].process_length < work_queue[min].process_length)
+         {
+            min = i;
+         }
+      }
+
+      on_cpu = work_queue[min];
+
+      for (i = min; i < processes_left; i++)
+      {
+         work_queue[i] = work_queue[i+1];
+      }
+
+      processes_left--;
+   }
 }
 
 /* Copy "new" processes from simulation load to the end of work queue */
@@ -182,7 +214,14 @@ void new_process()
 
    for (i = 0; simulation_load[i].process_id != -1; i++)
    {
-      if (simulation_load[i].arrival_time <= master_clock && simulation_load.process_loaded == )
+      // fix the last test for equality
+      if (simulation_load[i].arrival_time <= master_clock && simulation_load[i].process_loaded == 1)
+      {
+         for (j = 0; work_queue[i].process_id != -1; j++);
+
+         work_queue[j] = simulation_load[i];
+         processes_left++;
+      }
    }
 }
 
@@ -205,10 +244,10 @@ void load_task_simulation_data()
    fscanf(fp,"%d",&scheduling_policy);
    fgets(filler, 100, fp);
 
-   fscanf(fp,"%d",&premption_policy);
+   fscanf(fp,"%d",&preemption_policy);
    fgets(filler, 100, fp);
 
-   fscanf(fp,"%d",&time_quantium);
+   fscanf(fp,"%d",&time_quantum);
    fgets(filler, 100, fp);
 
    fscanf(fp,"%d",&number_of_processes);
@@ -235,15 +274,15 @@ void load_task_simulation_data()
 
    if (scheduling_policy == 0)
    {  // FIFO requires Premption to be turned OFF
-      premption_policy = 0;
+      preemption_policy = 0;
    }
    if (scheduling_policy == 2)
    {  // RR requires Premption to be turned ON
-      premption_policy = 1;
+      preemption_policy = 1;
    }
-   if (premption_policy < 0 || premption_policy > 1)
+   if (preemption_policy < 0 || preemption_policy > 1)
    {  // Catch bad input
-      premption_policy = 1;
+      preemption_policy = 1;
    }
    master_clock = 0;
    processes_left = 0;
