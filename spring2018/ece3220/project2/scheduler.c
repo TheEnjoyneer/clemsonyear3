@@ -115,6 +115,9 @@ void preempt_process()
 {
    int i;
 
+   // Increment switches counter
+   switches++;
+
    if (on_cpu.time_remaining <= 0)
    {
       for(i = 0; simulation_load[i].process_id != on_cpu.process_id; i++);
@@ -150,15 +153,42 @@ void preempt_process()
 /*          update all the waiting times for processes in the work_queue           */
 void run_process()
 {
+   int i;
+
    if (preemption_policy == 0 || on_cpu.time_remaining < time_quantum)
    {
       master_clock += on_cpu.time_remaining;
       on_cpu.time_remaining = 0;
+      on_cpu.completion_time = master_clock;
+      on_cpu.response_time = master_clock - on_cpu.arrival_time;
+
+      for (i = 0; i < processes_left; i++)
+      {
+         work_queue[i].time_waiting = master_clock - work_queue[i].arrival_time;
+      }
    }
    else
    {
-      master_clock += time_quantum;
-      on_cpu.time_remaining -= time_quantum;
+      if (on_cpu.time_remaining <= time_quantum)
+      {
+         master_clock += on_cpu.time_remaining;
+         on_cpu.time_remaining = 0;
+
+         for (i = 0; i < processes_left; i++)
+         {
+            work_queue[i].time_waiting = master_clock - work_queue[i].arrival_time;
+         }
+      }
+      else
+      {
+         master_clock += time_quantum;
+         on_cpu.time_remaining -= time_quantum;
+
+         for (i = 0; i < processes_left; i++)
+         {
+            work_queue[i].time_waiting = master_clock - work_queue[i].arrival_time;
+         }
+      }
    }
 }
 
