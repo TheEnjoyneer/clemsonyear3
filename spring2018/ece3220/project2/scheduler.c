@@ -142,17 +142,17 @@ void preempt_process()
 }
 
 /* Run one process and update the waiting time for all processes in the work_queue */
-/*  (Watch out for process that have less than time quantium work left to do)      */
+/*  (Watch out for process that have less than time quantum work left to do)       */
 /*    Check Premption Policy                                                       */
 /*    if NO premption                                                              */
 /*       "run task to completion"                                                  */
 /*       update all the waiting times for processes in the work_queue              */
 /*    else (YES premption)                                                         */
-/*       if (time_remaining <= time_quantum) [check for short task]               */
+/*       if (time_remaining <= time_quantum) [check for short task]                */
 /*          "run task to completion"                                               */
 /*          update all the waiting times for processes in the work_queue           */
 /*       else                                                                      */
-/*          "run task for one time_quantum"                                       */
+/*          "run task for one time_quantum"                                        */
 /*          update all the waiting times for processes in the work_queue           */
 void run_process()
 {
@@ -199,15 +199,14 @@ void load_process()
       for (i = 0; i < processes_left; i++)
          work_queue[i] = work_queue[i+1];
 
-      // Decrement the amount of processess left
-      processes_left--;
+      work_queue[i].process_id = -1;
    }
    // If Shortest job first
    else if (scheduling_policy == 1)
    {
       // Find the shortest job remaining in this for loop
       for (i = 0; i < processes_left; i++)
-         if (work_queue[i].process_length < work_queue[min].process_length)
+         if (work_queue[i].time_remaining < work_queue[min].time_remaining)
             min = i;
 
       // set the shortest job to be the one on the processor
@@ -216,9 +215,6 @@ void load_process()
       //  Loop through to move all other tasks up a slot in the work_queue
       for (i = min; i < processes_left; i++)
          work_queue[i] = work_queue[i+1];
-
-      // Decrement the amount of processes left
-      processes_left--;
    }
 }
 
@@ -238,7 +234,6 @@ void new_process()
          simulation_load[i].process_loaded = 1;
          work_queue[j] = simulation_load[i];
          processes_left++;
-         printf("Processes left %d\n", processes_left);
       }
    }
 }

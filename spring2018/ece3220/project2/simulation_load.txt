@@ -1,4 +1,4 @@
-0 Scheduling Policy (0 is FIFO, 1 is SJF, and 2 is RR)
+1 Scheduling Policy (0 is FIFO, 1 is SJF, and 2 is RR)
 1 Preemption (0 is OFF and 1 is ON [for SJF ONLY])
 10 Time Slice
 10 Number of Processes
