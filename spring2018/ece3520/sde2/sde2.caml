@@ -31,3 +31,9 @@ let rec second_cell ([cell1;cell2],return_list) =
 	| ([[];_],return_list) -> return_list
 	| ([cell1;cell2],return_list) -> second_cell ([(List.tl cell1);cell2],(iterate_list ([cell1;cell2],return_list)));;
 
+let cell_products [cell1;cell2] =
+	match [cell1;cell2] with
+	[] -> []
+	| [[];_] -> []
+	| [_;[]] -> []
+	| [cell1;cell2] -> second_cell ([cell1;cell2],[]);;
