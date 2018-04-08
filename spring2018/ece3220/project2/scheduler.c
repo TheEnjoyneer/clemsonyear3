@@ -124,6 +124,7 @@ void preempt_process()
       // Searching for loop to find the simulation load location to place info
       for(i = 0; simulation_load[i].process_id != on_cpu.process_id; i++);
 
+      // Update completion and response times, and decrement amount of processes
       simulation_load[i].completion_time = master_clock;
       simulation_load[i].response_time = master_clock - simulation_load[i].arrival_time;
       on_cpu.process_id = -1;
@@ -132,8 +133,10 @@ void preempt_process()
    // If task is not done, move the task to the end of the work queue
    else
    {
+      // Search for the end of the work queue
       for(i = 0; work_queue[i].process_id != -1; i++);
 
+      // Move all tasks to the end of the queue
       work_queue[i].process_id = on_cpu.process_id;
       work_queue[i].time_remaining = on_cpu.time_remaining;
 
@@ -158,21 +161,27 @@ void run_process()
 {
    int i, add_wait;
 
+   // Check if the preemption policy is 0 or if the time remaining is less than the time quantum
    if (preemption_policy == 0 || on_cpu.time_remaining < time_quantum)
    {
+      // Update the clock, save the wait time to add, and zero out time remaining
       master_clock += on_cpu.time_remaining;
       add_wait = on_cpu.time_remaining;
       on_cpu.time_remaining = 0;
 
+      // Add wait time to all waiting processes
       for (i = 0; i < processes_left; i++)
          work_queue[i].time_waiting += add_wait;
    }
+   // For all other conditions
    else
    {
+      // Update master clock a full time quantum, save wait times and update time remaining
       master_clock += time_quantum;
       add_wait = time_quantum;
       on_cpu.time_remaining -= time_quantum;
 
+      // Add wait time to all waiting processes
       for (i = 0; i < processes_left; i++)
          work_queue[i].time_waiting += add_wait;
    }
@@ -225,12 +234,15 @@ void new_process()
 {
    int i, j;
 
+   // For all processes in the simulation load, find which are loaded and have arrived
    for (i = 0; simulation_load[i].process_id != -1; i++)
    {
       if (simulation_load[i].arrival_time <= master_clock && simulation_load[i].process_loaded == 0)
       {
+         // Searching for loop to find the end of the work queue
          for (j = 0; work_queue[j].process_id != -1; j++);
 
+         // Load the process, so flip the loaded bit, add the process to the work queue and update # of processes
          simulation_load[i].process_loaded = 1;
          work_queue[j] = simulation_load[i];
          processes_left++;
