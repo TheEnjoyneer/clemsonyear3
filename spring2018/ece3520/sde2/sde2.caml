@@ -3,6 +3,16 @@
 		 Due April 10th, 2018
 		 Compile: # use "sde2.caml";;
 
+	Allowable pre-written Ocaml modules:
+	List.hd
+	List.tl
+	List.nth
+	List.length
+	List.append
+	String.length
+	String.get
+	String.concat
+	Char.code
 *)
 
 (* get_table_values_cell ([i;j],table) follows this comment section*)
@@ -14,8 +24,10 @@ let get_tables_values_cell ([i;j],table) =
 	| (_,[]) -> []
 	| ([i;j],table) -> (List.nth (List.nth table (j-1)) (i-1));;
 
-(* cell_products[cell1;cell2]  will be at the bottom of this section *)
+(* cell_products [cell1;cell2]  will be at the bottom of this section *)
 (* val cell_products : string list list -> string list = <fun> *)
+
+(* the two functions prior to cell_products are used in the finding of cell_products *)
 let rec iterate_list([list_head;cell2],return_list) = 
 	match ([list_head;cell2],return_list) with
 	([],_) -> []
@@ -31,9 +43,86 @@ let rec second_cell ([cell1;cell2],return_list) =
 	| ([[];_],return_list) -> return_list
 	| ([cell1;cell2],return_list) -> second_cell ([(List.tl cell1);cell2],(iterate_list ([cell1;cell2],return_list)));;
 
+(* cell_products [cell1;cell2] directly below *)
 let cell_products [cell1;cell2] =
 	match [cell1;cell2] with
 	[] -> []
 	| [[];_] -> []
 	| [_;[]] -> []
 	| [cell1;cell2] -> second_cell ([cell1;cell2],[]);;
+
+(* form_row1_cell (element,productions) *)
+(* val form_row1_cell : 'a * 'a list list -> 'a list = <fun> *)
+
+(* Come back to this obviously *)
+
+
+
+(* equiv (ca,cb) will be at the bottom of this section *)
+(* val equiv : 'a list * 'a list -> bool = <fun> *)
+
+(* the two functions prior to equiv are used in the finding of equiv *)
+let rec member (ca,cb) =
+	match (ca,cb) with 
+	([],[]) -> true
+	| ([],_) -> false
+	| (_,[]) -> false
+	| (ca,cb) -> if (List.hd ca) = (List.hd cb)
+					then true
+				 else member (ca,(List.tl cb));;
+
+let rec cell_equiv_list (ca,cb,original_list) =
+	match (ca,cb) with
+	([],[],_) -> true
+	| (_,[],_) -> false
+	| ([],_,_) -> if (List.length cb) = (List.length original_list)
+				  then true
+				  else false
+	| (ca,cb,original_list) -> if member (ca,cb)
+							   		then equal ((List.tl ca),cb,original_list)
+							   else false;;
+
+(* equiv (ca,cb) *)
+let equiv (ca,cb) = 
+	match (ca,cb) with
+	([],[]) -> true
+	| ([],_) -> false
+	| (_,[]) -> false
+	| (ca,cb) -> if (List.length ca) = (List.length cb)
+				 then cell_equiv_list(ca,cb,ca);;
+
+(* row_equivalent (rowA,rowB) *)
+(* val row_equivalent : 'a list list * 'a list list -> bool = <fun> *)
+let rec row_equivalent (rowA,rowB) =
+	match (rowA,rowB) with
+	([],[]) -> true
+	| ([],_) -> false
+	| (_,[]) -> false
+	| (rowA,rowB) -> if equiv ((List.hd rowA),(List.hd rowB))
+					 	then equiv ((List.tl rowA),(List.tl rowB))
+					 else false;;
+
+(* table_equivalent (tableA,tableB) *)
+(* val table_equivlent : 'a list list list * 'a list list list -> bool = <fun> *)
+let rec table_equivalent (tableA,tableB) = 
+	match (tableA,tableB) with
+	([],[]) -> true
+	| ([],_) -> false
+	| (_,[]) -> false
+	| (tableA,tableB) -> if row_equivalent ((List.hd tableA),(List.hd tableB))
+							then row_equivalent ((List.tl tableA),(List.tl tableB))
+						else false;;
+
+(* valid_production production *)
+(* val valid_production : string list -> bool = <fun> *)
+
+
+
+
+
+
+
+
+
+
+
