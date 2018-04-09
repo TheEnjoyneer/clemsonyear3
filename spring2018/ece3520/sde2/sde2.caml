@@ -125,6 +125,7 @@ let rec table_equivalent (tableA,tableB) =
 (* valid_production production will be at the bottom of this section *)
 (* val valid_production : string list -> bool = <fun> *)
 
+(* the functions prior to valid_production are used in the finding of valid_production *)
 
 
 
@@ -138,6 +139,7 @@ let rec table_equivalent (tableA,tableB) =
 (* valid_production_list productionList will be at the bottom of this section *)
 (* val valid_production_list : string list list -> bool = <fun> *)
 
+(* the functions prior to valid_production_list are used in the finding of valid_production_list *)
 
 
 
