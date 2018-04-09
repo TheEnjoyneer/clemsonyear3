@@ -98,7 +98,8 @@ let equiv (ca,cb) =
 	| ([],_) -> false
 	| (_,[]) -> false
 	| (ca,cb) -> if (List.length ca) = (List.length cb)
-				 then cell_equiv_list(ca,cb,ca);;
+				 	then cell_equiv_list(ca,cb,ca)
+				 else false;;
 
 (* row_equivalent (rowA,rowB) *)
 (* val row_equivalent : 'a list list * 'a list list -> bool = <fun> *)
