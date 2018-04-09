@@ -1,0 +1,17 @@
+2 Carbon per iteration (1-2)
+50 Carbon Sleep in mSec
+
+4 Hydrogen per iteration (1-4)
+25 Hydrogen Sleep in mSec
+
+2 Oxygen per iteration (1-2)
+10 Oxygen Sleep in mSec
+
+100 Ethanol molecules needed
+20 Ethanol Sleep in mSec
+
+100 Water molecules needed
+20 Water Sleep in mSec
+
+100 Ozone molecules needed
+20 Ozone Sleep in mSec

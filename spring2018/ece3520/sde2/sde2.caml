@@ -126,3 +126,21 @@ let rec table_equivalent (tableA,tableB) =
 
 
 
+(* valid_production_list productionList *)
+(* val valid_production_list : string list list -> bool = <fun> *)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
