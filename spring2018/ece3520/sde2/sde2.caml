@@ -15,41 +15,39 @@
 	Char.code
 *)
 
-(* get_table_value_cell ([i;j],table) follows this comment section*)
+(* get_table_value_cell ([i;j],table) follows this comment section *)
 (* val get_table_values_cell : int list * 'a list list -> 'a list = <fun> *)
-let get_table_values_cell ([i;j],table) =
-	match ([i;j],table) with
-	([],[]) -> []
-	| ([],_) -> []
-	| (_,[]) -> []
-	| ([i;j],table) -> (List.nth (List.nth table (j-1)) (i-1));;
+let get_table_values_cell (pos,table) = 
+	match (pos,table) with
+	([i;j],table) -> List.nth (List.nth table (j-1)) (i-1)
+	| (_,_) -> failwith "base case";;
 
 (* cell_products [cell1;cell2]  will be at the bottom of this section *)
 (* val cell_products : string list list -> string list = <fun> *)
 
 (* the two functions prior to cell_products are used in the finding of cell_products *)
-let rec iterate_list([list_head;cell2],return_list) = 
-	match ([list_head;cell2],return_list) with
-	([],_) -> []
+let rec iterate_list (cell_list,return_list) = 
+	match (cell_list,return_list) with
+	([[];_],return_list) -> return_list
+	| ([list_head;cell2],return_list) -> iterate_list ([list_head;(List.tl cell2)], (List.append return_list (((List.nth list_head 0)^(List.nth cell2 0)) :: [])))
+	| ([],_) -> []
 	| (_::[],_) -> []
-	| ([_;[]],return_list) -> return_list
-	| ([list_head;cell2],return_list) -> iterate_list ([list_head;(List.tl cell2)], (List.append return_list (((List.nth list_head 0)^(List.nth cell2 0)) :: [])));;
+	| (_::_::_::_, _) -> [];;
 
-let rec second_cell ([cell1;cell2],return_list) = 
-	match ([cell1;cell2],return_list) with
-	([],_) -> []
+let rec second_cell (cell_list,return_list) = 
+	match (cell_list,return_list) with
+	([[];_],return_list) -> return_list
+	| ([cell1;cell2],return_list) -> second_cell ([(List.tl cell1);cell2],(iterate_list ([cell1;cell2],return_list)))
+	| ([],_) -> []
 	| (_::[],_) -> []
-	| (_::_::_::_,_) -> []
-	| ([[];_],return_list) -> return_list
-	| ([cell1;cell2],return_list) -> second_cell ([(List.tl cell1);cell2],(iterate_list ([cell1;cell2],return_list)));;
+	| (_::_::_::_,_) -> [];;
 
 (* cell_products [cell1;cell2] directly below *)
-let cell_products [cell1;cell2] =
-	match [cell1;cell2] with
-	[] -> []
-	| [[];_] -> []
-	| [_;[]] -> []
-	| [cell1;cell2] -> second_cell ([cell1;cell2],[]);;
+let cell_products cell_list = 
+	match cell_list with
+	[cell1;cell2] -> second_cell ([cell1;cell2],[])
+	| [] -> []
+	| (_::_::_::_|_::[]) -> [];;
 
 (* form_row1_cell (element,productions) *)
 (* val form_row1_cell : 'a * 'a list list -> 'a list = <fun> *)
@@ -157,7 +155,7 @@ let valid_production production =
 							 			else false
 					else false;;
 
-(* valid_production_list productionList will be at the bottom of this section *)
+(* valid_production_list productionList *)
 (* val valid_production_list : string list list -> bool = <fun> *)
 let rec valid_production_list productionList = 
 	match productionList with
