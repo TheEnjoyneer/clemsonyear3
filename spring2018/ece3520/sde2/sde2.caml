@@ -26,31 +26,30 @@ let get_table_values_cell (pos,table) =
 (* val cell_products : string list list -> string list = <fun> *)
 
 (* the two functions prior to cell_products are used in the finding of cell_products *)
-let rec iterate_list (cell_list,return_list) = 
-	match (cell_list,return_list) with
-	([[];_],return_list) -> return_list
-	| ([list_head;cell2],return_list) -> iterate_list ([list_head;(List.tl cell2)], (List.append return_list (((List.nth list_head 0)^(List.nth cell2 0)) :: [])))
-	| ([],_) -> []
-	| (_::[],_) -> []
-	| (_::_::_::_, _) -> [];;
+let rec build_list = function
+	(_,[]) -> []
+	| (_,_::[]) -> []
+	| (return_list,[_;[]]) -> return_list
+	| (return_list,[cell1;cell2]) -> build_list ((List.append return_list (((List.nth cell1 0)^(List.nth cell2 0)) :: [])),[cell1;(List.tl cell2)])
+	| (_,_) -> failwith "base case";;
 
-let rec second_cell (cell_list,return_list) = 
-	match (cell_list,return_list) with
-	([[];_],return_list) -> return_list
-	| ([cell1;cell2],return_list) -> second_cell ([(List.tl cell1);cell2],(iterate_list ([cell1;cell2],return_list)))
-	| ([],_) -> []
-	| (_::[],_) -> []
-	| (_::_::_::_,_) -> [];;
+let rec iterate_list = function
+	(_,[]) -> []
+	| (_,_::[]) -> []
+	| (_,_::_::_::_) -> []
+	| (return_list,[[];_]) -> return_list
+	| (return_list,[cell1;cell2]) -> iterate_list ((build_list (return_list,[cell1;cell2])),[(List.tl cell1);cell2]);;
 
 (* cell_products [cell1;cell2] directly below *)
-let cell_products cell_list = 
-	match cell_list with
-	[cell1;cell2] -> second_cell ([cell1;cell2],[])
-	| [] -> []
-	| (_::_::_::_|_::[]) -> [];;
+let cell_products = function
+	[] -> []
+	| [_;[]] -> []
+	| [[];_] -> []
+	| [cell1;cell2] -> iterate_list ([],[cell1;cell2])
+	| _ -> [];;
 
-(* form_row1_cell (element,productions) *)
-(* val form_row1_cell : 'a * 'a list list -> 'a list = <fun> *)
+(* form_row1_cell (element,productions)
+   val form_row1_cell : 'a * 'a list list -> 'a list = <fun> *)
 
 (* the function prior to form_row1_cell is used in the finding of form_row1_cell *)
 let member_check (element,prod) = 

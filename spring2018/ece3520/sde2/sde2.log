@@ -1,0 +1,121 @@
+# # use "testData.caml";;
+val sample_table4 : string list list list =
+  [[["11"]; ["21"]; ["31"]; ["41"]]; [["12"]; ["22"]; ["32"]];
+   [["13"]; ["23"]]; [["14"]]]
+val prod1 : string list = ["S"; "AB"]
+val prod2 : string list = ["S"; "BC"]
+val prod3 : string list = ["A"; "a"]
+val prod4 : string list = ["B"; "b"]
+val prod5 : string list = ["C"; "b"]
+val prod6 : string list = ["C"; "c"]
+val prod7 : string list = ["D"; "c"]
+val prod8 : string list = ["D"; "d"]
+val productions : string list list =
+  [["S"; "AB"]; ["S"; "BC"]; ["A"; "a"]; ["B"; "b"]; ["C"; "b"]; ["C"; "c"];
+   ["D"; "c"]; ["D"; "d"]]
+val row1 : string list list = [["A"]; ["B"]; ["B"; "C"]; ["D"; "C"]]
+val row1mod : string list list = [["A"]; ["B"]; ["C"; "B"]; ["C"; "D"]]
+val row1mod2 : string list list = [["A"]; ["A"]; ["B"; "B"]; ["C"; "C"]]
+val row1mod3 : string list list = [["A"]; ["C"; "C"]; ["A"]; ["B"; "B"]]
+val tablebook : string list list list =
+  [[["A"]; ["A"]; ["B"; "C"]; ["B"; "C"]];
+   [["C"]; ["S"; "A"]; ["S"; "B"; "A"]]; [["C"; "A"]; ["A"; "S"; "C"]];
+   [["S"; "B"; "C"; "A"]]]
+val tablebook2 : string list list list =
+  [[["A"]; ["A"]; ["B"; "C"]; ["B"; "C"]];
+   [["C"]; ["A"; "S"]; ["B"; "A"; "S"]]; [["C"; "A"]; ["A"; "S"; "C"]];
+   [["S"; "B"; "C"; "A"]]]
+val tablebook3 : string list list list =
+  [[["A"]; ["A"]; ["B"; "C"]; ["B"; "C"]];
+   [["C"]; ["A"; "G"]; ["B"; "A"; "S"]]; [["C"; "A"]; ["A"; "S"; "C"]];
+   [["S"; "B"; "C"; "A"]]]
+val prodb1 : string list = ["s"; "AB"]
+val prodb2 : string list = ["S"; "C"]
+val prodb3 : string list = ["AB"; "DF"]
+val prodb4 : string list = ["s"; "dAB"]
+val prodb5 : string list = ["A"; "A"]
+val prods1 : string list list =
+  [["S"; "AB"]; ["S"; "BC"]; ["C"; "b"]; ["C"; "c"]; ["D"; "c"]]
+val prods2 : string list list = [["A"; "a"]; ["B"; "b"]; ["D"; "d"]]
+val prods3 : string list list =
+  [["S"; "AB"]; ["S"; "BC"]; ["A"; "a"]; ["s"; "dAB"]]
+val prods4 : string list list =
+  [["S"; "AB"]; ["S"; "C"]; ["AB"; "DF"]; ["B"; "b"]]
+val prods5 : string list list =
+  [["S"; "AB"]; ["S"; "C"]; ["A"; "a"]; ["B"; "b"]]
+val prods6 : string list list =
+  [["A"; "A"]; ["C"; "c"]; ["D"; "c"]; ["D"; "d"]]
+# # use "sde2.caml"
+val get_table_values_cell : int list * 'a list list -> 'a = <fun>
+val iterate_list : string list list * string list -> string list = <fun>
+val second_cell : string list list * string list -> string list = <fun>
+val cell_products : string list list -> string list = <fun>
+val member_check : 'a * 'a list -> 'a list = <fun>
+val form_row1_cell : 'a * 'a list list -> 'a list = <fun>
+val member : 'a list * 'a list -> bool = <fun>
+val cell_equiv_list : 'a list * 'a list * 'b list -> bool = <fun>
+val equiv : 'a list * 'a list -> bool = <fun>
+val row_equivalent : 'a list list * 'a list list -> bool = <fun>
+val table_equivalent : 'a list list list * 'a list list list -> bool = <fun>
+val s_prodCheck : int * string -> bool = <fun>
+val non_s_prodCheck : int * string -> bool = <fun>
+val valid_production : string list -> bool = <fun>
+val valid_production_list : string list list -> bool = <fun>
+# get_table_values_cell ([2;3],sample_table4);;
+- : string list = ["23"]
+# get_table_values_cell ([2;2],sample_table4);;
+- : string list = ["22"]
+# get_table_values_cell ([4;1],sample_table4);;
+- : string list = ["41"]
+# cell_products [["C";"D"];["E";"F";"G";"H"]];;
+- : string list = ["CE"; "CF"; "CG"; "CH"; "DE"; "DF"; "DG"; "DH"]
+# cell_products [["E";"F"];[]];;
+- : string list = []
+# cell_products [[];["A";"B"]];;
+- : string list = []
+# form_row1_cell ("b",productions);;
+- : string list = ["B"; "C"; "D"]
+# form_row1_cell ("c",productions);;
+- : string list = ["C"; "D"]
+# form_row1_cell ("d",productions);;
+- : string list = ["D"]
+# equiv ([2;4;6;8],[8;6;4;2]);;
+- : bool = true
+# equiv ([2;4;6;8],[8;6;4;0]);;
+- : bool = false
+# equiv ([2;4;6;8],[8;6;4]);;  
+- : bool = false
+# equiv ([],[2]);;
+- : bool = false
+# row_equivalent (row1,row2);;
+- : bool = true
+# row_equivalent (row3,row4);;
+- : bool = false
+# row_equivalent (row2,row4);;
+- : bool = false
+# row_equivalent (row2,row1);;
+- : bool = true
+# table_equivalent (tablebook1,tablebook2);;
+- : bool = true
+# table_equivalent (tablebook2,tablebook2);;
+- : bool = true
+# table_equivalent (tablebook2,tablebook3);;
+- : bool = false
+# table_equivalent (tablebook1,tablebook3);;
+- : bool = false
+# valid_production prod2;;
+- : bool = true
+# valid_production prod9;;
+- : bool = true
+# valid_production prodb2;;
+- : bool = false
+# valid_production prodb5;;
+- : bool = false
+# valid_production_list prods3;;
+- : bool = true
+# valid_production_list prods2;;
+- : bool = true
+# valid_production_list prods6;;
+- : bool = false
+# valid_production_list prods8;;
+- : bool = false
