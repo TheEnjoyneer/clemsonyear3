@@ -9,7 +9,7 @@ let sample_table4 = [[["11"];["21"];["31"];["41"]];
 
 let prod1 = ["S";"AB"];; 
 let prod2 = ["S";"BC"];;
-let prod3 = ["A";"a"];;
+let prod3 = ["A";"AB"];;
 let prod4 = ["B";"b"];;
 let prod5 = ["C";"b"];;
 let prod6 = ["C";"c"];;

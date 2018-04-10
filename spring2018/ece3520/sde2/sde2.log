@@ -105,6 +105,8 @@ val valid_production_list : string list list -> bool = <fun>
 - : bool = false
 # valid_production prod2;;
 - : bool = true
+# valid_production prod3;;
+- : bool = true
 # valid_production prod9;;
 - : bool = true
 # valid_production prodb2;;

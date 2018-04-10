@@ -129,19 +129,21 @@ let rec s_prodCheck (index,production) =
 	match (index,production) with
 	(index,production) -> if index = (String.length production)
 							then true
-						  else if (String.length production) < 2
+						  else if (String.length production) != 2
 						  			then false
 						  	   else if (Char.code (String.get production index)) <= 90 && (Char.code (String.get production index)) >= 65
 						  	   			then s_prodCheck((index+1),production)
 						  	   		else false;;
 
-let non_s_prodCheck (index,production) =
+let rec non_s_prodCheck (index,production) =
 	match (index,production) with
-	(index,production) -> if (String.length production) != 1
-								then false
-							else if (Char.code (String.get production index)) <= 122 && (Char.code (String.get production index)) >= 97
-									then true
-								 else false;;
+	(index,production) -> if index = (String.length production)
+							then true
+						  else if (String.length production) != 1
+								then s_prodCheck(index,production)
+							   else if (Char.code (String.get production index)) <= 122 && (Char.code (String.get production index)) >= 97
+										then non_s_prodCheck((index+1),production)
+								    else false;;
 
 let valid_production production = 
 	match production with
