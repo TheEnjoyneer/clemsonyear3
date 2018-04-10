@@ -1,0 +1,45 @@
+(* exampleData.caml *)
+(* Christopher Brant *)
+(* This data is the example data from the SDE2 prompt file used for preliminary testing *)
+
+let sample_table4 = [[["11"];["21"];["31"];["41"]];
+					 [["12"];["22"];["32"]];
+					 [["13"];["23"]];
+					 [["14"]]];;
+
+let prod1 = ["S"; "AB"];; 
+let prod2 = ["A"; "a"];;
+let prod3 = ["B"; "b"];;
+let prod4 = ["C"; "b"];;
+let productions = [prod1;prod2;prod3;prod4];;
+
+let row1 = [["A"];["A"];["B";"C"];["B";"C"]];;
+let row1mod = [["A"];["A"];["C";"B"];["C";"B"]];;
+let row1mod2 = [["A"];["A"];["C";"C"];["B";"B"]];;
+let row1mod3 = [["A"];["B";"C"];["A"];["B";"C"]];;
+
+let tablebook = [[["A"];["A"];["B";"C"];["B";"C"]];
+				 [["C"];["S";"A"];["S";"B";"A"]];
+				 [["C";"A"];["A";"S";"C"]];
+				 [["S";"B";"C";"A"]]];;
+
+let tablebook2 = [[["A"];["A"];["B";"C"];["B";"C"]];
+				  [["C"];["A";"S"];["B";"A";"S"]];
+				  [["C";"A"];["A";"S";"C"]];
+				  [["S";"B";"C";"A"]]];;
+
+let tablebook3 = [[["A"];["A"];["B";"C"];["B";"C"]];
+				  [["C"];["A";"G"];["B";"A";"S"]];
+				  [["C";"A"];["A";"S";"C"]];
+				  [["S";"B";"C";"A"]]];;
+
+let prodb1 = ["s";"AB"];;
+let prodb2 = ["S";"A"];;
+let prodb3 = ["AB";"CD"];;
+let prodb4 = ["s";"cAB"];;
+
+let prods1 = [prod1;prod2;prod3;prod4];;
+let prods2 = [prod1];;
+let prods3 = [prod1;prod2;prod3;prodb4];;
+let prods4 = [prod1;prod2;prodb3;prod4];;
+let prods5 = [prod1;prodb2;prod3;prod4];;
