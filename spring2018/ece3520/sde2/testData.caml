@@ -1,3 +1,51 @@
 (* testData.caml *)
 (* Christopher Brant *)
 (* This data is my personal testing data used when testing and logging responses for sde2.log *)
+
+let sample_table4 = [[["11"];["21"];["31"];["41"]];
+					 [["12"];["22"];["32"]];
+					 [["13"];["23"]];
+					 [["14"]]];;
+
+let prod1 = ["S";"AB"];; 
+let prod2 = ["S";"BC"];;
+let prod3 = ["A";"a"];;
+let prod4 = ["B";"b"];;
+let prod5 = ["C";"b"];;
+let prod6 = ["C";"c"];;
+let prod7 = ["D";"c"];;
+let prod8 = ["D";"d"];;
+let productions = [prod1;prod2;prod3;prod4;prod5;prod6;prod7;prod8];;
+
+let row1 = [["A"];["B"];["B";"C"];["D";"C"]];;
+let row1mod = [["A"];["B"];["C";"B"];["C";"D"]];;
+let row1mod2 = [["A"];["A"];["B";"B"];["C";"C"]];;
+let row1mod3 = [["A"];["C";"C"];["A"];["B";"B"]];;
+
+let tablebook = [[["A"];["A"];["B";"C"];["B";"C"]];
+				 [["C"];["S";"A"];["S";"B";"A"]];
+				 [["C";"A"];["A";"S";"C"]];
+				 [["S";"B";"C";"A"]]];;
+
+let tablebook2 = [[["A"];["A"];["B";"C"];["B";"C"]];
+				  [["C"];["A";"S"];["B";"A";"S"]];
+				  [["C";"A"];["A";"S";"C"]];
+				  [["S";"B";"C";"A"]]];;
+
+let tablebook3 = [[["A"];["A"];["B";"C"];["B";"C"]];
+				  [["C"];["A";"G"];["B";"A";"S"]];
+				  [["C";"A"];["A";"S";"C"]];
+				  [["S";"B";"C";"A"]]];;
+
+let prodb1 = ["s";"AB"];;
+let prodb2 = ["S";"C"];;
+let prodb3 = ["AB";"DF"];;
+let prodb4 = ["s";"dAB"];;
+let prodb5 = ["A";"A"];;
+
+let prods1 = [prod1;prod2;prod5;prod6;prod7];;
+let prods2 = [prod3;prod4;prod8];;
+let prods3 = [prod1;prod2;prod3;prodb4];;
+let prods4 = [prod1;prodb2;prodb3;prod4];;
+let prods5 = [prod1;prodb2;prod3;prod4];;
+let prods6 = [prodb5;prod6;prod7;prod8];;
