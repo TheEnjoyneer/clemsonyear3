@@ -1,10 +1,10 @@
 /*
-	Jennifer Starcher and Chris Brant
+	Jennifer Starcher and Christopher Brant
 	ECE 3220
 	25 April 2018
 
-	Compile: gcc -Wall molecule.c -pthread
-	Run: ./a.out
+	Compile: gcc -Wall os_project3.c -o os_project3 -pthread
+	Run: ./os_project3
 */
 
 #include <stdio.h>
