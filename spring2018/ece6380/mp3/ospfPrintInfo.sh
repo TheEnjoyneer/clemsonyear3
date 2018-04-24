@@ -22,8 +22,8 @@ ZEBRA="/etc/quagga/zebra.conf"
     for ETH in ${ETHNUMS[@]} ; do
         # this extracts the full IP address with mask 
         ETHIP=`ip addr | grep $ETH$ | awk -F " " '{print $2}'`
-        SUBMASK = ${ETHIP: (-2)}
-        SUBNETIP = "${ETHIP%.*/SUBMASK}.0/SUBMASK"
+        SUBMASK='${ETHIP: (-2)}'
+        SUBNETIP='${ETHIP%.*/SUBMASK}.0/SUBMASK'
         sudo echo "$ETH has IP address ${ETHIP%%/*} and connects to subnet $SUBNET"
     done
 
