@@ -13,20 +13,16 @@
 # April 24th, 2018
 ##
 
-ZEBRA="/etc/quagga/zebra.conf"
-
-    #make list of all eth interfaces expect 0
-    ETHNUMS=`ip addr show | grep -Eo 'eth[1-9][0-9]*$'`
+#make list of all eth interfaces expect 0
+ETHNUMS=`ip addr show | grep -Eo 'eth[1-9][0-9]*$'`
     
-    # for each interface add ip address with mask
-    for ETH in ${ETHNUMS[@]} ; do
-        # this extracts the full IP address with mask 
-        ETHIP=`ip addr | grep $ETH$ | awk -F " " '{print $2}'`
-        INDIP="${ETHIP%%/*}"
-        SUBMASK="${ETHIP: (-2)}"
-        SUBNET="${ETHIP%.*/$SUBMASK}"
-        SUBNETIP="$SUBNET.0/$SUBMASK"
-        sudo echo "$ETH has IP address $INDIP and connects to subnet $SUBNETIP"
-    done
-
-
+# for each interface add ip address with mask
+for ETH in ${ETHNUMS[@]} ; do
+    # this extracts the full IP address with mask 
+    ETHIP=`ip addr | grep $ETH$ | awk -F " " '{print $2}'`
+    INDIP="${ETHIP%%/*}"
+    SUBMASK="${ETHIP: (-2)}"
+    SUBNET="${ETHIP%.*/$SUBMASK}"
+    SUBNETIP="$SUBNET.0/$SUBMASK"
+    sudo echo "$ETH has IP address $INDIP and connects to subnet $SUBNETIP"
+done
