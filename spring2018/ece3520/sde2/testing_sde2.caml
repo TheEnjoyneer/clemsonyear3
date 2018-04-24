@@ -1,0 +1,79 @@
+(** script for grading SDE2 rev. 4/09/2018 *)
+
+(** necessary files/directories:
+sde2.caml   (the student work)
+testing_sde2.caml (this script)
+testing_data.caml (data)
+*)
+
+(** prior to invoking this script, check for legal code as per grading sheet *)
+
+(** prior to invoking this script, 
+    start and log an ocaml session
+    via: script -c ocaml <studentname-sde2.log>  
+    CTRL-D ends bash script *)
+
+(* in ocaml top-level invoke script via: #use"testing_sde2.caml";; *)
+
+(** get student work and compile *)
+print_string ("\n\n++++++++++Loading Student file:sde2.caml+++++++++++\n
+$$$$$$$$  check for errors and warnings $$$$$$$$$\n");;
+
+#use"sde2.caml";;
+
+(* <lots of signatures here > *)
+(* check for errors and warnings *)
+
+#use"testing_data.caml" ;; (* load after student work *)
+
+(* <lots of signatures here > *)
+
+(** exercise the functions
+    form: let test<n> = <test-eval>;;
+    with some data provided
+    give each returned function value a name for grading *)
+
+print_string ("\n\n++++++++++Now Testing Functions+++++++++++++++\n\n");;
+
+(* now the tests *)
+
+let test1 = get_table_values_cell ([3;2],tablebook2);;
+
+let test2 = get_table_values_cell ([1;4],tablebook3);;
+
+let test3 = cell_products[["A";"B"];["D";"E";"F";"G"]];;
+
+let test4 = cell_products [["A";"B"];[]];;
+
+let test5 = cell_products[[];["D";"E";"F";"G"]];;
+
+let test6 = form_row1_cell ("a",productions);;
+
+let test7 = form_row1_cell ("b",productions);;
+
+let test8 =  form_row1_cell ("c",productions);;
+
+let test9 =  equiv(["C"; "B"; "S"; "A"],["S"; "B"; "C"; "A"]);;
+
+let test10 = equiv(["A"; "S"],["A"; "G"; "H"]);;
+
+let test11 = row_equivalent(row1,row1mod);;
+
+let test12 = row_equivalent(row1,row1mod2);;
+
+let test13 = table_equivalent(tablebook,tablebook2);;
+
+let test14 = table_equivalent(tablebook,tablebook3);;
+
+let test15 = valid_production prod2;;
+
+let test16 = valid_production prodb1;;
+
+let test17 = valid_production_list prods1;;
+
+let test18 = valid_production_list prods2;;
+
+let test19 = valid_production_list prods3;;
+
+let test20 = valid_production_list prods4;;
+
