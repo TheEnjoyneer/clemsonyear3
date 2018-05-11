@@ -1,0 +1,27 @@
+This is a place for questions relevant to the syllabus and  the introductory content items (above). It will evolve over the Spring 2018 term. 
+
+Q1. What are the quizzes like?
+
+A1. Open book/notes. No laptops or other computing devices (including tablets and phones). 75 minutes in duration on the dates/times specified in the syllabus. See the end of the text chapter(s) for sample problems. Each quiz will have an associated Canvas Content item outlining the scope and parameters of the quiz.
+
+Q2. Is there a late policy on the SDEs?
+
+A2. Yes. If it is submitted by the due date and time, it will be graded. SDEs are designed to provide a bottom-up approach to the problem design, implementation and testing. When the due date is past, it is no longer possible to submit the SDE to Canvas. Thus, submit what you have done (even if it is incomplete) PRIOR TO THE DEADLINE.
+
+Q3. Can I submit an SDE more than once (before the deadline)?
+
+A3. Yes. We will consider and grade ONLY the LATEST (i.e., most recent) submission. Canvas provides a date/time stamp for each attempt.
+
+Q4. I received a low grade on (<fill in here>)? Am I doomed to fail the course?
+
+A4. Not necessarily. Failure to submit SDEs or take quizzes is a contraindication to success, but there may be a 'curving' of the scores based upon the performance of the class population and my standards. Even if you cannot complete all parts of an SDE, you should submit what you have done by the deadline.
+
+Q5. Why are all the course Canvas Modules and Pages not published (i.e., visible to students) at the start of the course?
+
+A5. There are several reasons for this. The primary pedagogical reason is to avoid students getting badly out of sync with the quizzes and SDEs.  
+
+Q6. I see that the quizzes will be open book/notes. Can these notes be typed? Or do they have to be written? 
+
+A6. They can be handwritten, typed or copies of material you find useful. They cannot be electronic versions of documents, since you will be prohibited from using laptops or other computing devices.
+
+

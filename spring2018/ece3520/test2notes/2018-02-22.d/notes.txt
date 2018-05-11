@@ -1,0 +1,177 @@
+# Chapter 6
+everything following is in ch6 in book, allegedly
+
+
+when building parser, you need a scanner.
+
+turning into online course in his absence
+
+### Regular Expressions in flex
+commonly used in bash grep vi.
+basis for token recognizer implemented in flex.
+
+Patterns to be recognized by flex in the input are denotd using extended
+regular expressions.
+basic building blocks are sumarized in Table 1.
+
+have to start with grammar, has two parts to a grammar
+1. Lexical part
+ * Determines (as seen in minic), tokens that can be produced in grammar
+ * How describe identifier described by productions?
+2. Structural part
+ * All other productions. command, command sequence (as seen in minic).
+
+Start by looking at first constraint. Must be comprised of only terminals.
+
+About to show us a third way of something
+We get source to create an executable if we so choose.
+
+
+## Regexpression table
+
+<INSERT PIC 0 HERE>
+
+Most characters match themselves
+questionable amount of uses for R?
+
+Then talked about
+<INSERT PIC 1 HERE>
+
+
+## Flex input file structure
+
+* RE to be matched against input are specified by 
+  user in a flex source file (*.in)
+* consists of reg exp's to be matched against the 
+  input file together with corresponding flex actions
+* file is translated by flex into a c program which reads
+  an input character stream, and, where possible, converts
+  the input into tokens which match the specified regular
+  expressions
+
+
+## Flex Output
+
+* output of flex is lex.yy.c containing c source for a scanner
+* scanning function within file is denoted yylex
+* Process shown: *.in -(flex)--> lex.yy.c (contains yylex()
+* lex.yy.c may be compiled into a freestanding executable
+  using gcc with the -lfl library specification
+
+in days of bernigan? and richie writing an OS with C,
+needed a lexical analyzer. First one came up w/ is lex
+with scanner(comiler?) cc (compiler compiler, parser generator?)
+
+Yak? --> bison
+NEED FLEX LIBRARY -lfl (fl library)
+
+/usr/local/Cellar/flex/2.6.4/lib
+is where it is?
+gcc -L"/usr/local/Cellar/flex/2.6.4/lib" -lfl
+
+
+## Flex example
+
+* 3 letters lowercase followed by 3 digits
+* first digit may not be a zero
+<code in pic2>
+sections delineated by % signs
+
+** Uses ./license1 ** to make sure doesn't look in other path.
+could be user put malicious executable there.
+
+<pic3>
+file: license3.in
+yytext is the string?
+
+## Returning values and variables
+
+* predefined global variables allow extended passing of values
+  b/t flex and bison
+* in flex, following the match of RE
+he quit early
+
+## flex with minic
+
+int main(void)
+{
+int t1;
+t1=10;
+return(t1);
+}
+
+^^ minic input (src) file used for examples
+example1.mc (minic)
+
+	Side note--ask this dude what other classes I should
+	take.
+
+
+<pic4>
+flex source?
+
+reserved words in minic? int main void return
+
+Using stdio and stdin now. and printf.
+redirect to files later to actually compile things
+
+
+
+use of flex: Resulting file of tokens
+
+carriage return not one of recognized things
+so it spits it back out?
+
+<pic5>
+
+<pic6> version that gobbles up whitespace
+
+<pic7> output?
+
+Program to convert lists in prolog to lists in ocaml.
+He uses this instd of sed? Other uses for this stuff
+
+### bison and Tokens for Parsing
+
+* flex creates fnc yylex()
+* The previous examples are based upon printf output of
+  recognized tokens
+* bison produces the parser as the function yyparse.
+* the parser requires flex-based generation of tokens
+* Specifically, yyparse expects the integer representation
+  of tokens to be returned from the flex-generated scanner.
+
+## pragmatics of using bison
+
+1. specify grammar in 1 or more bison grammar files
+2. write or generate a lexical analyzer to process source
+  code input and pass tokens to the parser.
+3. write a function that calls the bison-generated parser.
+4. write error reporting routines.
+5. run bison on the grammar to produce the parser function
+   (yyparse).
+6. compile yyparse with other source files and link the object
+   files to produce the overall parser
+
+<pic8>
+
+
+### Conveying grammar to bison
+
+bison generates parser from input in the form of a bison
+grammar file
+
+* a nonterminal symbol in the formal grammar is represented
+  in bison input as an identifier which by bison convention
+  must be in lower case (i.e. all chars), e.g. expr
+* bison representation for a terminal (aka token type)
+  is in upper case, e.g. IDENTIFIER.
+* a terminal symbol that stands for a particular keyword in
+  the language should be named after that keyword converted
+  to upper case.
+
+## Using flex and bison together for minic
+* bison file for .y
+* something else
+
+<pic9>
