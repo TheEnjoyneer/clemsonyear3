@@ -5,7 +5,7 @@ Personal GitHub repository for archiving code written for classes at Clemson Uni
 All code in this repository is free for anyone's use. I doubt it will be too terribly useful to very many people.
 Any comments, constructive criticism, or concerns can be emailed to me or commented on the repo as well.
 
-Contents should include code written for Clemson's classes on:
+Contents should include code written and documents for Clemson's classes on:
   > `CPSC 2150 Software Development Foundations (Java Language and Concepts)`
   
   > `CPSC 2151 Software Dev Foundations Lab (Lab corresponding to the above lecture)`
