@@ -5,7 +5,7 @@ Personal GitHub repository for archiving code written for classes at Clemson Uni
 All code in this repository is free for anyone's use. I doubt it will be too terribly useful to very many people.
 Any comments, constructive criticism, or concerns can be emailed to me or commented on the repo as well.
 
-Fall 2017 Semester contents should include code written for Clemson's classes on:
+Fall 2017 Semester contents should include code written and documents for Clemson's classes on:
   > `CPSC 2150 Software Development Foundations (Java Language and Concepts)`
   
   > `CPSC 2151 Software Dev Foundations Lab (Lab corresponding to the above lecture)`
@@ -14,7 +14,7 @@ Fall 2017 Semester contents should include code written for Clemson's classes on
   
   > `ECE 3300 Signals and Systems (Likely will be mostly MATLAB code)`
   
-Spring 2018 Semester contents should include code written for Clemson's classes on:
+Spring 2018 Semester contents should include code written and documents for Clemson's classes on:
   > `ECE 3170 Random Signal Analysis (Random Signal Occurrences and Analysis Tools)`
   
   > `ECE 3220 Introduction to Operating Systems (Operating Systems Basics/Kernel Basics)`
