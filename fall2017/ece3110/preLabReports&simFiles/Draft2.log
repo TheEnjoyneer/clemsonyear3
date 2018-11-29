@@ -1,0 +1,21 @@
+Circuit: * C:\Users\Christopher Brant\Google Drive\Clemson Year 3\Clemson Fall 2017\ECE 3110 Electrical Engineering III Lab\Pre-Lab Reports\Draft2.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Mon Oct 09 01:05:45 2017
+Total elapsed time: 0.040 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 1522
+traniter = 1507
+tranpoints = 453
+accept = 301
+rejected = 152
+matrix size = 9
+fillins = 0
+solver = Normal
+Matrix Compiler1: 260 bytes object code size  0.1/0.1/[0.0]
+Matrix Compiler2: 579 bytes object code size  0.1/0.1/[0.0]
+
